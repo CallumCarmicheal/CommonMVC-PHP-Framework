@@ -11,12 +11,15 @@
 		protected $Enabled;
 		protected $AuthRequired;
 		protected $ControllerName;
+		protected $Context;
 
 		/**
 		 * Sets if the current controller is disabled
 		 * @param $Enabled bool State if the MVC Page has been disabled
 		 */
 		public function setState($Enabled) 	{ $this->Enabled = $Enabled; }
+		public function setMvcContext($ctx) { $this->Context = $ctx; }
+
 		public function getAuthRequired() 	{ return $this->AuthRequired; }
 		public function getEnabled() 		{ return $this->Enabled; }
 		public function getControllerName() { return $this->ControllerName; }

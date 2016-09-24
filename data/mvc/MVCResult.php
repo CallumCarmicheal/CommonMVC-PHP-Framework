@@ -9,7 +9,6 @@ namespace CommonMVC\MVC;
 
 	class MVCResultEnums {
 		public static $RESULT_SUCCESS      		= 0;
-		public static $RESULT_SUCCESS_HTML 		= 1;
 		public static $RESULT_INVALID 			= 1;
 		public static $RESULT_ERROR   			= 2;
 		public static $RESULT_REDIRECT			= 3;

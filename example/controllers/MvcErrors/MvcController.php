@@ -2,12 +2,14 @@
 /**
  * User: Callum Carmicheal
  * Date: 24/09/2016
- * Time: 17:29
+ * Time: 18:51
  */
 
-namespace CommonMVC\Controllers\Errors;
+namespace ExampleProject\Controllers\MvcErrors;
+
 
 	use CommonMVC\MVC\MVCResult;
+	use CommonMVC\MVC\MVCResultEnums;
 
 	class MvcController extends \CommonMVC\MVC\MVCController {
 
@@ -22,6 +24,22 @@ namespace CommonMVC\Controllers\Errors;
 		 * @return MVCResult
 		 */
 		function ControllerNotFound() {
+			// Create our result
+			$mvc = new MVCResult();
+
+			// Setup our flags
+			$mvc->setHttpClean(MVCResultEnums::$HTTP_CLEAN_CONTENT);
+			$mvc->setPageResult(MVCResultEnums::$RESULT_SUCCESS);
+
+			// Set the http content
+			$mvc->setPageContent("Error: ");
+
+			// Append http to the content
+			$mvc->appendPageContent("Cannot find the controller for ");
+
+
+
 			return new MVCResult();
 		}
+
 	}

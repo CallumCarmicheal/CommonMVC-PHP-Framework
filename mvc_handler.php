@@ -5,7 +5,8 @@
 	session_start();
 	date_default_timezone_set("Europe/London");
 
-	$MVC_DEBUG_OUTPUT = true;
+	include ("mvc_settings.php");
+	$MVC_DEBUG_OUTPUT = CMVC_SETS_DEBUG_HANDLER;
 
 	/* Require all the libraries */ {
 	// Classes (1/1)
@@ -54,8 +55,8 @@
 	/* Check if the current request contains a page */ {
 		if (empty($_GET['mvc_path'])) {
 			if(CommonMVC\Classes\Authentication\Status::isLoggedIn())
-				 $VirtualPath = "Home/Dashboard";
-			else $VirtualPath = "Auth/Login";
+				 $VirtualPath = CMVC_PRJ_VIRTPATH_DEFAULT_AUTHED;
+			else $VirtualPath = CMVC_PRJ_VIRTPATH_DEFAULT_NOAUTH;
 		} else {
 			$VirtualPath = $_GET['mvc_path'];
 		}
@@ -71,8 +72,8 @@
 	if($MVC_DEBUG_OUTPUT) echo '$VirtualPath (Capitalised  ): '. $VirtualPath. "\n\n";
 
 	/* Attempt to find the controller! */ {
-		$Path 		= "data/controllers/";
-		$Namespace 	= "CommonMVC\\Controllers\\";
+		$Path 		= CMVC_PRJ_DIRECTORY_CONTROLLERS;
+		$Namespace 	= CMVC_PRJ_NAMESPACE_CONTROLLERS;
 		$Controller = "";
 		$Action 	= "";
 		$Arr 		= explode("/", $VirtualPath);
@@ -86,7 +87,8 @@
 
 			$Controller = $Arr[0];
 			$Action = "Index";
-		} else if ($ArrLen >= 2) {
+		}
+		else if ($ArrLen >= 2) {
 			// [0-(Len-2)] 	Path
 			// [Len-1] 		Controller
 			// [Len]		Action
@@ -104,7 +106,8 @@
 
 			$Controller = $Arr[$ArrLen-1];
 			$Action = $Arr[$ArrLen];
-		} else {
+		}
+		else {
 			// [0] = Controller
 			// [1] = Action
 
@@ -124,9 +127,12 @@
 		if($MVC_DEBUG_OUTPUT) echo '$Action: '. 	$Action. "\n";
 	}
 
-	echo "\n";
+	if($MVC_DEBUG_OUTPUT) "\n";
 
 	/* Check if controller exists */ {
+
+		$mvcCtx = new \CommonMVC\MVC\MVCContext();
+
 
 		$filePath = $Path;
 		$filePath .= "/". $Controller;
@@ -139,11 +145,9 @@
 
 			// Attempt to load the controller
 			require_once ($filePath);
-			//require_once ("data/controllers/HomeController.php");
 
 			$class = $Namespace. '\\'. $ControllerRaw;
 			if ($MVC_DEBUG_OUTPUT) echo '$class: '. $class. "\n";
-
 
 			/**
 			 * @var \CommonMVC\MVC\MVCController $mvc
@@ -174,12 +178,48 @@
 		} else {
 			if ($MVC_DEBUG_OUTPUT) echo '$filePath: File Does Not Exist'. "\n";
 
-			// Load the error controller
-			require_once ("data/controllers/errors/MvcController.php");
+			$filePath = CMVC_PRJ_DIRECTORY_CONTROLLERS_ERRORS;
+			$filePath .= "/MvcController.php";
 
-			$c = new \CommonMVC\Controllers\Errors\MvcController();
-			$mvcExec->ExecuteMVC($c->ControllerNotFound());
+			if(!file_exists($filePath)) {
+				if (!$MVC_DEBUG_OUTPUT) ob_get_clean();
+				die("Cannot find the MvcController for Errors ($filePath)");
+				exit;
+			}
+
+			// Load the file
+			require_once ($filePath);
+
+			$class = CMVC_PRJ_NAMESPACE_CONTROLLERS_ERRORS. "\\MvcController";
+
+			/**
+			 * @var \CommonMVC\MVC\MVCController $mvc
+			 */
+			$mvc = new $class();
+			if ($MVC_DEBUG_OUTPUT) echo '$mvc->getControllerName(): '. $mvc->getControllerName(). "\n";
+
+			$Action = "ControllerNotFound";
+
+			if(method_exists($mvc, $Action)) {
+				if($MVC_DEBUG_OUTPUT) "Method Exists";
+
+				// By default we redirect so lets get our
+				// MVCResult and then check if it is a redirect
+
+				/**
+				 * @var \CommonMVC\MVC\MVCResult $mvcRes
+				 */
+				$mvcRes = $mvc->$Action();
+
+				if($MVC_DEBUG_OUTPUT) echo "Executing MVC's Result \n";
+
+
+
+				$mvcExec->ExecuteMVC($mvcRes);
+			} else {
+				if (!$MVC_DEBUG_OUTPUT) ob_get_clean();
+				die ("CANNOT FIND THE 'ControllerNotFound' FUNCTION IN 'MvcErrors\\MvcController' controller located in ($filePath).  \n");
+				exit;
+			}
 		}
-
-
 	}

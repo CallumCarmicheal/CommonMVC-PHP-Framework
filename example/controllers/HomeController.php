@@ -5,15 +5,16 @@
  * Time: 20:26
  */
 
-namespace CommonMVC\Controllers;
+namespace ExampleProject\Controllers;
 
+	use CommonMVC\MVC\MVCContext;
 	use CommonMVC\MVC\MVCResult;
 	use CommonMVC\MVC\MVCController;
 	use CommonMVC\MVC\MVCResultEnums;
 
 	class HomeController extends MVCController {
 		function __construct() {
-			$this->ControllerName 	= "Home";
+			$this->ControllerName 	= "HomeTest";
 			$this->Enabled 			= true;
 			$this->AuthRequired 	= true;
 		}
@@ -23,7 +24,7 @@ namespace CommonMVC\Controllers;
 		 * @return MVCResult Page Result
 		 */
 		public function Index() {
-			return Dashboard();
+			return $this->Dashboard();
 		}
 
 		// Here you state the page name as the function
