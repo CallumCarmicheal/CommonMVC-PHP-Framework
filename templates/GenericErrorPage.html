@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Error Page - {VAR.VirtualPath}</title>
+</head>
+<body>
+
+    <style>
+        body {
+            background-color: #00695C;
+            color: #FAFAFA;
+        }
+
+        .Center {
+            text-align: center;
+            padding-top: 25%;
+        }
+
+        .Title {
+            font-size: -webkit-xxx-large;
+            width: 100%;
+            height:  100%;
+        }
+
+        .Sub {
+            font-size: xx-large;
+        }
+
+        .Id {
+            font-size: x-large;
+        }
+    </style>
+
+    <div class="Center">
+        <div class="Title">{VAR.VirtualPath}</div>
+        <div class="Sub">{VAR.Desc}</div>
+        <div class="Id">ErrorID: {VAR.Id}</div>
+    </div>
+</body>
+</html>

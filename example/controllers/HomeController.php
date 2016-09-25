@@ -7,6 +7,7 @@
 
 namespace ExampleProject\Controllers;
 
+	use CommonMVC\Classes\Storage\Templates;
 	use CommonMVC\MVC\MVCContext;
 	use CommonMVC\MVC\MVCResult;
 	use CommonMVC\MVC\MVCController;
@@ -30,11 +31,11 @@ namespace ExampleProject\Controllers;
 		// Here you state the page name as the function
 		// (case sensitive :: START WITH A CAPITAL)
 		public function Dashboard() {
-			// Dashboard is currently WIP
-			// So lets just redirect to google
-			return MVCResult::Redirect(
-				"https://google.com",
-				MVCResultEnums::$REDIRECT_EXTERNAL, MVCResultEnums::$HTTP_CLEAN_CONHEAD);
+			$replace = array( 'SOME_STRING' => 'Hello World!' );
+			$html = Templates::ReadTemplate("Home/Dashboard", true, $replace);
 
+			if(!$html)
+				 return MVCResult::SimpleHTML("Cannot find the required template resource (Dashboard.html)");
+			else return MVCResult::SimpleHTML($html);
 		}
 	}

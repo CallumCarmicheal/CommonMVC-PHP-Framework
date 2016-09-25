@@ -1,9 +1,9 @@
 <?php
 /**
-* User: Callum Carmicheal
-* Date: 24/09/2016
-* Time: 18:35
-*/
+ * User: Callum Carmicheal
+ * Date: 24/09/2016
+ * Time: 18:35
+ */
 
 	//
 	//
@@ -49,6 +49,20 @@
 		 * 		Use 2 backslashes for a single backslash to escape the string!
 		 */
 		define ("CMVC_PRJ_NAMESPACE_CONTROLLERS", CMVC_PRJ_NAMESPACE. "\\Controllers");
+
+	//
+	//
+	// Project -> Include
+	//
+		// Here store the location of every file that will be loaded
+		// Into the framework before calling a MVC Controller
+		//		This allows you to write your own classes or
+		//		required functions without having to modify or tamper
+		// 		with the mvc_handler and potentially breaking something.
+		// Example:
+		//		$CMVC_PRJ_EXTRA_INCLUDED_CLASSES[] = "example/classes/PastebinAPI.php";
+		$CMVC_PRJ_EXTRA_INCLUDED_CLASSES = array();
+
 
 	//
 	//
