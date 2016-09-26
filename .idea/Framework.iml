@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module type="WEB_MODULE" version="4">
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/example/controllers/MvcErrors" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example/controllers" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/settings" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/mvc" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/classes/User" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/classes/Authentication" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/classes/Storage" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/classes" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/templates" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/templates/Home" isTestSource="false" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

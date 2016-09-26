@@ -31,6 +31,7 @@
 		require_once ("data/mvc/MVCExecutor.php");
 		require_once ("data/mvc/MVCContext.php");
 		require_once ("data/mvc/MVCErrorInformation.php");
+		require_once ("data/mvc/MVCController.php");
 
 	// Extra imports
 		foreach($CMVC_PRJ_EXTRA_INCLUDED_CLASSES as $incFile)
@@ -66,10 +67,11 @@
 	$EXEC_RETURN_METHOD_NOT_FOUND = 2;
 
 	/**
-	 * @param $class \CommonMVC\MVC\MVCController
-	 * @param $Action string
-	 * @param $mvcExec \CommonMVC\MVC\MVCExecutor
-	 * @param $mvcCtx \CommonMVC\MVC\MVCContext
+	 * Setup and Execute MVC
+	 * @param string|\CommonMVC\MVC\MVCController $class
+	 * @param string $Action
+	 * @param \CommonMVC\MVC\MVCExecutor $mvcExec
+	 * @param \CommonMVC\MVC\MVCContext $mvcCtx
 	 * @param bool $passArg
 	 * @param object $arg
 	 * @return int Error Code
@@ -79,11 +81,25 @@
 		global $EXEC_RETURN_METHOD_NOT_FOUND;
 		$MVC_DEBUG_OUTPUT = CMVC_SETS_DEBUG_HANDLER;
 
+
 		/**
 		 * @var \CommonMVC\MVC\MVCController $mvc
 		 */
 		$mvc = new $class();
+
 		$mvc->setMvcContext($mvcCtx);
+
+
+		/* Check if the controller requires authentication */ {
+
+			$loggedIn = CommonMVC\Classes\Authentication\Status::isLoggedIn();
+
+			if($mvc->getAuthRequired() && !$loggedIn) {
+				// Change the controller to the default login controller
+
+			}
+		}
+
 
 		if ($MVC_DEBUG_OUTPUT) {
 			echo '$Action: '. $Action. "\n";
@@ -237,7 +253,7 @@
 		if($MVC_DEBUG_OUTPUT) echo '$Action: '. 	$Action. "\n";
 	}
 
-	if($MVC_DEBUG_OUTPUT) "\n";
+	if($MVC_DEBUG_OUTPUT) echo "\n";
 
 	/* Check if controller exists */ {
 
