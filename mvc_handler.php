@@ -39,9 +39,7 @@
 	}
 
 	$mvcExec = new \CommonMVC\MVC\MVCExecutor();
-
 	$VirtualPath 	= "";
-	$VirtualPathRaw = "";
 
 	/* Check if the current request contains a page */ {
 		if (empty($_GET['mvc_path'])) {
@@ -51,8 +49,6 @@
 		} else {
 			$VirtualPath = $_GET['mvc_path'];
 		}
-
-		$VirtualPathRaw = $VirtualPath;
 	}
 
 	$ctrl = \CommonMVC\MVC\MVCHelper::ResolveVirtualPath(

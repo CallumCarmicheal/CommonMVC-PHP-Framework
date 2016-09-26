@@ -173,8 +173,6 @@ namespace CommonMVC\MVC;
 
 				return self::ExecuteControllerResult($Controller, $result, $Context);
 			}
-
-			return self::$ENUM_EXECUTE_RESULT_SUCCESS;
 		}
 
 
