@@ -8,8 +8,17 @@
 namespace CommonMVC\MVC;
 
 	use CommonMVC\MVC\MVCResult;
+	use ExampleProject\Controllers\MvcErrors\VPathController;
 
 	class MVCExecutor {
+
+
+
+		public static $ENUM_EXECUTE_RESULT_SUCCESS 	   = 0;
+		public static $ENUM_EXECUTE_RESULT_ERR_NO_CTRL = 1;
+		public static $ENUM_EXECUTE_RESULT_ERR_NO_ACT  = 1;
+
+
 		/**
 		 * Handles redirects
 		 * @param $mvc MVCResult
@@ -48,7 +57,7 @@ namespace CommonMVC\MVC;
 
 		/**
 		 * Handle MVCResult errors
-		 * @param $controller MVCController
+		 * @param $controller VPathController
 		 * @param $mvc MVCResult
 		 * @param $ctx MVCContext
 		 * @return int Error Code
@@ -63,7 +72,7 @@ namespace CommonMVC\MVC;
 
 		/**
 		 * Handle MVCResult invalid requests
-		 * @param $controller MVCController
+		 * @param $controller VPathController
 		 * @param $mvc MVCResult
 		 * @param $ctx MVCContext
 		 * @return int Error Code
@@ -74,7 +83,7 @@ namespace CommonMVC\MVC;
 
 		/**
 		 * Handle MVCResult success
-		 * @param $controller MVCController
+		 * @param $controller VPathController
 		 * @param $mvc MVCResult
 		 * @param $ctx MVCContext
 		 * @return int Error Code
@@ -100,7 +109,7 @@ namespace CommonMVC\MVC;
 		 * @param $ctx MVCContext The MVC Context
 		 * @return int Error Code
 		 */
-		public function ExecuteMVC($controller, $mvc, $ctx) {
+		public function ExecuteControllerResult($controller, $mvc, $ctx) {
 			// MVC Result Type
 			$mvcType = $mvc->getPageResult();
 
@@ -126,4 +135,143 @@ namespace CommonMVC\MVC;
 			return "I AM BITCHING ABOUT A ERROR!";
 		}
 
+		/**
+		 * Execute a controller
+		 * @param $Controller MVCController
+		 * @param $Context MVCContext
+		 * @return int Error Code
+		 */
+		public function ExecuteController($Controller, $Context) {
+			if ($Controller == null)
+				return self::$ENUM_EXECUTE_RESULT_ERR_NO_CTRL;
+
+			if ($Context->getAction() == "")
+				$Context->setAction("Index");
+
+			// Check if the method exists
+			if(!method_exists($Controller, $Context->getAction())) {
+				// Check for the error controler
+				$eCtx  = MVCGlobalControllers::MVC_VPathController();
+				$eCtrl = self::GetControllerFromContext($eCtx);
+
+				// Set the Action to ControllerNotFound
+				$eCtx->setAction("ControllerNotFound");
+
+				if (!$eCtrl)
+					 return $this->errorCtrlNotFound($Context, $eCtx, "Action/Page");
+				else return $this->runErrorController($Context, $eCtrl, "ActionNotFound");
+			} else {
+				// Set the Controller's context
+				$Controller->setContext($Context);
+
+				$action = $Context->getAction();
+
+				/**
+				 * @var MVCResult
+				 */
+				$result = $Controller->$action();
+
+				return self::ExecuteControllerResult($Controller, $result, $Context);
+			}
+
+			return self::$ENUM_EXECUTE_RESULT_SUCCESS;
+		}
+
+
+		/**
+		 * Display a generic error
+		 * @param $ctx MVCContext
+		 * @param $eCtx MVCContext
+		 * @param $errorType string
+		 * @param $errorControllerOnly bool
+		 * @return int Error Code
+		 */
+		private function errorCtrlNotFound($ctx, $eCtx, $errorType, $errorControllerOnly = false) {
+			ob_get_clean();
+
+			if ($errorControllerOnly) {
+				echo "Error ". MVCResultEnums::$HTTP_RESULT_ERROR. ": Cant find the controller and/or action";
+				echo "<pre>Controller:      ". $ctx->getControllerClass(). "</pre>";
+				echo "<pre>Expected Path:   ". $eCtx->getPath(). "</pre>";
+				echo "<pre>Expected Action: ". $eCtx->getAction(). "</pre>";
+			} else {
+				echo "Error 404: Cannot find The requested $errorType.<br>";
+				echo "<pre>Controller:      ". $ctx->getControllerClass(). 	"</pre>";
+				echo "<pre>Expected Path:   ". $ctx->getPath(). 			"</pre>";
+				echo "<pre>Expected Action: ". $ctx->getAction(). 			"</pre>";
+				echo "<br>";
+
+				echo "Error ". MVCResultEnums::$HTTP_RESULT_ERROR. ": Cant find the controller and/or action";
+				echo "<pre>Controller:      ". $ctx->getControllerClass(). "</pre>";
+				echo "<pre>Expected Path:   ". $eCtx->getPath(). "</pre>";
+				echo "<pre>Expected Action: ". $eCtx->getAction(). "</pre>";
+			}
+
+			die("");
+		}
+
+		/**
+		 * Run a error page
+		 * @param $ctx MVCContext
+		 * @param $eCtrl MVCController
+		 * @param $action string
+		 * @return int Error Code
+		 */
+		private function runErrorController($ctx, $eCtrl, $action) {
+			// Check if the controller has the action
+			if(!method_exists($eCtrl, $action))
+				return $this->errorCtrlNotFound($ctx, $eCtrl->getContext(), "", true);
+
+			$eCtx = $eCtrl->getContext();
+			$eCtrl->setContext($ctx);
+
+			/**
+			 * @var MVCResult
+			 */
+			$result = $eCtrl->$action();
+
+			return $this->ExecuteControllerResult($eCtrl, $result, $eCtx);
+		}
+
+		/**
+		 * Execute a controller's context
+		 * @param $ctx MVCContext
+		 * @return int Error Code
+		 */
+		public function ExecuteControllerContext($ctx) {
+			$ctrl = $this->GetControllerFromContext($ctx);
+
+			if (!$ctrl) {
+				// Check for the error controler
+				$eCtx  = MVCGlobalControllers::MVC_VPathController();
+				$eCtrl = self::GetControllerFromContext($eCtx);
+
+				if (!$eCtrl)
+					 return $this->errorCtrlNotFound($ctx, $eCtx, "Controller");
+				else {
+					$eCtrl->setContext($eCtx);
+					return $this->runErrorController($ctx, $eCtrl, "ControllerNotFound");
+				}
+			}
+
+			// Execute the controller
+			return self::ExecuteController($ctrl, $ctx);
+		}
+
+		/**
+		 * Get a controller from a Context
+		 * @param $ctx MVCContext
+		 * @return MVCController controller
+		 */
+		public function GetControllerFromContext($ctx) {
+			if(!file_exists($ctx->getPath()))
+				return false;
+
+			require_once $ctx->getPath();
+			$class = $ctx->getClass();
+
+			if(class_exists($class))
+				 return new $class();
+			else return false;
+		}
 	}

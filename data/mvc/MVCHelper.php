@@ -8,34 +8,6 @@
 
 namespace CommonMVC\MVC;
 
-	class MVCControllerInformation {
-		private $Controller = "";
-
-		private $FileName	= "";
-		private $Folder   	= "";
-		private $Path 		= "";
-
-
-		public function __construct(
-			$Controller = "", $FileName = "",
-			$Folder = "",     $Path = "") {
-
-			$this->Controller 	= $Controller;
-			$this->FileName 	= $FileName;
-			$this->Folder 		= $Folder;
-			$this->Path 		= $Path;
-		}
-
-		public function getController() { return $this->Controller; }
-		public function getFileName() 	{ return $this->FileName; }
-		public function getFolder() 	{ return $this->Folder; }
-		public function getPath() 		{ return $this->Path; }
-
-		public function setController($Controller) 	{ $this->Controller = $Controller; }
-		public function setFileName($FileName) 		{ $this->FileName = $FileName; }
-		public function setFolder($Folder)			{ $this->Folder = $Folder; }
-		public function setPath($Path) 				{ $this->Path = $Path; }
-	}
 
 	class MVCHelper {
 
@@ -66,10 +38,12 @@ namespace CommonMVC\MVC;
 
 		/**
 		 * Get the path of a MVC Controller using the Virtual Path
-		 * @param $VirtualPath
-		 * @return MVCControllerInformation Controller information
+		 * @param $ControllerRootDir string The root directory of the controllers
+		 * @param $ControllerNamespace string The default namespace to be used
+		 * @param $VirtualPath string The Virtual Path to resolve
+		 * @return MVCContext
 		 */
-		public static function getCtrlFromPath($ControllerRootDir, $ControllerNamespace, $VirtualPath) {
+		public static function ResolveVirtualPath($ControllerRootDir, $ControllerNamespace, $VirtualPath) {
 			$Controller = "";
 
 			/* Clean Virtual Path */ {
@@ -83,10 +57,11 @@ namespace CommonMVC\MVC;
 			$Path 		= $ControllerRootDir;
 			$Namespace 	= $ControllerNamespace;
 			$Controller = "";
-			$Action 	= "";
+			$Action		= "";
 			$Arr 		= explode("/", $VirtualPath);
 			$ArrLen 	= count($Arr)-1;
 
+			// Just a controller
 			if ($ArrLen == 0) {
 				// [0] = Controller
 
@@ -94,6 +69,7 @@ namespace CommonMVC\MVC;
 				$Action = "Index";
 			}
 
+			// Path, Controller and Action
 			else if ($ArrLen >= 2) {
 				// [0-(Len-2)] 	Path
 				// [Len-1] 		Controller
@@ -127,6 +103,7 @@ namespace CommonMVC\MVC;
 				$Action = $Arr[$ArrLen];
 			}
 
+			// Controller and Action
 			else {
 				// [0] = Controller
 				// [1] = Action
@@ -139,20 +116,22 @@ namespace CommonMVC\MVC;
 
 
 			// Setup the MVC Controller Information
-			// $Controller = "", $File = "", $Folder = "", $Path = ""
-			$info = new MVCControllerInformation(
+			// $Namespace   = "", $Controller = "", $Action = "",
+			// $FileName    = "", $Folder     = "", $Path = ""
+			// $VirtualPath = ""
+
+			$info = new MVCContext(
+				$Namespace,
 				$Controller,
-				$Controller. "Controller.php",
+				$Action,
 
-				$Path,
-				$Path. "/". $Controller. "Controller.php"
+				$Controller. "Controller.php",				// $FileName
+				$Path, 										// $Folder
+				$Path. "/". $Controller. "Controller.php",	// $Path
+				$VirtualPath
 			);
-
-			echo '$Controller: '. 	$info->getController() . "\n";
-			echo '$File:       '. 	$info->getFileName(). "\n";
-			echo '$Folder:     '. 	$info->getFolder(). "\n";
-			echo '$Path:       '. 	$info->getPath(). "\n";
 
 			return $info;
 		}
+
 	}

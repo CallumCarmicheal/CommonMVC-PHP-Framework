@@ -8,10 +8,8 @@
 namespace ExampleProject\Controllers;
 
 	use CommonMVC\Classes\Storage\Templates;
-	use CommonMVC\MVC\MVCContext;
 	use CommonMVC\MVC\MVCResult;
 	use CommonMVC\MVC\MVCController;
-	use CommonMVC\MVC\MVCResultEnums;
 
 	class HomeController extends MVCController {
 		function __construct() {

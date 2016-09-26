@@ -27,6 +27,24 @@ namespace CommonMVC\MVC;
 
 		public static $REDIRECT_EXTERNAL   		= 0;
 		public static $REDIRECT_MVC				= 1;
+
+		public static function Result_ToString($result) {
+			if ($result == self::$RESULT_SUCCESS)
+				return "Success";
+			else if ($result == self::$RESULT_INVALID)
+				return "Invalid";
+			else if ($result == self::$RESULT_ERROR)
+				return "Error";
+			else if ($result == self::$RESULT_REDIRECT)
+				return "Redirect";
+			return "";
+		}
+
+		public static function Redirect_ToString($redirect) {
+			if ($redirect == self::$REDIRECT_EXTERNAL)
+				 return "External";
+			else return "Mvc";
+		}
 	}
 
 	class MVCResult {

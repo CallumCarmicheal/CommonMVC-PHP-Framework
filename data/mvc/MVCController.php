@@ -8,9 +8,20 @@
 	namespace CommonMVC\MVC;
 
 	class MVCController {
+		/**
+		 * @var bool
+		 */
 		protected $Enabled;
+
+		/**
+		 * @var bool
+		 */
 		protected $AuthRequired;
+
+		/** @var string */
 		protected $ControllerName;
+
+		/** @var MVCContext */
 		protected $Context;
 
 		/**
@@ -18,9 +29,10 @@
 		 * @param $Enabled bool State if the MVC Page has been disabled
 		 */
 		public function setState($Enabled) 	{ $this->Enabled = $Enabled; }
-		public function setMvcContext($ctx) { $this->Context = $ctx; }
+		public function setContext($ctx) 	{ $this->Context = $ctx; }
 
 		public function getAuthRequired() 	{ return $this->AuthRequired; }
 		public function getEnabled() 		{ return $this->Enabled; }
 		public function getControllerName() { return $this->ControllerName; }
+		public function getContext() 		{ return $this->Context; }
 	}

@@ -73,7 +73,7 @@
 		 *
 		 * Default: CMVC_PRJ_DIRECTORY_CONTROLLERS. "/MvcErrors"
 		 */
-		define ("CMVC_PRJ_DIRECTORY_CONTROLLERS_ERRORS", CMVC_PRJ_DIRECTORY_CONTROLLERS. "/MvcErrors");
+		define ("CMVC_PRJ_DIRECTORY_CONTROLLERS_ERRORS", CMVC_PRJ_DIRECTORY_CONTROLLERS. "/Mvc");
 
 		/**
 		 * Controller errors namespace.
@@ -90,7 +90,7 @@
 		 *
 		 * 		Use 2 backslashes for a single backslash to escape the string!
 		 */
-		define ("CMVC_PRJ_NAMESPACE_CONTROLLERS_ERRORS", CMVC_PRJ_NAMESPACE_CONTROLLERS. "\\MvcErrors");
+		define ("CMVC_PRJ_NAMESPACE_CONTROLLERS_ERRORS", CMVC_PRJ_NAMESPACE_CONTROLLERS. "\\Mvc");
 
 
 	//
