@@ -7,6 +7,7 @@
 
 namespace CommonMVC\MVC;
 
+	use CommonMVC\Classes\Authentication\AuthStatus;
 	use CommonMVC\MVC\MVCResult;
 	use ExampleProject\Controllers\MvcErrors\VPathController;
 
@@ -43,9 +44,9 @@ namespace CommonMVC\MVC;
 			// 3. That is the base url
 			// 4. Append the wanted Virtual Path
 			// 5. Redirect to it
-			$surl = $_SERVER['REDIRECT_URL'];
-			$baseurl = str_replace($ctx->getVirtualPath(), "", $surl);
-			$url = $baseurl. $mvc->getHttpRedirect();
+			$surl 		= $_SERVER['REDIRECT_URL'];
+			$baseurl 	= str_replace($ctx->getVirtualPath(), "", $surl);
+			$url 		= $baseurl. $mvc->getHttpRedirect();
 
 			// Set the location header
 			header("location: $url");
@@ -92,6 +93,9 @@ namespace CommonMVC\MVC;
 			// First check if we are required to clean the output and headers
 			if ($mvc->getHttpClean() == MVCResultEnums::$HTTP_CLEAN_CONTENT)
 				ob_get_clean();
+
+			if ($mvc->isHeaderCustomContent())
+				header("Content-Type: ". $mvc->getHeaderContentType());
 
 			if ($mvc->getHttpResult() == MVCResultEnums::$HTTP_RESULT_OK) {
 				// Just echo the html...
@@ -154,13 +158,43 @@ namespace CommonMVC\MVC;
 				$eCtx  = MVCGlobalControllers::MVC_VPathController();
 				$eCtrl = self::GetControllerFromContext($eCtx);
 
-				// Set the Action to ControllerNotFound
-				$eCtx->setAction("ControllerNotFound");
+				// Set the Action to ActionNotFound
+				$eCtx->setAction("ActionNotFound");
 
 				if (!$eCtrl)
-					 return $this->errorCtrlNotFound($Context, $eCtx, "Action/Page");
+					 return $this->errorCtrlNotFound ($Context, $eCtx,  "Action/Page");
 				else return $this->runErrorController($Context, $eCtrl, "ActionNotFound");
 			} else {
+
+				/* Check if the controller's settings */ {
+					// Check if auth is required
+					$loggedIn = AuthStatus::isLoggedIn();
+					if ($Controller->getAuthRequired() && !$loggedIn) {
+						// Redirect controller to the default login controller
+
+						// 1. Setup the context
+						$aCtx = MVCHelper::ResolveVirtualPath(
+							CMVC_PRJ_DIRECTORY_CONTROLLERS,
+							CMVC_PRJ_NAMESPACE_CONTROLLERS,
+							CMVC_PRJ_VIRTPATH_REDIRECT_NOAUTH
+						);
+
+						// 2. Run the context
+						return self::ExecuteControllerContext($aCtx);
+					}
+
+					// Check if the controller is disabled
+					else if (!$Controller->isEnabled()) {
+						$aCtx  = MVCGlobalControllers::MVC_AccessController();
+						$aCtrl = self::GetControllerFromContext($aCtx);
+						return self::runErrorController($Context, $aCtrl, "ControllerDisabled");
+					}
+
+					// TODO: Check if index is enabled
+				}
+
+
+
 				// Set the Controller's context
 				$Controller->setContext($Context);
 

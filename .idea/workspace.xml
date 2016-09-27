@@ -2,8 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c36de9d-c55c-4d81-ad65-b2b473d51262" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/data/classes/Global/TextHelper.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/example/controllers/Ajax/AuthController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/example/controllers/Mvc/AccessController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/example/controllers/SecureArea/HomeController.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/templates/Auth/Login.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.htaccess" afterPath="$PROJECT_DIR$/.htaccess" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/Framework.iml" afterPath="$PROJECT_DIR$/.idea/Framework.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/classes/Storage/Database.php" afterPath="$PROJECT_DIR$/data/classes/Storage/Database.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/classes/Storage/Templates.php" afterPath="$PROJECT_DIR$/data/classes/Storage/Templates.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/mvc/GlobalDefines.php" afterPath="$PROJECT_DIR$/data/mvc/GlobalDefines.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/mvc/MVCContext.php" afterPath="$PROJECT_DIR$/data/mvc/MVCContext.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/mvc/MVCController.php" afterPath="$PROJECT_DIR$/data/mvc/MVCController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/mvc/MVCExecutor.php" afterPath="$PROJECT_DIR$/data/mvc/MVCExecutor.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/mvc/MVCGlobalControllers.php" afterPath="$PROJECT_DIR$/data/mvc/MVCGlobalControllers.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/mvc/MVCHelper.php" afterPath="$PROJECT_DIR$/data/mvc/MVCHelper.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/data/mvc/MVCResult.php" afterPath="$PROJECT_DIR$/data/mvc/MVCResult.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/controllers/HomeController.php" afterPath="$PROJECT_DIR$/example/controllers/HomeController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/example/controllers/Mvc/VPathController.php" afterPath="$PROJECT_DIR$/example/controllers/Mvc/VPathController.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mvc_handler.php" afterPath="$PROJECT_DIR$/mvc_handler.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/mvc_settings.php" afterPath="$PROJECT_DIR$/mvc_settings.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/readme.md" afterPath="$PROJECT_DIR$/readme.md" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/GenericErrorPage.html" afterPath="$PROJECT_DIR$/templates/GenericErrorPage.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/data/classes/Authentication/Status.php" afterPath="$PROJECT_DIR$/data/classes/Authentication/AuthStatus.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/example/controllers/AuthenticationController.php" afterPath="$PROJECT_DIR$/example/controllers/AuthController.php" />
     </list>
     <ignored path="Framework.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -24,54 +48,40 @@
     <favorites_list name="Framework" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MVCHelper.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/mvc/MVCHelper.php">
+    <leaf>
+      <file leaf-file-name="Dashboard.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/Home/Dashboard.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.4838705">
-              <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+            <state vertical-scroll-proportion="-0.5483871">
+              <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="5" selection-end-column="7" />
               <folding>
-                <element signature="e#7#76#0#PHP" expanded="true" />
-                <element signature="e#127#364#0#PHP" expanded="false" />
-                <element signature="e#368#591#0#PHP" expanded="false" />
-                <element signature="e#595#851#0#PHP" expanded="false" />
-                <element signature="e#855#1079#0#PHP" expanded="false" />
-                <element signature="e#1389#3630#0#PHP" expanded="false" />
-                <element signature="e#2021#3174#0#PHP" expanded="false" />
-                <element signature="e#2164#3174#0#PHP" expanded="false" />
-                <element signature="e#3067#3174#0#PHP" expanded="false" />
+                <element signature="e#7#80#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MVCGlobalControllers.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/mvc/MVCGlobalControllers.php">
+      <file leaf-file-name="GenericErrorPage.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/GenericErrorPage.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.0">
-              <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+            <state vertical-scroll-proportion="-11.5161295">
+              <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
               <folding>
-                <element signature="e#7#76#0#PHP" expanded="true" />
+                <element signature="e#244#322#0" expanded="false" />
+                <element signature="e#340#413#0" expanded="false" />
+                <element signature="e#430#535#0" expanded="false" />
+                <element signature="e#550#594#0" expanded="false" />
+                <element signature="e#608#651#0" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="mvc_handler.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/mvc_handler.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.2761021">
-              <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="mvc_settings.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="mvc_settings.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/mvc_settings.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-22.32258">
-              <caret line="66" column="6" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
+            <state vertical-scroll-proportion="0.9411146">
+              <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
               <folding>
                 <element signature="e#6#75#0#PHP" expanded="true" />
                 <element signature="e#111#175#0#PHP" expanded="false" />
@@ -82,7 +92,35 @@
                 <element signature="e#1868#2307#0#PHP" expanded="false" />
                 <element signature="e#2446#2635#0#PHP" expanded="false" />
                 <element signature="e#2700#2893#0#PHP" expanded="false" />
-                <element signature="e#2958#3149#0#PHP" expanded="false" />
+                <element signature="e#2958#3150#0#PHP" expanded="false" />
+                <element signature="e#3216#4593#0#PHP" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Login.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/Auth/Login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-19.741936">
+              <caret line="161" column="13" selection-start-line="161" selection-start-column="13" selection-end-line="161" selection-end-column="13" />
+              <folding>
+                <element signature="e#1059#1137#0" expanded="false" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AuthController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/example/controllers/AuthController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.5161295">
+              <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+              <folding>
+                <element signature="e#117#165#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -91,92 +129,69 @@
       <file leaf-file-name="MVCExecutor.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/data/mvc/MVCExecutor.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.806452">
-              <caret line="153" column="8" selection-start-line="153" selection-start-column="8" selection-end-line="153" selection-end-column="8" />
+            <state vertical-scroll-proportion="-17.903225">
+              <caret line="294" column="27" selection-start-line="294" selection-start-column="27" selection-end-line="294" selection-end-column="27" />
               <folding>
-                <element signature="e#104#132#0#PHP" expanded="true" />
-                <element signature="e#383#498#0#PHP" expanded="false" />
-                <element signature="e#501#1413#0#PHP" expanded="false" />
-                <element signature="e#1417#1578#0#PHP" expanded="false" />
-                <element signature="e#1581#1810#0#PHP" expanded="false" />
-                <element signature="e#1814#1985#0#PHP" expanded="false" />
-                <element signature="e#1988#2111#0#PHP" expanded="false" />
-                <element signature="e#2115#2277#0#PHP" expanded="false" />
-                <element signature="e#2280#2714#0#PHP" expanded="false" />
-                <element signature="e#3826#3959#0#PHP" expanded="false" />
-                <element signature="e#4799#4832#0#PHP" expanded="false" />
-                <element signature="e#4959#5150#0#PHP" expanded="false" />
-                <element signature="e#5153#6218#0#PHP" expanded="false" />
-                <element signature="e#6222#6369#0#PHP" expanded="false" />
-                <element signature="e#6372#6793#0#PHP" expanded="false" />
-                <element signature="e#6659#6690#0#PHP" expanded="false" />
+                <element signature="e#104#152#0#PHP" expanded="true" />
+                <element signature="e#433#548#0#PHP" expanded="false" />
+                <element signature="e#1472#1633#0#PHP" expanded="false" />
+                <element signature="e#1636#1865#0#PHP" expanded="false" />
+                <element signature="e#1869#2040#0#PHP" expanded="false" />
+                <element signature="e#2043#2166#0#PHP" expanded="false" />
+                <element signature="e#2170#2332#0#PHP" expanded="false" />
+                <element signature="e#3980#4113#0#PHP" expanded="false" />
+                <element signature="e#4116#5976#0#PHP" expanded="false" />
+                <element signature="e#5981#6172#0#PHP" expanded="false" />
+                <element signature="e#6175#7240#0#PHP" expanded="false" />
+                <element signature="e#7244#7391#0#PHP" expanded="false" />
+                <element signature="e#7394#7815#0#PHP" expanded="false" />
+                <element signature="e#7681#7712#0#PHP" expanded="false" />
+                <element signature="e#7819#7920#0#PHP" expanded="false" />
+                <element signature="e#7923#8481#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MVCResult.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/mvc/MVCResult.php">
+      <file leaf-file-name="AuthController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/example/controllers/Ajax/AuthController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-19.741936">
-              <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+            <state vertical-scroll-proportion="-15.354838">
+              <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="39" selection-end-column="14" />
               <folding>
-                <element signature="e#3088#3129#0#PHP" expanded="false" />
-                <element signature="e#3132#3477#0#PHP" expanded="false" />
-                <element signature="e#3774#4152#0#PHP" expanded="false" />
-                <element signature="e#4393#4617#0#PHP" expanded="false" />
-                <element signature="e#4621#4734#0#PHP" expanded="false" />
+                <element signature="e#123#155#0#PHP" expanded="true" />
+                <element signature="e#617#649#0#PHP" expanded="false" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MVCController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/mvc/MVCController.php">
+      <file leaf-file-name="AuthStatus.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/classes/Authentication/AuthStatus.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.290322">
-              <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-              <folding>
-                <element signature="e#129#153#0#PHP" expanded="false" />
-                <element signature="e#179#203#0#PHP" expanded="false" />
-              </folding>
+            <state vertical-scroll-proportion="-0.5483871">
+              <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="VPathController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/controllers/Mvc/VPathController.php">
+      <file leaf-file-name="Database.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/data/classes/Storage/Database.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-17.548388">
-              <caret line="43" column="31" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="31" />
-              <folding>
-                <element signature="e#122#162#0#PHP" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="-7.677419">
+              <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MVCContext.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/data/mvc/MVCContext.php">
+      <file leaf-file-name=".htaccess" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/.htaccess">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.83871">
-              <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
-              <folding>
-                <element signature="e#6#75#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="HomeController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/example/controllers/HomeController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-2.7419355">
-              <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
-              <folding>
-                <element signature="e#6#75#0#PHP" expanded="true" />
-                <element signature="e#117#157#0#PHP" expanded="true" />
-              </folding>
+            <state vertical-scroll-proportion="0.0">
+              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -194,6 +209,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/mvc_handler.php" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
+  </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
@@ -202,26 +220,36 @@
         <option value="$PROJECT_DIR$/templates/Dashboard.php" />
         <option value="$PROJECT_DIR$/templates/ErrorPage.html" />
         <option value="$PROJECT_DIR$/data/mvc/MVCErrorInformation.php" />
-        <option value="$PROJECT_DIR$/data/mvc/GlobalDefines.php" />
         <option value="$PROJECT_DIR$/templates/MvcErrorPage.html" />
         <option value="$PROJECT_DIR$/templates/Home/Dashboard.php" />
-        <option value="$PROJECT_DIR$/data/classes/Storage/Templates.php" />
-        <option value="$PROJECT_DIR$/templates/GenericErrorPage.html" />
-        <option value="$PROJECT_DIR$/example/controllers/AuthenticationController.php" />
-        <option value="$PROJECT_DIR$/.htaccess" />
         <option value="$PROJECT_DIR$/example/controllers/MvcErrors/MvcController.php" />
-        <option value="$PROJECT_DIR$/example/controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/example/controllers/MvcErrors/MvcErrorController.php" />
         <option value="$PROJECT_DIR$/example/controllers/MvcErrors/VPathController.php" />
-        <option value="$PROJECT_DIR$/data/mvc/MVCHelper.php" />
-        <option value="$PROJECT_DIR$/mvc_settings.php" />
+        <option value="$PROJECT_DIR$/data/classes/Global/TextHelper.php" />
+        <option value="$PROJECT_DIR$/templates/GenericErrorPage.html" />
+        <option value="$PROJECT_DIR$/example/controllers/HomeTestController.php" />
+        <option value="$PROJECT_DIR$/readme.md" />
+        <option value="$PROJECT_DIR$/example/controllers/AuthenticationController.php" />
         <option value="$PROJECT_DIR$/data/mvc/MVCGlobalControllers.php" />
-        <option value="$PROJECT_DIR$/data/mvc/MVCContext.php" />
+        <option value="$PROJECT_DIR$/data/mvc/GlobalDefines.php" />
+        <option value="$PROJECT_DIR$/example/controllers/Mvc/AccessController.php" />
+        <option value="$PROJECT_DIR$/data/classes/Authentication/Status.php" />
+        <option value="$PROJECT_DIR$/example/controllers/HomeController.php" />
+        <option value="$PROJECT_DIR$/example/controllers/SecureArea/HomeController.php" />
         <option value="$PROJECT_DIR$/data/mvc/MVCController.php" />
-        <option value="$PROJECT_DIR$/data/mvc/MVCResult.php" />
-        <option value="$PROJECT_DIR$/example/controllers/Mvc/VPathController.php" />
-        <option value="$PROJECT_DIR$/data/mvc/MVCExecutor.php" />
         <option value="$PROJECT_DIR$/mvc_handler.php" />
+        <option value="$PROJECT_DIR$/data/classes/Storage/Templates.php" />
+        <option value="$PROJECT_DIR$/example/controllers/Mvc/VPathController.php" />
+        <option value="$PROJECT_DIR$/data/mvc/MVCContext.php" />
+        <option value="$PROJECT_DIR$/data/mvc/MVCHelper.php" />
+        <option value="$PROJECT_DIR$/data/mvc/MVCExecutor.php" />
+        <option value="$PROJECT_DIR$/data/mvc/MVCResult.php" />
+        <option value="$PROJECT_DIR$/.htaccess" />
+        <option value="$PROJECT_DIR$/example/controllers/Ajax/AuthController.php" />
+        <option value="$PROJECT_DIR$/example/controllers/AuthController.php" />
+        <option value="$PROJECT_DIR$/templates/Auth/Login.html" />
+        <option value="$PROJECT_DIR$/mvc_settings.php" />
+        <option value="$PROJECT_DIR$/data/classes/Storage/Database.php" />
       </list>
     </option>
   </component>
@@ -230,11 +258,29 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
   </component>
+  <component name="PhpServers">
+    <servers />
+  </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="14" />
-    <option name="width" value="1906" />
-    <option name="height" value="1050" />
+    <option name="width" value="1920" />
+    <option name="height" value="1080" />
+  </component>
+  <component name="ProjectInspectionProfilesVisibleTreeState">
+    <entry key="Project Default">
+      <profile-state>
+        <expanded-state>
+          <State>
+            <id />
+          </State>
+        </expanded-state>
+        <selected-state>
+          <State>
+            <id>Blade files</id>
+          </State>
+        </selected-state>
+      </profile-state>
+    </entry>
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
     <OptionsSetting value="true" id="Add" />
@@ -261,7 +307,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
@@ -269,6 +314,14 @@
             <PATH_ELEMENT>
               <option name="myItemId" value="Framework" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.jetbrains.php.config.PhpExternalLibrariesNodePatcher$PatchedExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="jquery-3.1.1" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
             </PATH_ELEMENT>
           </PATH>
           <PATH>
@@ -323,6 +376,24 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Auth" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="example" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -349,7 +420,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="Mvc" />
+              <option name="myItemId" value="Ajax" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -385,8 +456,97 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="User" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Storage" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Global" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="data" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="classes" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Authentication" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -399,6 +559,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="G:\Web\root\Avalon\CalPanel 6.0\Git\Framework\example\controllers\SecureArea" />
       <recent name="G:\Web\root\Avalon\CalPanel 6.0\Git\Framework\templates\Home" />
     </key>
   </component>
@@ -481,21 +642,34 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="14" y="0" width="1906" height="1050" extended-state="0" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13055255" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13006397" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3351469" sideWeight="0.5021322" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3351469" sideWeight="0.5021322" order="6" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32826087" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32799146" sideWeight="0.4978678" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32752994" sideWeight="0.49773464" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.4978678" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32804757" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32799146" sideWeight="0.4978678" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32752994" sideWeight="0.49773464" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.4978678" order="5" side_tool="false" content_ui="tabs" />
     </layout>
+    <layout-to-restore>
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13059701" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3351469" sideWeight="0.5021322" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32826087" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32799146" sideWeight="0.4978678" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32752994" sideWeight="0.49773464" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.4978678" order="6" side_tool="false" content_ui="tabs" />
+    </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
     <option name="RECENTLY_FILTERED_USER_GROUPS">
@@ -510,11 +684,145 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="7" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/data/mvc/MVCHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
+          <folding>
+            <element signature="e#7#76#0#PHP" expanded="false" />
+            <element signature="e#414#637#0#PHP" expanded="false" />
+            <element signature="e#641#897#0#PHP" expanded="false" />
+            <element signature="e#901#1125#0#PHP" expanded="false" />
+            <element signature="e#2450#3616#0#PHP" expanded="false" />
+            <element signature="e#2593#3616#0#PHP" expanded="false" />
+            <element signature="e#3509#3616#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/mvc/MVCGlobalControllers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
+          <folding>
+            <element signature="e#7#76#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc_handler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/mvc_settings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="6" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
+          <folding>
+            <element signature="e#6#75#0#PHP" expanded="true" />
+            <element signature="e#111#175#0#PHP" expanded="false" />
+            <element signature="e#256#307#0#PHP" expanded="false" />
+            <element signature="e#487#599#0#PHP" expanded="false" />
+            <element signature="e#684#1057#0#PHP" expanded="false" />
+            <element signature="e#1650#1772#0#PHP" expanded="false" />
+            <element signature="e#1868#2307#0#PHP" expanded="false" />
+            <element signature="e#2446#2635#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/mvc/MVCExecutor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="153" column="8" selection-start-line="153" selection-start-column="8" selection-end-line="153" selection-end-column="8" />
+          <folding>
+            <element signature="e#104#152#0#PHP" expanded="true" />
+            <element signature="e#433#548#0#PHP" expanded="false" />
+            <element signature="e#1472#1633#0#PHP" expanded="false" />
+            <element signature="e#1636#1865#0#PHP" expanded="false" />
+            <element signature="e#1869#2040#0#PHP" expanded="false" />
+            <element signature="e#2043#2166#0#PHP" expanded="false" />
+            <element signature="e#2170#2332#0#PHP" expanded="false" />
+            <element signature="e#3980#4113#0#PHP" expanded="false" />
+            <element signature="e#4116#5976#0#PHP" expanded="false" />
+            <element signature="e#5981#6172#0#PHP" expanded="false" />
+            <element signature="e#6175#7240#0#PHP" expanded="false" />
+            <element signature="e#7244#7391#0#PHP" expanded="false" />
+            <element signature="e#7394#7815#0#PHP" expanded="false" />
+            <element signature="e#7681#7712#0#PHP" expanded="false" />
+            <element signature="e#7819#7920#0#PHP" expanded="false" />
+            <element signature="e#7923#8481#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/mvc/MVCResult.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
+          <folding>
+            <element signature="e#3703#3744#0#PHP" expanded="false" />
+            <element signature="e#3747#4092#0#PHP" expanded="false" />
+            <element signature="e#4096#4386#0#PHP" expanded="false" />
+            <element signature="e#4389#4767#0#PHP" expanded="false" />
+            <element signature="e#4771#5005#0#PHP" expanded="false" />
+            <element signature="e#5008#5232#0#PHP" expanded="false" />
+            <element signature="e#5236#5504#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/mvc/MVCController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+          <folding>
+            <element signature="e#129#153#0#PHP" expanded="false" />
+            <element signature="e#226#250#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/controllers/Mvc/VPathController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="43" column="31" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="31" />
+          <folding>
+            <element signature="e#122#162#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/mvc/MVCContext.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+          <folding>
+            <element signature="e#6#75#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/controllers/SecureArea/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+          <folding>
+            <element signature="e#6#75#0#PHP" expanded="false" />
+            <element signature="e#128#168#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/data/mvc/GlobalDefines.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -536,11 +844,11 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
           <folding>
-            <element signature="e#158#236#0" expanded="false" />
-            <element signature="e#254#327#0" expanded="false" />
-            <element signature="e#344#449#0" expanded="false" />
-            <element signature="e#464#508#0" expanded="false" />
-            <element signature="e#522#565#0" expanded="false" />
+            <element signature="e#244#322#0" expanded="false" />
+            <element signature="e#340#413#0" expanded="false" />
+            <element signature="e#430#535#0" expanded="false" />
+            <element signature="e#550#594#0" expanded="false" />
+            <element signature="e#608#651#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -570,18 +878,18 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="25" column="54" selection-start-line="25" selection-start-column="54" selection-end-line="25" selection-end-column="54" />
           <folding>
-            <element signature="e#6#75#0#PHP" expanded="true" />
+            <element signature="e#6#75#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/controllers/HomeController.php">
+    <entry file="file://$PROJECT_DIR$/example/controllers/SecureArea/HomeController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
           <folding>
-            <element signature="e#6#75#0#PHP" expanded="true" />
-            <element signature="e#117#157#0#PHP" expanded="true" />
+            <element signature="e#6#75#0#PHP" expanded="false" />
+            <element signature="e#128#168#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -606,26 +914,116 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/data/classes/Global/TextHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-3.8387096">
+          <caret line="11" column="0" selection-start-line="11" selection-start-column="0" selection-end-line="11" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.md">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.398167">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/data/mvc/GlobalDefines.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="41" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="41" />
+        <state vertical-scroll-proportion="-3.2903225">
+          <caret line="10" column="55" selection-start-line="10" selection-start-column="55" selection-end-line="10" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/mvc/MVCGlobalControllers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.7444795">
+          <caret line="53" column="0" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
+          <folding>
+            <element signature="e#7#76#0#PHP" expanded="false" />
+            <element signature="e#810#877#0#PHP" expanded="false" />
+            <element signature="e#880#974#0#PHP" expanded="false" />
+            <element signature="e#978#1046#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/mvc/MVCController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.451612">
+          <caret line="38" column="45" selection-start-line="38" selection-start-column="45" selection-end-line="38" selection-end-column="45" />
+          <folding>
+            <element signature="e#129#153#0#PHP" expanded="false" />
+            <element signature="e#226#250#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/Core.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4511041">
+          <caret line="73" column="9" selection-start-line="73" selection-start-column="9" selection-end-line="73" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/standard_1.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.8897727">
-          <caret line="762" column="9" selection-start-line="762" selection-start-column="9" selection-end-line="762" selection-end-column="9" />
+        <state vertical-scroll-proportion="0.5583596">
+          <caret line="411" column="9" selection-start-line="411" selection-start-column="9" selection-end-line="411" selection-end-column="9" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/controllers/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-20.290323">
+          <caret line="46" column="13" selection-start-line="46" selection-start-column="13" selection-end-line="46" selection-end-column="13" />
+          <folding>
+            <element signature="e#7#76#0#PHP" expanded="false" />
+            <element signature="e#121#169#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/controllers/SecureArea/HomeController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.5483871">
+          <caret line="13" column="24" selection-start-line="13" selection-start-column="24" selection-end-line="13" selection-end-column="24" />
+          <folding>
+            <element signature="e#6#75#0#PHP" expanded="false" />
+            <element signature="e#128#168#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/controllers/Mvc/VPathController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.0">
+          <caret line="35" column="127" selection-start-line="35" selection-start-column="127" selection-end-line="35" selection-end-column="127" />
+          <folding>
+            <element signature="e#122#162#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/example/controllers/Mvc/AccessController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.0">
+          <caret line="35" column="39" selection-start-line="35" selection-start-column="39" selection-end-line="35" selection-end-column="39" />
+          <folding>
+            <element signature="e#122#162#0#PHP" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/data/classes/Storage/Templates.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="9" column="0" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        <state vertical-scroll-proportion="-15.709678">
+          <caret line="55" column="31" selection-start-line="55" selection-start-column="31" selection-end-line="55" selection-end-column="31" />
           <folding>
             <element signature="e#138#392#0#PHP" expanded="false" />
             <element signature="e#395#566#0#PHP" expanded="false" />
@@ -635,26 +1033,74 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/GenericErrorPage.html">
+    <entry file="file://$PROJECT_DIR$/data/mvc/MVCContext.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="40" selection-start-line="4" selection-start-column="40" selection-end-line="4" selection-end-column="40" />
+        <state vertical-scroll-proportion="-14.806452">
+          <caret line="72" column="0" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
           <folding>
-            <element signature="e#158#236#0" expanded="false" />
-            <element signature="e#254#327#0" expanded="false" />
-            <element signature="e#344#449#0" expanded="false" />
-            <element signature="e#464#508#0" expanded="false" />
-            <element signature="e#522#565#0" expanded="false" />
+            <element signature="e#6#75#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/templates/Home/Dashboard.php">
+    <entry file="file://$PROJECT_DIR$/mvc_handler.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.5483871">
-          <caret line="12" column="16" selection-start-line="12" selection-start-column="16" selection-end-line="12" selection-end-column="16" />
+        <state vertical-scroll-proportion="-15.903226">
+          <caret line="56" column="46" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/mvc/MVCHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-7.483871">
+          <caret line="107" column="0" selection-start-line="107" selection-start-column="0" selection-end-line="107" selection-end-column="0" />
           <folding>
-            <element signature="e#7#80#0#PHP" expanded="true" />
+            <element signature="e#7#76#0#PHP" expanded="false" />
+            <element signature="e#414#637#0#PHP" expanded="false" />
+            <element signature="e#641#897#0#PHP" expanded="false" />
+            <element signature="e#901#1125#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/mvc/MVCResult.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.32597265">
+          <caret line="71" column="0" selection-start-line="71" selection-start-column="0" selection-end-line="71" selection-end-column="0" />
+          <folding>
+            <element signature="e#3703#3744#0#PHP" expanded="false" />
+            <element signature="e#3747#4092#0#PHP" expanded="false" />
+            <element signature="e#4096#4386#0#PHP" expanded="false" />
+            <element signature="e#4389#4767#0#PHP" expanded="false" />
+            <element signature="e#4771#5005#0#PHP" expanded="false" />
+            <element signature="e#5008#5232#0#PHP" expanded="false" />
+            <element signature="e#5236#5504#0#PHP" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/mvc/MVCExecutor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-17.903225">
+          <caret line="294" column="27" selection-start-line="294" selection-start-column="27" selection-end-line="294" selection-end-column="27" />
+          <folding>
+            <element signature="e#104#152#0#PHP" expanded="true" />
+            <element signature="e#433#548#0#PHP" expanded="false" />
+            <element signature="e#1472#1633#0#PHP" expanded="false" />
+            <element signature="e#1636#1865#0#PHP" expanded="false" />
+            <element signature="e#1869#2040#0#PHP" expanded="false" />
+            <element signature="e#2043#2166#0#PHP" expanded="false" />
+            <element signature="e#2170#2332#0#PHP" expanded="false" />
+            <element signature="e#3980#4113#0#PHP" expanded="false" />
+            <element signature="e#4116#5976#0#PHP" expanded="false" />
+            <element signature="e#5981#6172#0#PHP" expanded="false" />
+            <element signature="e#6175#7240#0#PHP" expanded="false" />
+            <element signature="e#7244#7391#0#PHP" expanded="false" />
+            <element signature="e#7394#7815#0#PHP" expanded="false" />
+            <element signature="e#7681#7712#0#PHP" expanded="false" />
+            <element signature="e#7819#7920#0#PHP" expanded="false" />
+            <element signature="e#7923#8481#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -667,67 +1113,92 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/controllers/AuthenticationController.php">
+    <entry file="file://$PROJECT_DIR$/example/controllers/AuthController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.6451613">
-          <caret line="7" column="36" selection-start-line="7" selection-start-column="10" selection-end-line="7" selection-end-column="36" />
+        <state vertical-scroll-proportion="-11.5161295">
+          <caret line="41" column="36" selection-start-line="41" selection-start-column="36" selection-end-line="41" selection-end-column="36" />
+          <folding>
+            <element signature="e#117#165#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/Home/Dashboard.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.5483871">
+          <caret line="1" column="4" selection-start-line="1" selection-start-column="4" selection-end-line="5" selection-end-column="7" />
+          <folding>
+            <element signature="e#7#80#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/GenericErrorPage.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.5161295">
+          <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+          <folding>
+            <element signature="e#244#322#0" expanded="false" />
+            <element signature="e#340#413#0" expanded="false" />
+            <element signature="e#430#535#0" expanded="false" />
+            <element signature="e#550#594#0" expanded="false" />
+            <element signature="e#608#651#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3329939">
+          <caret line="992" column="0" selection-start-line="992" selection-start-column="0" selection-end-line="992" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/example/controllers/HomeController.php">
+    <entry file="file://$PROJECT_DIR$/templates/Auth/Login.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-2.7419355">
-          <caret line="5" column="3" selection-start-line="5" selection-start-column="3" selection-end-line="5" selection-end-column="3" />
+        <state vertical-scroll-proportion="-19.741936">
+          <caret line="161" column="13" selection-start-line="161" selection-start-column="13" selection-end-line="161" selection-end-column="13" />
           <folding>
-            <element signature="e#6#75#0#PHP" expanded="true" />
-            <element signature="e#117#157#0#PHP" expanded="true" />
+            <element signature="e#1059#1137#0" expanded="false" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#0;n#div#1;n#div#1;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#1;n#div#2;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/mvc/MVCContext.php">
+    <entry file="file://$PROJECT_DIR$/example/controllers/Ajax/AuthController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.83871">
-          <caret line="37" column="9" selection-start-line="37" selection-start-column="9" selection-end-line="37" selection-end-column="9" />
+        <state vertical-scroll-proportion="-15.354838">
+          <caret line="36" column="12" selection-start-line="36" selection-start-column="12" selection-end-line="39" selection-end-column="14" />
           <folding>
-            <element signature="e#6#75#0#PHP" expanded="true" />
+            <element signature="e#123#155#0#PHP" expanded="true" />
+            <element signature="e#617#649#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/mvc/MVCHelper.php">
+    <entry file="file://$PROJECT_DIR$/data/classes/Authentication/AuthStatus.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.4838705">
-          <caret line="135" column="0" selection-start-line="135" selection-start-column="0" selection-end-line="135" selection-end-column="0" />
-          <folding>
-            <element signature="e#7#76#0#PHP" expanded="true" />
-            <element signature="e#127#364#0#PHP" expanded="false" />
-            <element signature="e#368#591#0#PHP" expanded="false" />
-            <element signature="e#595#851#0#PHP" expanded="false" />
-            <element signature="e#855#1079#0#PHP" expanded="false" />
-            <element signature="e#1389#3630#0#PHP" expanded="false" />
-            <element signature="e#2021#3174#0#PHP" expanded="false" />
-            <element signature="e#2164#3174#0#PHP" expanded="false" />
-            <element signature="e#3067#3174#0#PHP" expanded="false" />
-          </folding>
+        <state vertical-scroll-proportion="-0.5483871">
+          <caret line="10" column="10" selection-start-line="10" selection-start-column="10" selection-end-line="10" selection-end-column="10" />
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/data/mvc/MVCGlobalControllers.php">
+    <entry file="file://$PROJECT_DIR$/data/classes/Storage/Database.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-12.0">
-          <caret line="38" column="12" selection-start-line="38" selection-start-column="12" selection-end-line="38" selection-end-column="12" />
-          <folding>
-            <element signature="e#7#76#0#PHP" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="-7.677419">
+          <caret line="18" column="40" selection-start-line="18" selection-start-column="40" selection-end-line="18" selection-end-column="40" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/mvc_settings.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-22.32258">
-          <caret line="66" column="6" selection-start-line="66" selection-start-column="6" selection-end-line="66" selection-end-column="6" />
+        <state vertical-scroll-proportion="0.9411146">
+          <caret line="184" column="0" selection-start-line="184" selection-start-column="0" selection-end-line="184" selection-end-column="0" />
           <folding>
             <element signature="e#6#75#0#PHP" expanded="true" />
             <element signature="e#111#175#0#PHP" expanded="false" />
@@ -738,84 +1209,9 @@
             <element signature="e#1868#2307#0#PHP" expanded="false" />
             <element signature="e#2446#2635#0#PHP" expanded="false" />
             <element signature="e#2700#2893#0#PHP" expanded="false" />
-            <element signature="e#2958#3149#0#PHP" expanded="false" />
+            <element signature="e#2958#3150#0#PHP" expanded="false" />
+            <element signature="e#3216#4593#0#PHP" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/Core.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.34454757">
-          <caret line="384" column="9" selection-start-line="384" selection-start-column="9" selection-end-line="384" selection-end-column="9" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/mvc/MVCController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.290322">
-          <caret line="37" column="5" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
-          <folding>
-            <element signature="e#129#153#0#PHP" expanded="false" />
-            <element signature="e#179#203#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/mvc/MVCResult.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-19.741936">
-          <caret line="40" column="9" selection-start-line="40" selection-start-column="9" selection-end-line="40" selection-end-column="9" />
-          <folding>
-            <element signature="e#3088#3129#0#PHP" expanded="false" />
-            <element signature="e#3132#3477#0#PHP" expanded="false" />
-            <element signature="e#3774#4152#0#PHP" expanded="false" />
-            <element signature="e#4393#4617#0#PHP" expanded="false" />
-            <element signature="e#4621#4734#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/example/controllers/Mvc/VPathController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-17.548388">
-          <caret line="43" column="31" selection-start-line="43" selection-start-column="17" selection-end-line="43" selection-end-column="31" />
-          <folding>
-            <element signature="e#122#162#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/data/mvc/MVCExecutor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.806452">
-          <caret line="153" column="8" selection-start-line="153" selection-start-column="8" selection-end-line="153" selection-end-column="8" />
-          <folding>
-            <element signature="e#104#132#0#PHP" expanded="true" />
-            <element signature="e#383#498#0#PHP" expanded="false" />
-            <element signature="e#501#1413#0#PHP" expanded="false" />
-            <element signature="e#1417#1578#0#PHP" expanded="false" />
-            <element signature="e#1581#1810#0#PHP" expanded="false" />
-            <element signature="e#1814#1985#0#PHP" expanded="false" />
-            <element signature="e#1988#2111#0#PHP" expanded="false" />
-            <element signature="e#2115#2277#0#PHP" expanded="false" />
-            <element signature="e#2280#2714#0#PHP" expanded="false" />
-            <element signature="e#3826#3959#0#PHP" expanded="false" />
-            <element signature="e#4799#4832#0#PHP" expanded="false" />
-            <element signature="e#4959#5150#0#PHP" expanded="false" />
-            <element signature="e#5153#6218#0#PHP" expanded="false" />
-            <element signature="e#6222#6369#0#PHP" expanded="false" />
-            <element signature="e#6372#6793#0#PHP" expanded="false" />
-            <element signature="e#6659#6690#0#PHP" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/mvc_handler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2761021">
-          <caret line="39" column="0" selection-start-line="39" selection-start-column="0" selection-end-line="39" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>

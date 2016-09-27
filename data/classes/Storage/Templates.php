@@ -40,15 +40,16 @@ namespace CommonMVC\Classes\Storage;
 		 * @param $scriptLocation string Template Location
 		 * @param $executePHP bool If true it will load a PHP script and execute code, If false loads html
 		 * @param $replacementStrings array Array of strings to replace in the template
+		 * @param $dieOnMissing bool Stop execution if the file is missing
 		 * @return bool|string Template output
 		 */
-		public static function ReadTemplate($scriptLocation, $executePHP = false, $replacementStrings = null) {
+		public static function ReadTemplate($scriptLocation, $executePHP = false, $replacementStrings = null, $dieOnMissing = false) {
 			$fileL = $executePHP ? $scriptLocation. '.php' : $scriptLocation. '.html';
 			$fileL = "templates/". $fileL;
 
 			// TODO: check if the file exists
 			if (!file_exists($fileL)) {
-				die ("Cannot find the file ($fileL)");
+				if($dieOnMissing) ("Cannot find the file ($fileL)");
 				return false;
 			}
 

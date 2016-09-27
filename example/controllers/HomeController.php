@@ -1,39 +1,56 @@
 <?php
+
 /**
  * User: Callum Carmicheal
- * Date: 23/09/2016
- * Time: 20:26
+ * Date: 27/09/2016
+ * Time: 19:37
  */
+
 
 namespace ExampleProject\Controllers;
 
-	use CommonMVC\Classes\Storage\Templates;
-	use CommonMVC\MVC\MVCResult;
-	use CommonMVC\MVC\MVCController;
 
+
+	use CommonMVC\Classes\Authentication\AuthStatus;
+	use CommonMVC\MVC\MVCController;
+	use CommonMVC\MVC\MVCResult;
+	use CommonMVC\MVC\MVCResultEnums;
+
+	// Note this is a just a dummy controller
+	//   it will redirect the user to their default place
+	//   of home
+	//
+	// Although this can be used just like any other controller
+	//   to server content
 	class HomeController extends MVCController {
-		function __construct() {
-			$this->ControllerName 	= "HomeTest";
+
+
+
+		public function __construct() {
+			$this->ControllerName 	= "SecureArea/Home";
 			$this->Enabled 			= true;
-			$this->AuthRequired 	= true;
+			$this->AuthRequired 	= false;
 		}
 
 		/**
-		 * The default page for the Home
-		 * @return MVCResult Page Result
+		 * Redirect to the login by default
+		 * @return MVCResult
 		 */
 		public function Index() {
-			return $this->Dashboard();
-		}
 
-		// Here you state the page name as the function
-		// (case sensitive :: START WITH A CAPITAL)
-		public function Dashboard() {
-			$replace = array( 'SOME_STRING' => 'Hello World!' );
-			$html = Templates::ReadTemplate("Home/Dashboard", true, $replace);
+			// Redirect to dashboard
+			// if the user is logged in
+			if (AuthStatus::isLoggedIn()) {
+				return MVCResult::Redirect(
+					"SecureArea/Home/Index",
+					MVCResultEnums::$REDIRECT_MVC);
+			}
 
-			if(!$html)
-				 return MVCResult::SimpleHTML("Cannot find the required template resource (Dashboard.html)");
-			else return MVCResult::SimpleHTML($html);
+			// Redirect to login if the user is not
+			// logged in
+			return MVCResult::Redirect(
+				"Auth/Login",
+				MVCResultEnums::$REDIRECT_MVC
+			);
 		}
 	}

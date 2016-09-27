@@ -8,10 +8,9 @@
 	namespace CommonMVC\Classes\Authentication;
 
 
-	class Status {
+	class AuthStatus {
 
 		public static function isLoggedIn() {
-			return empty($_SESSION[Settings::$SESSION_NAME]);
+			return !empty($_SESSION[Settings::$SESSION_NAME]);
 		}
-
 	}

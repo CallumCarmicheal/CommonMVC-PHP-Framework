@@ -13,13 +13,14 @@
 	/* Require all the libraries */ {
 	// Global Defines (1/1)
 		require_once ("data/mvc/GlobalDefines.php");
+		require_once ("data/classes/Global/TextHelper.php");
 	// Classes (1/1)
 		// Storage (1/1)
 			require_once ("data/classes/Storage/Database.php");
 			require_once ("data/classes/Storage/Templates.php");
 		// Authentication (1/1)
 			require_once ("data/classes/Authentication/Settings.php");
-			require_once ("data/classes/Authentication/Status.php");
+			require_once ("data/classes/Authentication/AuthStatus.php");
 			require_once ("data/classes/Authentication/AReqHandler.php");
 		// User (1/1)
 			require_once ("data/classes/User/Account.php");
@@ -38,18 +39,20 @@
 			require_once $incFile;
 	}
 
-	$mvcExec = new \CommonMVC\MVC\MVCExecutor();
+	$mvcExec 		= new \CommonMVC\MVC\MVCExecutor();
 	$VirtualPath 	= "";
 
 	/* Check if the current request contains a page */ {
 		if (empty($_GET['mvc_path'])) {
-			if(CommonMVC\Classes\Authentication\Status::isLoggedIn())
+			if(CommonMVC\Classes\Authentication\AuthStatus::isLoggedIn())
 				 $VirtualPath = CMVC_PRJ_VIRTPATH_DEFAULT_AUTHED;
 			else $VirtualPath = CMVC_PRJ_VIRTPATH_DEFAULT_NOAUTH;
 		} else {
 			$VirtualPath = $_GET['mvc_path'];
 		}
 	}
+
+	echo "<pre>";
 
 	$ctrl = \CommonMVC\MVC\MVCHelper::ResolveVirtualPath(
 		CMVC_PRJ_DIRECTORY_CONTROLLERS,

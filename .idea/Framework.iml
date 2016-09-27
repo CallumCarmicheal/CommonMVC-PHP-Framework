@@ -14,8 +14,14 @@
       <sourceFolder url="file://$MODULE_DIR$/data" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/templates" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/templates/Home" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/data/classes/Global" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example/controllers/SecureArea" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example/controllers/Ajax" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/templates/Auth" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/example/controllers/Test" isTestSource="false" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="jquery-3.1.1" level="application" />
   </component>
 </module>

@@ -11,9 +11,10 @@ namespace CommonMVC\MVC;
 
 	class MVCHelper {
 
-		public static function alterSpacesToDashes($string) {
+		public static function alterSpacesToDashes($string, $convertToLower = false) {
 			//Lower case everything
-			$string = strtolower($string);
+			if($convertToLower) $string = strtolower($string);
+
 			//Convert whitespaces and underscore to dash
 			$string = preg_replace("/[\s_]/", "-", $string);
 			return $string;
@@ -47,11 +48,21 @@ namespace CommonMVC\MVC;
 			$Controller = "";
 
 			/* Clean Virtual Path */ {
+				// Check if VirtualPath contains --> (RootSpec)
+				$identifier = CMVC_PRJ_VIRTPATH_ROOT_SPECIFIER;
+				if (strcmp($VirtualPath, $identifier) !== false) {
+					// Split $VirtualPath by $identifier
+					$vpArr = explode($identifier, $VirtualPath);
+					$VirtualPath = $vpArr[count($vpArr)-1];
+				}
+
+				if ($VirtualPath[0]=="/") $VirtualPath = substr($VirtualPath,1);
+
 				// Remove any spaces from the string and replace them with
-				$VirtualPath = self::alterSpacesToDashes($VirtualPath);
+				$VirtualPath = self::alterSpacesToDashes($VirtualPath, false);
 
 				// Clean up the Path so each word start is capitalised
-				$VirtualPath = implode('/', array_map('ucfirst', explode('/', $VirtualPath)));
+				$VirtualPath = implode('/', array_map('mb_ucfirst', explode('/', $VirtualPath)));
 			}
 
 			$Path 		= $ControllerRootDir;
@@ -90,13 +101,15 @@ namespace CommonMVC\MVC;
 
 				// Append our current namespace with forward slashes
 				// 	to the folder location
-				$Path .= $tmpNamespace;
+				$Path .= '/'. $tmpNamespace;
 
 				// Replace all forward slashes with backslashes
 				$tmpNamespace = str_replace('/', '\\', $tmpNamespace);
 
 				// Append our classes namespace onto the root namespace
-				$Namespace .= $tmpNamespace;
+				$Namespace .= '\\'. $tmpNamespace;
+
+
 
 				// Set the controller and action
 				$Controller = $Arr[$ArrLen-1];
@@ -111,9 +124,6 @@ namespace CommonMVC\MVC;
 				$Controller = $Arr[0];
 				$Action 	= $Arr[1];
 			}
-
-			echo "\n\n";
-
 
 			// Setup the MVC Controller Information
 			// $Namespace   = "", $Controller = "", $Action = "",

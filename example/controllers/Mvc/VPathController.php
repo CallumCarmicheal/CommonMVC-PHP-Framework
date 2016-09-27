@@ -15,8 +15,8 @@ namespace ExampleProject\Controllers\Mvc;
 	class VPathController extends MVCController {
 		function __construct() {
 			$this->ControllerName 	= "Mvc/VPath";
-			$this->Enabled 			= true;
-			$this->AuthRequired 	= true;
+			$this->Enabled 			= false;
+			$this->AuthRequired 	= false;
 		}
 
 		/**
@@ -33,8 +33,8 @@ namespace ExampleProject\Controllers\Mvc;
 			$html = Templates::ReadTemplate("GenericErrorPage", false, $replace);
 
 			if(!$html)
-				 return MVCResult::SimpleHTML("Cannot find the requested controller for VP ('". $info->getContext()->getControllerFile(). "').");
-			else return MVCResult::SimpleHTML($html);
+				 return MVCResult::HtmlContent("Cannot find the requested controller for VP ('". $this->getContext()->getPath(). "').");
+			else return MVCResult::HtmlContent($html);
 		}
 
 		/**
@@ -53,7 +53,7 @@ namespace ExampleProject\Controllers\Mvc;
 			$html = Templates::ReadTemplate("GenericErrorPage", false, $replace);
 
 			if(!$html)
-				 return MVCResult::SimpleHTML("Cannot find the action for the controller of '". $info->getContext()->getControllerFile(). "'.");
-			else return MVCResult::SimpleHTML($html);
+				 return MVCResult::HtmlContent("Cannot find the action for the controller of '". $this->getContext()->getVirtualPath(). "'.");
+			else return MVCResult::HtmlContent($html);
 		}
 	}

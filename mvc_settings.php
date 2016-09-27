@@ -116,10 +116,75 @@
 		define ("CMVC_PRJ_VIRTPATH_DEFAULT_NOAUTH", "Auth/Login");
 
 		/**
-		 * If the user trys to use a controller that requires auth
+		 * If the user tries to use a controller that requires auth
 		 *		The user will be redirected to this page
 		 *
 		 * Note:
 		 * 		This is displayed as a VIRTUAL PATH NOT CONTROLLER
 		 */
 		define ("CMVC_PRJ_VIRTPATH_REDIRECT_NOAUTH", "Auth/Login");
+
+		/**
+		 * If a requested document tries to access another path due to
+		 *   being a virtual path ../ to the browser will just go back and
+		 *   cause issues, instead use the specified to access the root
+		 *
+		 * Example:
+		 *   Accessing /Ajax/Test/Action from /Home/Dashboard/Area
+		 *     RESOLVED TO: /Home/Dashboard/Ajax/Test/Action
+		 *
+		 *   * Using ../ will tell the browser to physically go back a page
+		 *
+		 * 	 But instead using $root/Ajax/Test/Action this tells the framework to
+		 *     access he root directory instead
+		 *
+		 *     RESOLVED TO: /Home/Dashboard/$root/Ajax/Test/Action
+		 *     Viewed as: /Ajax/Test/Action
+		 *
+		 * Note: Please use a special character when doing this, that ensures
+		 *       that any and all controllers or pages wont have the identifier
+		 *       in them, that would cause the controller or action to be viewed
+		 *       as the root identifier.
+		 *
+		 *       WHEN USING THE ROOT IDENTIFIER THE LAST SEGMENT WILL BE USED
+		 *          EG: TEST/$root/HOME/INDEX/<--/AUTH/LOGIN
+		 *              AUTH/LOGIN WILL BE SELECTED INSTEAD OF THE OTHERS
+		 *              BECAUSE IT IS THE FINAL SELECTION BEHIND THE $root IDENTIFIER
+		 *
+		 * 		 You can format your url like "$rootPath/Controller/Action" or
+		 * 		  "$root/Path/Controller/Action"
+		 *
+		 * 		* IN THE EXAMPLES REPLACE $root WITH YOUR SELECTED IDENTIFIER!
+		 */
+		define ("CMVC_PRJ_VIRTPATH_ROOT_SPECIFIER", '$root');
+
+
+	//
+	//
+	// Storage -> Database
+	//
+		/**
+		 * Database host, usually localhost or 127.0.0.1
+		 */
+		define ("CMVC_PRJ_STORAGE_DB_HOST", 	"localhost");
+
+		/**
+		 * Database username, usually root
+		 */
+		define ("CMVC_PRJ_STORAGE_DB_USER", 	"root");
+
+		/**
+		 * Database password, usually a-s3c|_|r3-p4$$w0rd
+		 */
+		define ("CMVC_PRJ_STORAGE_DB_PASS", 	"");
+
+		/**
+		 * Database database,
+		 */
+		define ("CMVC_PRJ_STORAGE_DB_DB",   	"CMVC_Database");
+
+
+		/**
+		 * Database datanase, usually localhost
+		 */
+		define ("CMVC_PRJ_STORAGE_DB_CHARSET", 	"utf8");

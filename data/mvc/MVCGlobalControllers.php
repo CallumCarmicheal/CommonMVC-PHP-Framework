@@ -44,10 +44,18 @@ namespace CommonMVC\MVC;
 		}
 
 		/**
-		 * Get the mvc error controller
+		 * Get the mvc vpath controller
 		 * @return MVCContext
 		 */
 		public static function MVC_VPathController() {
 			return self::MVC_GetController("VPath");
+		}
+
+		/**
+		 * Get the mvc access controller
+		 * @return MVCContext
+		 */
+		public static function MVC_AccessController() {
+			return self::MVC_GetController("Access");
 		}
 	}

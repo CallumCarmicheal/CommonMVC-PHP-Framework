@@ -13,6 +13,9 @@
 		 */
 		protected $Enabled;
 
+		/** @var bool */
+		protected $IndexEnabled;
+
 		/**
 		 * @var bool
 		 */
@@ -32,7 +35,9 @@
 		public function setContext($ctx) 	{ $this->Context = $ctx; }
 
 		public function getAuthRequired() 	{ return $this->AuthRequired; }
-		public function getEnabled() 		{ return $this->Enabled; }
 		public function getControllerName() { return $this->ControllerName; }
 		public function getContext() 		{ return $this->Context; }
+
+		public function isEnabled() 		{ return $this->Enabled; }
+		public function isIndexEnabled() 	{ return $this->IndexEnabled; }
 	}

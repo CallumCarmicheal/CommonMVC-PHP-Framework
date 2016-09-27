@@ -57,19 +57,24 @@ namespace CommonMVC\MVC;
 		public function setController($Controller) 			{ $this->Controller 	= $Controller; }
 		public function setAction($Action) 					{ $this->Action 		= $Action; }
 		// --FILE INFORMATION-----------------------------------------------------------------------
-		public function setFileName($FileName) 				{ $this->FileName = $FileName; }
-		public function setFolder($Folder)					{ $this->Folder = $Folder; }
+		public function setFileName($FileName) 				{ $this->FileName		= $FileName; }
+		public function setFolder($Folder)					{ $this->Folder 		= $Folder; }
 		public function setPath($Path) 						{ $this->Path 			= $Path; }
-		public function setVirtualPath($VirtualPath) 		{ $this->VirtualPath = $VirtualPath; }
+		public function setVirtualPath($VirtualPath) 		{ $this->VirtualPath 	= $VirtualPath; }
 
 
 		public function __toString() {
 			// TODO: Implement __toString() method.
 
+			$tmpClass = array (
+			 	'Calc' => 'Namespace + "\\" + Controller + "Controller"',
+				'Result' => $this->getClass()
+			);
+
 			$tmp = array(
 				'Namespace'  	=> $this->Namespace,
 				'Controller' 	=> $this->Controller,
-				'Class' 	 	=> $this->getClass(),
+				'Class' 	 	=> $tmpClass,
 				'Action' 	 	=> $this->Action,
 				'FileName' 	 	=> $this->FileName,
 				'Folder' 	 	=> $this->Folder,

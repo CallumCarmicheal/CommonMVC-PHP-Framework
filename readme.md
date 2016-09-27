@@ -14,7 +14,7 @@ That is your framework setup
 
 # Storing files
 The folder is in a virtual path state so you need to set a files/assets directory
-open the .htaccess file and either add or change the "assets" folder to your own 
+open the .htaccess file and either add or change the "assets" folder to your own
 needs.
 
 Everything else is taken care for you.
@@ -43,9 +43,5 @@ There will be no routes but that will be replaced with local file structure:
 		Returns: MVCResult
 
 # Please Note(s)
-Please note every first letter will be capitalised
-	Example: home/hello world/hi
-	Output: Home/Hello world/Hi
-
-So please make sure your Namespace, Class, Method names are capitalised
-The folders do not require a capital letter.
+The controller names are case-insensitive so you're controller can be named however you like
+as long as the controller is spelt correctly.
