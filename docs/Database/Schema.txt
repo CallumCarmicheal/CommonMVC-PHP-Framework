@@ -1,0 +1,31 @@
+Keys:
+	Column Name 	= Column Name
+	Data Type   	= The column type (MYSQL)
+	Version
+		Introduced 	= The version that the column was added in
+		Removed		= The version that it was removed in
+	Comment			= Additional notes to the for the column
+
+	Column Name				Data Type		Version 	            Comment
+    |                       |               Introduced	Removed	    |
+    |                       |               |           |           |
+	----------------------	--------------  ----------	-------     ------------------------------------------------------------
+
+Table: user_authentication
+	id						mediumint 		0.1			ACTIVE		The user account ID
+	user					varchar	(80)	0.1			ACTIVE		The username (VCHAR) to efficiently decrease the storage for 
+	                                                                all the users,  The max can be what ever you want it to be
+	pass					char (60) 		0.1			ACTIVE		The BCRYPT password (60 characters)
+	email					varchar 		0.1			ACTIVE		The email for the user account
+	is_enabled				tinyint			0.1			ACTIVE		If the user account is enabled (Default set by the Table on 
+	                                                                account creation)
+	dt_created				timestamp		0.1			ACTIVE		The date the user was created
+	dt_edited				timestamp		0.1			ACTIVE		The last time this column was modified
+	wb_admin				tinyint			0.1			ACTIVE		A generic admin identifier for code to use
+	
+Table: user_details
+	id						int				0.1		    ACTIVE      The user_details id
+	uid						mediumint		0.1			ACTIVE      The user account id
+	dt_f_login				timestamp		0.1			ACTIVE      The first dt the user logged in
+	dt_l_login				timestamp		0.1			ACTIVE      The last dt the user logged in	
+
