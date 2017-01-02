@@ -1,9 +1,7 @@
 # Getting Started
 1. Clone or Download the the github repo
-2. Open the file "mvc_settings.php"
-3. Edit the settings to specify your current project
-4. Create a folder as your project folder call it what you had set for CMVC_PRJ_DIRECTORY
-5. Open the folder and create another folder call it what you had set for CMVC_PRJ_DIRECTORY_CONTROLLERS
+2. Open the file "config\database.php" and "config\cmvc.php"
+3. Edit the settings to specify your current database
 
 That is your framework setup
 - Please take a look at the docs (TODO)
