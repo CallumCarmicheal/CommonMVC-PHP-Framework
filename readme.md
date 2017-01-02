@@ -1,6 +1,3 @@
-# I am currently designing the flow of the MVC.
-This means everything is not set in stone
-
 # Getting Started
 1. Clone or Download the the github repo
 2. Open the file "mvc_settings.php"
