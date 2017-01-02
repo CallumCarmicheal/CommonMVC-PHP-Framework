@@ -1,0 +1,8 @@
+RewriteEngine On
+
+# Exclude folders from the 
+# rules like:
+#
+#RewriteRule ^data - [L,NC]
+
+RewriteRule ^(.*)$ mvc_application.php?virtual_path=$1 [NC,QSA,B,L]

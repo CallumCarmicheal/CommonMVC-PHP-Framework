@@ -3,17 +3,20 @@
 These are the current supported versions of PHP:
 - [ ] Php 4
 - [x] Php 5
-- [ ] Php 6
-- [ ] Php 7
+- [X] Php 6
+- [X] Php 7
 
 # MVC
 
 - [ ] OOP MVC Initialisation not generic file
-- [ ] Simpler configuration system
-- [ ] Database configuration option
-- [ ] Optimization
+- [X] Simpler configuration system
+- [X] Database configuration option
+- [X] Optimization
 
 # Controller
 
-- [ ] Expand the usage for automatic authentication
-- [ ] Custom defined variable routes EG: $root
+- [X] Custom defined variable routes EG: $root
+- [ ] Route variables: Controller/Action/Param1/Param2
+
+# Database
+- [X] Eloquent models
