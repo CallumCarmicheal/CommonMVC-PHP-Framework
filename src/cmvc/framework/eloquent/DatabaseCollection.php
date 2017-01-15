@@ -18,7 +18,6 @@ class DatabaseCollection extends Base {
 
 // Methods:
 	public function isCollection() { return true; }
-	public function isEmpty() { return $this->Count == -1; }
 	
 	/** @return DatabaseItem[] */
 	public function get() {

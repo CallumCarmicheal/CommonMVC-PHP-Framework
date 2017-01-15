@@ -14,7 +14,9 @@ class Base {
 	public $Count                   = -1;
 	
 	public function isCollection()  { return true; }
-	public function isEmpty()       { return true; }
+	public function isEmpty()       { return $this->Count == -1; }
+	
+	public function getCount() 		{ return $this->Count; }
 	
 	public function get()           { return null; }
 	public function set($item)      { }

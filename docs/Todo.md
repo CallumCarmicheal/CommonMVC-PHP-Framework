@@ -8,7 +8,7 @@ These are the current supported versions of PHP:
 
 # MVC
 
-- [ ] OOP MVC Initialisation not generic file
+- [X] OOP MVC Initialisation Handler
 - [X] Simpler configuration system
 - [X] Database configuration option
 - [X] Optimization
@@ -16,7 +16,15 @@ These are the current supported versions of PHP:
 # Controller
 
 - [X] Custom defined variable routes EG: $root
-- [ ] Route variables: Controller/Action/Param1/Param2
+- [ ] Route controller with variables
 
 # Database
+
 - [X] Eloquent models
+
+# Documentation
+- [ ] Write basic documentation
+- [ ] Write extensive documentation
+- [X] Write somewhat basic comments
+- [ ] Write extensive comments
+- [ ] Write examples

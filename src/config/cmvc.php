@@ -5,7 +5,6 @@ namespace Config;
 class CMVC {
 	
 	public static function SetupConstants() {
-
         // Disable debugging 
         define ("CMVC_SETS_DEBUG_HANDLER", false);
 
@@ -21,13 +20,7 @@ class CMVC {
         define ("CMVC_PRJ_NAMESPACE_CONTROLLERS_ERRORS", CMVC_PRJ_NAMESPACE_CONTROLLERS. "\\Mvc");
 		define ("CMVC_PRJ_NAMESPACE_EVENTS",             CMVC_PRJ_NAMESPACE. "\\Events");
         
-        /// ============= Virtual Paths 
-
-        // Resets virtual path, Blah/{ROOT}/Blah2 = /Blah2
-        define ("CMVC_PRJ_VIRTPATH_ROOT_SPECIFIER", '$API_ROOT$');  
-
-        // Default controller when no directory or controller/action is 
-        // specified
-	    define ("CMVC_PRJ_VIRTPATH_DEFAULT",        'Index/Index'); 
+		/// ============= Virtual Paths 
+		define ("CMVC_ROOT_URL", 						"http://websitelocation.com")
 	}
 }

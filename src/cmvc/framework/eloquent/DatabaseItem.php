@@ -16,7 +16,6 @@ class DatabaseItem extends Base {
 	private $item = null;
 	
 	public function isCollection()  { return false; }
-	public function isEmpty()       { return false; }
 	
 	/**
 	 * @param $item MVCEloquentModel

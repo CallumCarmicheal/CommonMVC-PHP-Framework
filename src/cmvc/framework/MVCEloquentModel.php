@@ -3,6 +3,7 @@
  * User: CallumCarmicheal
  * Date: 21/12/2016
  * Time: 15:22
+ * Url:  https://github.com/CallumCarmicheal/CommonMVC-PHP-Framework
  */
 
 namespace lib\CMVC\mvc;
@@ -13,17 +14,19 @@ use lib\CMVC\mvc\Eloquent\DatabaseItem;
 
 class MVCEloquentModel {
 	
-	protected static $table = "";
-	protected static $columns = [];
-	protected static $columns_readonly     = [];
-	protected static $columns_id           = "id";
+	protected static $table                 = "";
+	protected static $columns               = [];
+	protected static $columns_readonly      = [];
+	protected static $columns_id            = "id";
 	
-	protected static $useTimeColumns       = false;
-	protected static $columns_Time_Created = "date_created";
-	protected static $columns_Time_Edited  = "date_lastedited";
+	protected static $database              = "";
 	
-	protected $columns_values = [];
-	protected $columns_changed = [];
+	protected static $useTimeColumns        = false;
+	protected static $columns_Time_Created  = "date_created";
+	protected static $columns_Time_Edited   = "date_lastedited";
+	
+	protected $columns_values               = [];
+	protected $columns_changed              = [];
 	
 	public static $Database_DateTime_Format = "Y-m-d H:i:s";
 	
@@ -39,7 +42,7 @@ class MVCEloquentModel {
 	 */
 	public function save($all = false) {
 		// Load PDO
-		$PDO = Database::GetPDO();
+		$PDO = Database::GetPDO(static::$database);
 		
 		if (empty($this->columns_changed))
 			return;
@@ -94,7 +97,7 @@ class MVCEloquentModel {
 			}
 			
 			$vKey       = ":V". $colCtr;
-			$strCols   .= $col;
+			$strCols   .= "'". $col. "'";
 			$strVals   .= $vKey;
 			$arg[$vKey] = $val;
 			
@@ -121,7 +124,7 @@ class MVCEloquentModel {
 			if ($valCtr != 0)
 				$valueClause .= ", ";
 			
-			$valueClause .= "$col=:$col";
+			$valueClause .= "'$col'=:$col";
 			$arg[":$col"] = $this->columns_values[$col];
 			
 			$valCtr++;
@@ -183,7 +186,7 @@ class MVCEloquentModel {
 			
 			// findFirstOrFail ([['1', '=', 1], ['name', '!=', 'test']]
 			if (is_array($query[0])) {
-				$format      = "SELECT %s FROM %s WHERE %s LIMIT $maxSize;";
+				$format      = "SELECT %s FROM %s WHERE ( %s ) LIMIT $maxSize;";
 				$columns     = self::implodeAllColumns();
 				$whereClause = ""; // Where clause
 				$binds       = []; // PDO Binded Values
@@ -196,7 +199,7 @@ class MVCEloquentModel {
 					$value  = $queryClause[2];
 					
 					if ($vInt != 0)
-						$whereClause .= ", ";
+						$whereClause .= " AND ";
 					
 					//                    col{glue}vWhere
 					//                    name=:Val0
@@ -205,7 +208,6 @@ class MVCEloquentModel {
 					else $whereClause .= "$col $glue $vWhere";
 					
 					$binds[$vWhere] = $value;
-					
 					$vInt++;
 				}
 				
@@ -245,7 +247,6 @@ class MVCEloquentModel {
 		
 		/* Debugging */ {
 			/*/
-			
 			echo "\$sql: \t\t$sql\n";
 			echo "\$binds: \t";
 			var_dump ($binds);
@@ -330,7 +331,7 @@ class MVCEloquentModel {
 		$dt = "";
 		
 		if (static::$useTimeColumns)
-			$dt = ", ". static::$columns_Time_Created.
+			$dt = " ". static::$columns_Time_Created.
 				  ", ". static::$columns_Time_Edited;
 		
 		
