@@ -5,6 +5,7 @@ The database eloquent models are a very robust way of stopping any sql injection
 # Settings
 
 These are the settings you can override:
+
 Variable | Description
 --- | ---
 $database | The Database
@@ -14,6 +15,7 @@ $columns_readonly | Columns that can be viewed but not modifed
 $columns_id | The ID column inside the table (REQUIRED)
 
 These variables are used for tracking row data and what has been changed:
+
 Variable | Description
 --- | ---
 $columns_values | This contains all the values of the current row
