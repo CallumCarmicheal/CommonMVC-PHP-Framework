@@ -84,7 +84,7 @@ if ($results->isEmpty()) {
 }
 
 if ($results->isCollection()) {
-	echo "Array of Test returned. <br>";
+	echo "Array of Test returned. Count=". $results->Count. "<br>";
     
     $array = $results->get();
     
