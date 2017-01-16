@@ -1,8 +1,3 @@
-# Key
-[X] = Done
-[-] = Ongoing
-[ ] = Not Done 
-
 # PHP Version Support
 
 These are the current supported versions of PHP:
@@ -32,4 +27,4 @@ These are the current supported versions of PHP:
 - [ ] Write extensive documentation
 - [X] Write somewhat basic comments
 - [X] Write extensive comments
-- [-] Write examples
+- [ ] Write examples
