@@ -1,10 +1,18 @@
+# CommonMVC 
+This is a hackable MVC framework that does not bind you to any rules except one.
+
+You will be required to have a certain Structure for the controllers and define
+the folder locations, except that it is a simple implementation.
+
 # Getting Started
 1. Clone or Download the the github repo
-2. Open the file "config\database.php" and "config\cmvc.php"
-3. Edit the settings to specify your current database
+2. Open the file "mvc_settings.php"
+3. Edit the settings to specify your current project
+4. Create a folder as your project folder call it what you had set for CMVC_PRJ_DIRECTORY
+5. Open the folder and create another folder call it what you had set for CMVC_PRJ_DIRECTORY_CONTROLLERS
 
 That is your framework setup
-- Please take a look at the docs (TODO)
+- Please take a look at the docs (TODO-ish)
 - Please take a look at the examples (TODO)
 
 # Storing files

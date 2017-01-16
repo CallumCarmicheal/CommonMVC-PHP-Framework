@@ -7,90 +7,140 @@
 
 namespace CommonMVC\Classes\Storage;
 
+use API\Controllers\Mvc\ErrorController;
+use CommonMVC\MVC\MVCExecutor;
+use CommonMVC\MVC\MVCHelper;
 
-	use API\Controllers\Mvc\ErrorController;
-	use CommonMVC\MVC\MVCExecutor;
-	use CommonMVC\MVC\MVCHelper;
-	
-	class Database {
+class Database {
 
-		private static $PDOStorageName = "CMVC_CLASSES_STORAGE_DATABASE_PDO_OBJECT_STORE";
+	private static $PDOStorageName = "CMVC_CLASSES_STORAGE_DATABASE_PDO_OBJECT_STORE_";
 
-		/**
-		 * @return \PDO
-		 * @throws \PDOException
-		 */
-		private static function setupPDO() {
-			$ip = CMVC_PRJ_STORAGE_DB_HOST;
-			$un = CMVC_PRJ_STORAGE_DB_USER;
-			$pw = CMVC_PRJ_STORAGE_DB_PASS;
+	/**
+	 * @return \PDO
+	 * @throws \PDOException
+	 */
+	private static function setupPDO($db = "") {
+		$ip  = CMVC_PRJ_STORAGE_DB_HOST;
+		$un  = CMVC_PRJ_STORAGE_DB_USER;
+		$pw  = CMVC_PRJ_STORAGE_DB_PASS;
+		$cs  = CMVC_PRJ_STORAGE_DB_CHARSET;
+		
+		// If no custom database was selected
+		// we load the one defined in the config
+		//
+		// (NOTE) This is used for custom databases
+		//        from within the Eloquent models.
+		if (empty($db))
 			$db = CMVC_PRJ_STORAGE_DB_DB;
-			$cs = CMVC_PRJ_STORAGE_DB_CHARSET;
-
-			$dsn = "mysql:host=$ip;dbname=$db;charset=$cs";
-
-			$opt = [
-				\PDO::ATTR_ERRMODE 				=> \PDO::ERRMODE_EXCEPTION,
-				\PDO::ATTR_DEFAULT_FETCH_MODE 	=> \PDO::FETCH_ASSOC,
-				\PDO::ATTR_EMULATE_PREPARES		=> false
-			];
-
-			try {
-				$pdo = new \PDO($dsn, $un, $pw, $opt);
-			} catch (\PDOException $ex) {
-				self::ThrowDatabaseOfflineException();
-				return null;
-			}
-
-			return $pdo;
-		}
 		
-		public static function ThrowDatabaseOfflineException() {
-			$exec = new MVCExecutor();
-			
-			/** @var \API\Controllers\Mvc\Errors\Database $ctrl */
-			$ctx = MVCHelper::ResolveVirtualPath(
-				CMVC_PRJ_DIRECTORY_CONTROLLERS,
-				CMVC_PRJ_NAMESPACE_CONTROLLERS,
-				"Mvc/Database/FailedConnection" );
-			$ctrl = $exec->GetControllerFromContext($ctx);
-			$res = $ctrl->FailedConnection();
-			$exec->ExecuteControllerResult($ctrl, $res, $ctx);
-		}
-		
-		public static function ThrowDatabaseFailedQuery($exception) {
-			$exec = new MVCExecutor();
-			
-			/** @var \API\Controllers\Mvc\Errors\Database $ctrl */
-			$ctx = MVCHelper::ResolveVirtualPath(
-				CMVC_PRJ_DIRECTORY_CONTROLLERS,
-				CMVC_PRJ_NAMESPACE_CONTROLLERS,
-				"Mvc/Database/FailedQuery" );
-			echo $ctx. "\n";
-			
-			$ctrl = $exec->GetControllerFromContext($ctx);
-			$res = $ctrl->FailedQuery($exception);
-			$exec->ExecuteControllerResult($ctrl, $res, $ctx);
+		$dsn = "mysql:host=$ip;dbname=$db;charset=$cs";
+
+		$opt = [
+			\PDO::ATTR_ERRMODE 				=> \PDO::ERRMODE_EXCEPTION,
+			\PDO::ATTR_DEFAULT_FETCH_MODE 	=> \PDO::FETCH_ASSOC,
+			\PDO::ATTR_EMULATE_PREPARES		=> false
+		];
+
+		try {
+			$pdo = new \PDO($dsn, $un, $pw, $opt);
+		} catch (\PDOException $ex) {
+			self::ThrowDatabaseOfflineException($ex);
+			return null;
 		}
 
-		/**
-		 * Create a PDO Object for the current database
-		 * @return \PDO
-		 * @throws \PDOException
-		 */
-		public static function GetPDO() {
-			// Store the pdo in globals so we don't keep recreating it
-			// a way of efficiently caching
-
-			if(isset($GLOBALS[self::$PDOStorageName])
-			   && get_class($GLOBALS[self::$PDOStorageName]) == 'PDO'){
-
-				return $GLOBALS[self::$PDOStorageName];
-			} else {
-				$conn = self::setupPDO();
-				$GLOBALS[self::$PDOStorageName] = &$conn;
-				return $conn;
-			}
-		}
-
+		return $pdo;
 	}
+	
+	/**
+	 * Run the Database MVC Exception controller, FailedConnection
+	 *
+	 * Call this when you have a failed connection
+	 * @param $exception \PDOException
+	 */
+	public static function ThrowDatabaseOfflineException($exception) {
+		/** @var \App\Controllers\Mvc\DatabaseController $ctrl */
+		
+		// Setup a MVCExecutor
+		$exec = new MVCExecutor();
+		
+		// Get our context for the class
+		// using the virtual path
+		// NAMESPACE/Class/Action,
+		//
+		// You do not need a action
+		// you may just leave a trailing slash to
+		// indicate that "Database" is a controller
+		// for example: Mvc/Database/
+		$ctx = MVCHelper::ResolveVirtualPath(
+			CMVC_PRJ_DIRECTORY_CONTROLLERS,
+			CMVC_PRJ_NAMESPACE_CONTROLLERS,
+			"Mvc/Database/FailedConnection" );
+		
+		// Get the controller and run the function
+		// FailedConnection, then execute the result.
+		// You have to manually execute the controller
+		// because WebAccess is false and cannot be
+		// executed through ExecuteController will
+		// call Mvc/Access/WebAccessDisabled
+		$ctrl = $exec->GetControllerFromContext($ctx);
+		$res = $ctrl->FailedConnection($ex);
+		$exec->ExecuteControllerResult($ctrl, $res, $ctx);
+	}
+	
+	/**
+	 * Run the Database MVC Exception controller, FailedQuery
+	 *
+	 * Call this when you have a failed query
+	 * @param $exception \PDOException
+	 */
+	public static function ThrowDatabaseFailedQuery($exception) {
+		/** @var \App\Controllers\Mvc\DatabaseController $ctrl */
+		
+		// Setup a MVCExecutor
+		$exec = new MVCExecutor();
+		
+		// Get our context for the class
+		// using the virtual path
+		// NAMESPACE/Class/Action,
+		//
+		// You do not need a action
+		// you may just leave a trailing slash to
+		// indicate that "Database" is a controller
+		// for example: Mvc/Database/
+		$ctx = MVCHelper::ResolveVirtualPath(
+			CMVC_PRJ_DIRECTORY_CONTROLLERS,
+			CMVC_PRJ_NAMESPACE_CONTROLLERS,
+			"Mvc/Database/FailedQuery" );
+		
+		// Get the controller and run the function
+		// FailedConnection, then execute the result.
+		// You have to manually execute the controller
+		// because WebAccess is false and cannot be
+		// executed through ExecuteController will
+		// call Mvc/Access/WebAccessDisabled
+		$ctrl = $exec->GetControllerFromContext($ctx);
+		$res = $ctrl->FailedQuery($exception);
+		$exec->ExecuteControllerResult($ctrl, $res, $ctx);
+	}
+
+	/**
+	 * Create a PDO Object for the current database
+	 * @param $db string
+	 * @return \PDO
+	 * @throws \PDOException
+	 */
+	public static function GetPDO($db = "") {
+		// Store the pdo in globals so we don't keep recreating it
+		// a way of efficiently caching
+
+		if(isset($GLOBALS[self::$PDOStorageName. $db])
+		   && get_class($GLOBALS[self::$PDOStorageName. $db]) == 'PDO'){
+
+			return $GLOBALS[self::$PDOStorageName. $db];
+		} else {
+			$conn = self::setupPDO($db);
+			$GLOBALS[self::$PDOStorageName. $db] = &$conn;
+			return $conn;
+		}
+	}
+}

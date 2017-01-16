@@ -60,15 +60,38 @@ namespace CommonMVC\MVC;
 		 * @return MVCContext
 		 */
 		public static function ResolveVirtualPath($ControllerRootDir, $ControllerNamespace, $VirtualPath) {
-
+			$VirtualPathRaw = $VirtualPath;
+			
+			// Debug virtual paths
+			$DEBUG_VIRTUALPATH = false;
+			if ($DEBUG_VIRTUALPATH) {
+				ob_clean();
+				echo "<pre>VirtualPath Debugging \n---------------------\n\n";
+			}
+			
 			/* Clean Virtual Path */ {
-				// Check if VirtualPath contains --> (RootSpec)
+				// Disabled because it would not be needed,
+				// (IN THE EXAMPLE CMVC_PRJ_VIRTPATH_ROOT_SPECIFIER = $)
+				// the idea behind this was to have in javascript a
+				// file that would be in the file View/Page/Action
+				// and it could access Hello/World/Action by doing
+				// $/Hello/World/Action, which would be shown as in a web request
+				// View/Page/$/Hello/World/Action but evaluated as
+				// Hello/World/Action. You may re-enable this if you please
+				// its simple to implement just define CMVC_PRJ_VIRTPATH_ROOT_SPECIFIER with
+				// the specifier you want to use.
+				//
+				// This would be bad practice, the better idea is to use the
+				// url function which is defined in cmvc/framework/globals/urlhandler.php
+				
+				
+				/*/ Check if VirtualPath contains --> (RootSpec)
 				$identifier = CMVC_PRJ_VIRTPATH_ROOT_SPECIFIER;
 				if (strcmp($VirtualPath, $identifier) !== false) {
 					// Split $VirtualPath by $identifier
 					$vpArr = explode($identifier, $VirtualPath);
 					$VirtualPath = $vpArr[count($vpArr)-1];
-				}
+				} /*/
 
 				if (is_array($VirtualPath))
 					if ($VirtualPath[0]=="/")
@@ -80,7 +103,8 @@ namespace CommonMVC\MVC;
 				// Clean up the Path so each word start is capitalised
 				$VirtualPath = implode('/', array_map('mb_ucfirst', explode('/', $VirtualPath)));
 			}
-
+			
+			// Setup the variables we are going to use
 			$Path 		= $ControllerRootDir;
 			$Namespace 	= $ControllerNamespace;
 			$Controller = "";
@@ -88,64 +112,148 @@ namespace CommonMVC\MVC;
 			$Arr 		= explode("/", $VirtualPath);
 			$ArrLen 	= count($Arr)-1;
 			
+			
+			// Debug Code:
+			//echo "<pre>Path: $Path\nNamespace: $Namespace";
+			//die("");
+			
+			// Just a slash (/) meaning
+			// Controller = Index,
+			// Action = Index
+			if ($VirtualPathRaw == "/") {
+				$Controller = "Index";
+				$Action     = "Index";
+				
+				if ($DEBUG_VIRTUALPATH) echo "if VirtualPath == '/' \n";
+			}
+			
+			
 			// Just a controller
-			if ($ArrLen == 0) {
+			else if ($ArrLen == 0) {
 				// [0] = Controller
 				$Controller = $Arr[0];
 				$Action = "Index";
 				
 				if (empty($Controller))
 					$Controller = "Index";
+				
+				if ($DEBUG_VIRTUALPATH) echo "if ArrLen == 0 \n";
 			}
 
 			// Path, Controller and Action
 			else if ($ArrLen >= 2) {
-				// [0-(Len-2)] 	Path
-				// [Len-1] 		Controller
-				// [Len]		Action
-
-				// Set the amount of times to
-				// append the vp to the namespace
-				$PathCount = $ArrLen-2;
-				$tmpNamespace = "";
-
-				// Append the VirtualPath to the
-				// namespace
-				for($x = 0; $x <= $PathCount; $x++)
-					$tmpNamespace .= $Arr[$x]. "/";
-
-				// Remove any trailing forward slashes
-				$tmpNamespace = rtrim($tmpNamespace,"/");
-
-				// Append our current namespace with forward slashes
-				// 	to the folder location
-				$Path .= '/'. $tmpNamespace;
-
-				// Replace all forward slashes with backslashes
-				$tmpNamespace = str_replace('/', '\\', $tmpNamespace);
-
-				// Append our classes namespace onto the root namespace
-				$Namespace .= '\\'. $tmpNamespace;
-
-				// Set the controller and action
-				$Controller = $Arr[$ArrLen-1];
-				$Action = $Arr[$ArrLen];
+				// Check if the path is a index call
+				// EG: Some/Controller/
+				// the trailing slash assumes / = INDEX
+				if (self::endsWith($VirtualPathRaw, '/')) {
+					// [0-( LEN-2 )]    Path
+					// [Len]            Controller
+					// "Index"          Action
+					
+					// Set the amount of times to
+					// append the vp to the namespace
+					$PathCount = $ArrLen-2;
+					$tmpNamespace = "";
+					
+					// Append the VirtualPath to the
+					// namespace
+					for($x = 0; $x <= $PathCount; $x++)
+						$tmpNamespace .= $Arr[$x]. "/";
+					
+					// Remove any trailing forward slashes
+					$tmpNamespace = rtrim($tmpNamespace,"/");
+					
+					// Append our current namespace with forward slashes
+					// 	to the folder location
+					$Path .= '/'. $tmpNamespace;
+					
+					// Replace all forward slashes with backslashes
+					$tmpNamespace = str_replace('/', '\\', $tmpNamespace);
+					
+					// Append our classes namespace onto the root namespace
+					$Namespace .= '\\'. $tmpNamespace;
+					
+					// Set the controller and action
+					$Controller = $Arr[$ArrLen-1];
+					$Action     = "Index";
+					
+					if ($DEBUG_VIRTUALPATH) echo "if ArrLen >= 2 AND endsWith / \n";
+				}
+				
+				// Gets the usual web call including a path
+				else {
+					// [0-( Len-2 )] 	Path
+					// [Len-1] 		    Controller
+					// [Len]		    Action
+	
+					// Set the amount of times to
+					// append the vp to the namespace
+					$PathCount = $ArrLen-2;
+					$tmpNamespace = "";
+	
+					// Append the VirtualPath to the
+					// namespace
+					for($x = 0; $x <= $PathCount; $x++)
+						$tmpNamespace .= $Arr[$x]. "/";
+	
+					// Remove any trailing forward slashes
+					$tmpNamespace = rtrim($tmpNamespace,"/");
+	
+					// Append our current namespace with forward slashes
+					// 	to the folder location
+					$Path .= '/'. $tmpNamespace;
+	
+					// Replace all forward slashes with backslashes
+					$tmpNamespace = str_replace('/', '\\', $tmpNamespace);
+	
+					// Append our classes namespace onto the root namespace
+					$Namespace .= '\\'. $tmpNamespace;
+	
+					// Set the controller and action
+					$Controller = $Arr[$ArrLen-1];
+					$Action = $Arr[$ArrLen];
+					
+					if ($DEBUG_VIRTUALPATH) echo "if ArrLen >= 2 \n";
+				}
 			}
 
 			// Controller and Action
+			// or Path and Controller
 			else {
-				// [0] = Controller
-				// [1] = Action
-
-				$Controller = $Arr[0];
-				$Action 	= $Arr[1];
+				// Check if the path is a index call
+				// EG: Some/Controller/
+				// the trailing slash assumes / = INDEX
+				if (self::endsWith($VirtualPathRaw, '/')) {
+					// [0]     = Path
+					// [1]     = Controller
+					// "Index" = Action
+					
+					$Namespace .= '\\'. $Arr[0];
+					$Controller = $Arr[1];
+					$Action = "Index";
+					
+					if ($DEBUG_VIRTUALPATH) echo "ELSE... if endsWith /";
+				}
+				
+				// Gets a usual web call with just a controller
+				// and index
+				else {
+					
+					// [0] = Controller
+					// [1] = Action
+					
+					$Controller = $Arr[0];
+					$Action = $Arr[1];
+					
+					if ($DEBUG_VIRTUALPATH) echo "ELSE...";
+				}
 			}
 			
 			// Setup the MVC Controller Information
 			// $Namespace   = "", $Controller = "", $Action = "",
 			// $FileName    = "", $Folder     = "", $Path = ""
 			// $VirtualPath = ""
-
+			
 			$info = new MVCContext(
 				$Namespace,
 				$Controller,
@@ -156,6 +264,13 @@ namespace CommonMVC\MVC;
 				$Path. "/". $Controller. "Controller.php",	// $Path
 				$VirtualPath
 			);
+			
+			// Dump our context to debug
+			// Most of the classes, mainly the ones that
+			// would require debugging have built in ToString()
+			// methods to make debugging exceptionally easy.
+			if ($DEBUG_VIRTUALPATH)
+				die ("Context: ". $info);
 
 			return $info;
 		}

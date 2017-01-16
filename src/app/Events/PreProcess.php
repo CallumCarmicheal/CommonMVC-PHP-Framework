@@ -21,9 +21,9 @@ class PreProcess {
 	public static function ProcessRequest($context) {
 		// You will have to write your own rules, 
 		// look at examples on the git hub repo!
-
-
-
+		
+		
+		
 		// Return true to allow the request to continue
 		// If false is returned the application will stop
 		// and clear the output buffer, you are required

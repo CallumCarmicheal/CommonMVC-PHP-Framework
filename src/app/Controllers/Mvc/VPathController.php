@@ -8,7 +8,7 @@ use CommonMVC\MVC\MVCResult;
 class VPathController extends MVCController {
 	function __construct() {
 		$this->ControllerName 	= "Mvc/VPath";
-		$this->Enabled 			= false;
+		$this->WebAccess 			= false;
 	}
 
 	/**

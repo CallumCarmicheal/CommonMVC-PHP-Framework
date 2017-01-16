@@ -12,6 +12,7 @@ These are the current supported versions of PHP:
 - [X] Simpler configuration system
 - [X] Database configuration option
 - [X] Optimization
+- [ ] Implement a custom View system or implement BladeView
 
 # Controller
 

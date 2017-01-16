@@ -5,24 +5,48 @@ namespace Config;
 class FileLoader {
 
 	private static function LoadNonAppFiles() {
-		// These are classes/files which are not in the 
-		// mvc root folder
-		// Eg  
+		// This will load folders recusively,
+		// require_once will be used on every file
+		// in a specified folder, 
+		//
+		// NOTE: DO NOT USE the folder CMVC_PRJ_DIRECTORY (default = app) or "cmvc"
+		// those files will be loaded automatically,
+		// when adding a cmvc file you will want to add it
+		// in config/cmvc.php not here.
+		//
+		// Example: 
+		// lets say you have this folder structure
+		//
 		// src
-		// |- data
-		//    |- TestClass.php
-		// Would be: data/TestClass.php
+		// |- app, cmvc, config...
+		// |- classes
+		// |  |- file1.php
+		// |  |- file2.php
+		// |  |- file3.php
+		// |  |- file4.php		
+		// |  |- subfolder1
+		// |  |  |- subfile1.php
+		// |  |  |- subfolder2
+		// |  |  |  |- sub_subfile1.php 
+		// 
+		// You would add 'classes' as the directory,
+		// the files "file 1-4" will be loaded including all the 
+		// subfolders up to the depth of 50, the max depth can be changed
+		// in the function (scroll below).
 		
-		
-		$files = [
+		$directories = [
 			
 		];
 		
-		foreach ($files as $file) 
-			self::_require_all(__DIR__. '/'. $file);
+		foreach ($directories as $file) 
+			self::_require_all(__DIR__. '/../'. $file);
+		
+		// Load any singular files here
+		
 	}
 	
-	public static function LoadFiles() {
+	public static function Load() {
+		// Loads everything that is not the framework or the CMVC_PRJ_DIRECTORY folder.
 		self::LoadNonAppFiles();
 		
 		/* Loads any and all files in the "app" or the folder that 
@@ -46,7 +70,9 @@ class FileLoader {
 						$skip = true;
 				if ($skip) continue;
 				
-				echo "Included $path \n";
+				// DEBUG: Show files loading
+				//echo "Included $path \n";
+				
 				require_once $path;
 			} else if (is_dir($path)) {
 				$skip = false;

@@ -30,8 +30,6 @@ class DatabaseCollection extends Base {
 	public function set($item) {
 		$this->Count = count($item)-1;
 		$this->items = $item;
-		
-		$this->Valid = $this->Count >= 0;
 	}
 
 }

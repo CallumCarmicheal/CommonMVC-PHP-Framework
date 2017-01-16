@@ -134,6 +134,11 @@ class MVCEloquentModel {
 	}
 	
 	/**
+	 * Checks if the item exists in the database
+	 *
+	 * This is used when creating a new instance to be placed
+	 * inside the database, it checks if it already exists by
+	 * seeing if we have a ID attached to it.
 	 * @return bool
 	 */
 	public function Exists() {
@@ -141,13 +146,16 @@ class MVCEloquentModel {
 	}
 	
 	/**
+	 * Check if a id exists in the database
+	 *
 	 * @param $id
 	 * @return bool
 	 */
-	public static function existsID($id)  { return static::find($id)->Valid; }
+	public static function existsID($id)  { return static::find($id)->containsItems(); }
 	
 	/**
 	 * Find a row by the table id column
+	 *
 	 * @param $id mixed
 	 * @param bool $case_sensitive
 	 * @return bool|DatabaseCollection|DatabaseItem
@@ -158,6 +166,7 @@ class MVCEloquentModel {
 	
 	/**
 	 * Get the first item in a query!
+	 *
 	 * @param $query mixed
 	 * @param bool $case_sensitive
 	 * @return bool|DatabaseCollection|DatabaseItem
@@ -167,15 +176,72 @@ class MVCEloquentModel {
 	}
 	
 	/**
-	 * Advanced Query of Database
+	 * Query the database
+	 *
+	 * Parameters:
+	 *
+	 * $query
+	 * |- 2 or 3 value array
+	 * |  |- [Column, Value]
+	 * |  |- [Column, Glue, Value]
+	 * |  |  Glue being the calculation, eg =, >, <, >=, <=
+	 * |
+	 * |-  Array of Arrays
+	 * |   |- [ [C,V], [C,G,V]... ]
+	 * |   |  C = Column, V = Value, G = Glue
+	 *
+	 * $case_sensitive
+	 * |- States if the parameters have
+	 * |  BINARY placed before them
+	 * |  making them case sensitive
+	 * |
+	 * |  DEFAULT: TRUE
+	 *
+	 * $maxSize
+	 * |- States the SQL limit size
+	 * |
+	 * |  DEFAULT: 100
+	 *
+	 * Example usage:
+	 *
+	 * SELECT * FROM table WHERE (column = blah);
+	 * |- Example 1: find( ['column', 'blah'] );
+	 * |- Example 2: find( ['column', '=', 'blah'];
+	 *
+	 * SELECT * FROM table WHERE (number >= 99);
+	 * |- Example: find( ['number', '>=', 99] );
+	 *
+	 * SELECT * FROM table WHERE (column = blah and column2 = blah);
+	 * |- Example 1: find( [ ['column', 'blah'], ['column2', 'blah'] ] )        // Case Sensitive
+	 * |- Example 2: find( [ ['column', 'blah'], ['column2', 'blah'] ], false ) // Case Insensitive
+	 *
+	 * SELECT * FROM table WHERE (column = blah and column2 = blah) LIMIT 2;
+	 * |- Example 1: find( [ ['column', 'blah'], ['column2', 'blah'] ],   true,  2 ) // Case Sensitive
+	 * |- Example 2: find( [ ['column', 'blah'], ['column2', 'blah'] ],   false, 2 ) // Case Insensitive
+	 * |- Example 3: find( [ ['column', 'blah'], ['column3', '>=', 33] ], false, 2 ) // Column >= Calculation
+	 *
+	 * SELECT * FROM table WHERE ... INNER JOIN ....
+	 * |- Sorry but this does not currently exist.
+	 * |  I will need to redesign how this function works
+	 * |  and at the moment it works for my needs, so i recommend doing something like this
+	 * |
+	 * |  $user = User::find( ['username', 'blah'] );
+	 * |  if ($user->isEmpty()) // Error handle
+	 * |
+	 * |  $user = $user->get();
+	 * |  $uid = $user->id;
+	 * |
+	 * |  $paidOrders = Orders::find([ ['paid', '=', true], ['user_id', '=', $uid] ]);
+	 * |  ..... etc etc...
+	 *
 	 * @param $query mixed
 	 * @param $maxSize int Limit amount
 	 * @param $case_sensitive bool Determines if the variables added are queried as BINARY
 	 * @return DatabaseItem|DatabaseCollection|bool
 	 */
-	public static function find($query, $case_sensitive = true, $maxSize = 1000) {
+	public static function find($query, $case_sensitive = true, $maxSize = 100) {
 		// Get PDO Object
-		$PDO   = Database::GetPDO();
+		$PDO   = Database::GetPDO(static::$database);
 		$sql   = "";
 		$binds = [];
 		$table = static::$table;
@@ -186,7 +252,7 @@ class MVCEloquentModel {
 			
 			// findFirstOrFail ([['1', '=', 1], ['name', '!=', 'test']]
 			if (is_array($query[0])) {
-				$format      = "SELECT %s FROM %s WHERE ( %s ) LIMIT $maxSize;";
+				$format      = "SELECT %s FROM `%s` WHERE ( %s ) LIMIT $maxSize;";
 				$columns     = self::implodeAllColumns();
 				$whereClause = ""; // Where clause
 				$binds       = []; // PDO Binded Values
@@ -292,10 +358,30 @@ class MVCEloquentModel {
 		}
 	}
 	
+	/**
+	 * Returns table's row count
+	 * @return int
+	 */
+	public function count() {
+		$PDO   = Database::GetPDO(static::$database);
+		
+		$sql = "SELECT count(*) FROM `%s`;";
+		$sql = sprintf($sql, static::$table);
+		
+		$result = $PDO->prepare($sql);
+		$result->execute();
+		return $result->fetchColumn();
+	}
+	
+	/**
+	 * Get the id for the current row
+	 * @return mixed
+	 */
 	public function getID() {
 		return $this->columns_values[static::$columns_id];
 	}
 	
+	// MAGIC FUNCTIONS
 	public function __set($name, $value) {
 		if (in_array($name, static::$columns) &&
 		   !in_array($name, static::$columns_readonly) &&
@@ -318,6 +404,11 @@ class MVCEloquentModel {
 	}
 	
 	/**
+	 * Copy current instance without pending changes
+	 *
+	 * Creates a copy of the current instance without copying the pending changes
+	 * allowing for further modification without the worry that ->save() will upload
+	 * changes that are stagnant or no longer needed
 	 * @return static
 	 */
 	public function Copy() {
@@ -325,6 +416,7 @@ class MVCEloquentModel {
 		return $new->get();
 	}
 	
+	// Setup column querying
 	protected static function implodeAllColumns($readonly = true) {
 		$c  = self::implodeColumns(static::$columns);
 		$rc = $readonly ? self::implodeColumns(static::$columns_readonly) : '';

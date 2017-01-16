@@ -10,11 +10,11 @@ namespace lib\CMVC\mvc\Eloquent;
 
 
 class Base {
-	public $Valid                   = false;
 	public $Count                   = -1;
 	
 	public function isCollection()  { return true; }
 	public function isEmpty()       { return $this->Count == -1; }
+	public function containsItems() { return $this->Count >= 0; }
 	
 	public function getCount() 		{ return $this->Count; }
 	

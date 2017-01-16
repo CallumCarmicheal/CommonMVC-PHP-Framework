@@ -11,7 +11,7 @@
 		/**
 		 * @var bool
 		 */
-		protected $Enabled;
+		protected $WebAccess;
 
 		/** @var string */
 		protected $ControllerName;
@@ -23,5 +23,5 @@
 		public function getControllerName() { return $this->ControllerName; }
 		public function getContext() 		{ return $this->Context; }
 
-		public function isEnabled() 		{ return $this->Enabled; }
+		public function hasWebAccess() 		{ return $this->WebAccess; }
 	}

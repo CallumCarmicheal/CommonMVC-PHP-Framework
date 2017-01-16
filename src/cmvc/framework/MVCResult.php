@@ -44,7 +44,6 @@ namespace CommonMVC\MVC;
 				return "Redirect";
 			return "";
 		}
-
 		public static function E_Redirect_ToString($redirect) {
 			if ($redirect == self::$E_REDIRECT_EXTERNAL)
 				 return "External";
@@ -56,7 +55,7 @@ namespace CommonMVC\MVC;
 		///			    	MVCResult Defaults
 		///  ------------------------------------------------
 		///
-
+		
 		/**
 		 * Redirect user to another location
 		 * @param $location string Location to redirect to
@@ -200,7 +199,26 @@ namespace CommonMVC\MVC;
 		}
 		
 		
-
+		
+		///			    Custom MVC Result presets
+		///  ------------------------------------------------
+		///   This is where you would add your own presets
+		///   used to save time when making your on custom
+		///   responses such as implementing  BladeOne for
+		///   example  which  is  Laravel's view framework
+		///
+		///   You are not required to only generate responses
+		///   in this file, although its easier to place them
+		///      all within this file to see every possible
+		///             response through linting
+		
+		
+		
+		
+		
+		
+		
+		
 		///			    	MVCResult Object
 		///  ------------------------------------------------
 		///

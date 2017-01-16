@@ -27,18 +27,19 @@ namespace CommonMVC\MVC;
 				return false;
 
 			// Create context
-			// $Namespace 	$Controller	$Action 	  $FileName
-			// $Folder  	$Path 		$VirtualPath
-
+			// $Namespace 	$Controller	 $Action 	  $FileName
+			// $Folder  	$Path 		 $VirtualPath
+			
+			// Manually create the context
 			$ctx = new MVCContext(
-				$cNsp,
-				$controllerName,
-				"",
-
-				$CFile,
-				$cDir,
-				$Path,
-				""
+				$cNsp,              // Namespace
+				$controllerName,    // Controller name
+				"",                 // default = index
+					
+				$CFile,             // File's Name
+				$cDir,              // Files Directory
+				$Path,              // Full Path
+				""                  // Virtual Path
 			);
 
 			return $ctx;
@@ -50,6 +51,14 @@ namespace CommonMVC\MVC;
 		 */
 		public static function MVC_VPathController() {
 			return self::MVC_GetController("VPath");
+		}
+		
+		/**
+		 * Get the mvc database controller
+		 * @return MVCContext
+		 */
+		public static function MVC_DatabaseController() {
+			return self::MVC_GetController("Database");
 		}
 
 		/**

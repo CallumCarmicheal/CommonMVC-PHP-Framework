@@ -17,7 +17,7 @@ use CommonMVC\MVC\MVCResult;
  */
 interface MVCEncryption {
 	/**
-	 * Preprocesses content and encrypts it
+	 * Encrypts content
 	 * @param $content mixed
 	 * @return mixed
 	 */

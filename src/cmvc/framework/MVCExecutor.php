@@ -170,28 +170,11 @@ class MVCExecutor {
 		} else {
 
 			/* Check if the controller's settings */ {
-				// No longer needed because of the preprocessing.
-				/*/ Check if auth is required
-				$loggedIn = AuthHandler::isLoggedIn();
-				if ($Controller->getAuthRequired() && !$loggedIn) {
-					// Redirect controller to the default login controller
-
-					// 1. Setup the context
-					$aCtx = MVCHelper::ResolveVirtualPath(
-						CMVC_PRJ_DIRECTORY_CONTROLLERS,
-						CMVC_PRJ_NAMESPACE_CONTROLLERS,
-						CMVC_PRJ_VIRTPATH_REDIRECT_NOAUTH
-					);
-
-					// 2. Run the context
-					return self::ExecuteControllerContext($aCtx);
-				} */
-
 				// Check if the controller is disabled
-				if (!$Controller->isEnabled()) {
+				if (!$Controller->hasWebAccess()) {
 					$aCtx  = MVCGlobalControllers::MVC_AccessController();
 					$aCtrl = self::GetControllerFromContext($aCtx);
-					return self::runErrorController($Context, $aCtrl, "ControllerDisabled");
+					return self::runErrorController($Context, $aCtrl, "WebAccessDisabled");
 				}
 			}
 

@@ -2,28 +2,44 @@
 
 namespace App\Controllers\Mvc;
 
+use CommonMVC\Classes\Storage\Database;
 use CommonMVC\MVC\MVCController;
 use CommonMVC\MVC\MVCResult;
 
 class DatabaseController extends MVCController {
 	
 	public function __construct() {
-		$this->ControllerName = "Mvc/Errors/Database";
-		$this->Enabled = false; // Disabled any url calls
+		$this->ControllerName = "Mvc/Database";
+		$this->WebAccess = false; // Disabled any url calls
 	}
 	
-	public function FailedConnection() {
+	/**
+	 * Failed to connect to the database
+	 *
+	 * NOTE: You will have to call this through
+	 *       Database::ThrowDatabaseFailedQuery($ex)
+	 *       to manually throw this exception
+	 *
+	 * @param \PDOException|null $exception
+	 * @return MVCResult
+	 */
+	public function FailedConnection($exception = null) {
 		return MVCResult::HtmlContent('Failed to connect to the database!');
 	}
 	
 	/**
-	 * @param $exception \Exception
+	 * Failed to query the database
+	 *
+	 * NOTE: You will have to call this through
+	 *       Database::ThrowDatabaseOfflineException($ex)
+	 *       to manually throw this exception
+	 * @param \PDOException|null $exception
 	 * @return MVCResult
 	 */
 	public function FailedQuery($exception) {
 		return MVCResult::HtmlContent('Failed to run query:\n Message: '. $exception->getMessage().
 			"\n File: ". $exception->getFile(). ":".  $exception->getLine(). " | ". $exception->getCode()
 		);
-	
+		
 	}
 }

@@ -13,12 +13,15 @@ use lib\CMVC\mvc\MVCEloquentModel;
 
 class Test extends MVCEloquentModel {
 	// Model settings
-	protected static $table             = "users";
-	protected static $useTimeColumns    = false;
+	protected static $table             = "test";
+	protected static $useTimeColumns    = true;
 	
 	// Database columns
 	protected static $columns_id        = "id";
 	protected static $columns           = ['value'];
+	
+	// This is columns that cannot be modified but can be
+	// viewed when called.
 	protected static $columns_readonly  = [''];
 	
 	public static function findByValue($value) {

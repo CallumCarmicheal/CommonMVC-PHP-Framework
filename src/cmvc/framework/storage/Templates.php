@@ -8,6 +8,18 @@
 namespace CommonMVC\Classes\Storage;
 
 
+/**
+ * Templates is a simple replace range implementation
+ * where values of in the style of {{VAR.[]} where []
+ * is the variable are replaced. Its simple and light
+ * weight as can be.
+ *
+ * USE ONLY AS A LAST RESORT, there are a million better
+ * solutions our there.
+ *
+ * Class Templates
+ * @package CommonMVC\Classes\Storage
+ */
 class Templates {
 
 	/**
