@@ -74,7 +74,8 @@ $test->save();
 
 Finding a column with the value: 
 ```php
-
+$results = Test::findByValue('Hello World!');
+// or
 $results = Test::find( ['value', '=', 'Hello World!'] );
 
 if ($results->isEmpty()) {
