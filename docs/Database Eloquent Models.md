@@ -56,7 +56,7 @@ Purpose: Limit the output of the query to a size. This ensures that there is not
 
 
 # Example with files
-----
+
 SQL: 
 ```sql
 CREATE TABLE `test` (
