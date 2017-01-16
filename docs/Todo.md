@@ -1,3 +1,8 @@
+# Key
+[X] = Done
+[-] = Ongoing
+[ ] = Not Done 
+
 # PHP Version Support
 
 These are the current supported versions of PHP:
@@ -12,7 +17,6 @@ These are the current supported versions of PHP:
 - [X] Simpler configuration system
 - [X] Database configuration option
 - [X] Optimization
-- [ ] Implement a custom View system or implement BladeView
 
 # Controller
 
@@ -24,8 +28,8 @@ These are the current supported versions of PHP:
 - [X] Eloquent models
 
 # Documentation
-- [ ] Write basic documentation
+- [X] Write basic documentation
 - [ ] Write extensive documentation
 - [X] Write somewhat basic comments
-- [ ] Write extensive comments
-- [ ] Write examples
+- [X] Write extensive comments
+- [-] Write examples

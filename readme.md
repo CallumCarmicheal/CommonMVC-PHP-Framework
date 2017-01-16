@@ -29,11 +29,11 @@ There will be no routes but that will be replaced with local file structure:
 
 	Structure:
 		Request: $path/$controller/$action
-		File: {MVC_PROJECT_NAMESPACE}/controllers/$path/$controller &+ Controller.php
-		Namespace: {MVC_PROJECT_NAMESPACE}\Controllers\$path
+		File: {CMVC_PRJ_DIRECTORY_CONTROLLERS}/$path/$controller &+ Controller.php
+		Namespace: {CMVC_PRJ_NAMESPACE_CONTROLLERS}\$path
 		Class: $controller &+ Controller.php
 		Method: $action
-		Returns: MVCResult
+		Returns: MVCResult|string
 
 
 	Example: 
@@ -42,8 +42,8 @@ There will be no routes but that will be replaced with local file structure:
 		Namespace: TestProjectNamespace\Controllers\Home
 		Class: HelloController
 		Method: World
-		Returns: MVCResult
+		Returns: MVCResult|string
 
-# Please Note(s)
+# Please Note
 The controller names are case-insensitive so you're controller can be named however you like
-as long as the controller is spelt correctly.
+as long as the controller is spelt correctly!
