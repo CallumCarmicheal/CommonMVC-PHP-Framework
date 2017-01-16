@@ -15,7 +15,7 @@ These are the current supported versions of PHP:
 
 # Controller
 
-- [X] Custom defined variable routes EG: $root
+- [X] Custom defined variable routes EG: $root (DISABLED BY DEFAULT)
 - [ ] Route controller with variables
 
 # Database
