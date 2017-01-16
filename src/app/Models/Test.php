@@ -1,6 +1,5 @@
 <?php
 /**
- * Proj: GH TMP
  * User: CallumCarmicheal
  * Date: 02/01/2017
  * Time: 03:38

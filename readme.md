@@ -6,14 +6,14 @@ the folder locations, except that it is a simple implementation.
 
 # Getting Started
 1. Clone or Download the the github repo
-2. Open the file "mvc_settings.php"
-3. Edit the settings to specify your current project
-4. Create a folder as your project folder call it what you had set for CMVC_PRJ_DIRECTORY
-5. Open the folder and create another folder call it what you had set for CMVC_PRJ_DIRECTORY_CONTROLLERS
-
-That is your framework setup
-- Please take a look at the docs (TODO-ish)
-- Please take a look at the examples (TODO)
+2. Look through the config folder to edit the framework to your specification
+3. Open the website
+4. Move around folders if you want
+5. Hack away at the inner functions 
+6. Make it your own
+ 
+The framework is mostly documentated inside the code rather than a dedicated
+website (YET). 
 
 # Storing files
 The folder is in a virtual path state so you need to set a files/assets directory
@@ -22,8 +22,7 @@ needs.
 
 Everything else is taken care for you.
 
-# Todo
-Support for multiple projects?
+To access these files correctly please define CMVC_ROOT_URL with a path to your project and then use the global \url($path) function to get absolute paths to your files.
 
 # Routes and Controllers
 There will be no routes but that will be replaced with local file structure:
