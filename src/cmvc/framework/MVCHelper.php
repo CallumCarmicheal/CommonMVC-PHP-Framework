@@ -51,7 +51,7 @@ namespace CommonMVC\MVC;
 		public static function isNullOrEmptyString($question){
 			return (!isset($question) || trim($question)==='');
 		}
-
+		
 		/**
 		 * Get the path of a MVC Controller using the Virtual Path
 		 * @param $ControllerRootDir string The root directory of the controllers
@@ -64,12 +64,13 @@ namespace CommonMVC\MVC;
 			
 			// Debug virtual paths
 			$DEBUG_VIRTUALPATH = false;
+			
 			if ($DEBUG_VIRTUALPATH) {
-				ob_clean();
+				ob_get_clean();
 				echo "<pre>VirtualPath Debugging \n---------------------\n\n";
 			}
 			
-			/* Clean Virtual Path */ {
+			/* Clean the Virtual Path */ {
 				// Disabled because it would not be needed,
 				// (IN THE EXAMPLE CMVC_PRJ_VIRTPATH_ROOT_SPECIFIER = $)
 				// the idea behind this was to have in javascript a
@@ -109,6 +110,8 @@ namespace CommonMVC\MVC;
 			$Namespace 	= $ControllerNamespace;
 			$Controller = "";
 			$Action		= "";
+			
+			$VPath      = "";
 			$Arr 		= explode("/", $VirtualPath);
 			$ArrLen 	= count($Arr)-1;
 			
@@ -128,16 +131,38 @@ namespace CommonMVC\MVC;
 			}
 			
 			
-			// Just a controller
+			// Just a controller or action
+			// CONTROLLER  	if ENDSWITH ("/")
+			// ELSE    		ACTION
 			else if ($ArrLen == 0) {
-				// [0] = Controller
-				$Controller = $Arr[0];
-				$Action = "Index";
 				
-				if (empty($Controller))
+				if (self::endsWith($VirtualPathRaw, '/')) {
+					// [0]      = Controller
+					// "Index"  = Action
+					
+					$Controller = $Arr[0];
+					$Action     = "Index";
+					
+					if (empty($Controller))
+						$Controller = "Index";
+					
+					if ($DEBUG_VIRTUALPATH) echo "if ArrLen == 0 ... (VPR) ENDS WITH / \n";
+				}
+				
+				else {
+					
+					// "Index"  = Controller
+					// [0]      = Action
+					
 					$Controller = "Index";
-				
-				if ($DEBUG_VIRTUALPATH) echo "if ArrLen == 0 \n";
+					$Action     = $Arr[0];
+					
+					if (empty($Action))
+						$Action = "Index";
+					
+					if ($DEBUG_VIRTUALPATH) echo "if ArrLen == 0 ... ELSE \n";
+				}
+
 			}
 
 			// Path, Controller and Action
@@ -166,6 +191,7 @@ namespace CommonMVC\MVC;
 					// Append our current namespace with forward slashes
 					// 	to the folder location
 					$Path .= '/'. $tmpNamespace;
+					$VPath = $tmpNamespace;
 					
 					// Replace all forward slashes with backslashes
 					$tmpNamespace = str_replace('/', '\\', $tmpNamespace);
@@ -202,6 +228,7 @@ namespace CommonMVC\MVC;
 					// Append our current namespace with forward slashes
 					// 	to the folder location
 					$Path .= '/'. $tmpNamespace;
+					$VPath = $tmpNamespace;
 	
 					// Replace all forward slashes with backslashes
 					$tmpNamespace = str_replace('/', '\\', $tmpNamespace);
@@ -221,18 +248,43 @@ namespace CommonMVC\MVC;
 			// or Path and Controller
 			else {
 				// Check if the path is a index call
-				// EG: Some/Controller/
+				// EG: Some/Controller/ {INDEX ASSUMED}
 				// the trailing slash assumes / = INDEX
+				//
+				// or
+				// Controller/ {INDEX ASSUMED}
 				if (self::endsWith($VirtualPathRaw, '/')) {
-					// [0]     = Path
-					// [1]     = Controller
-					// "Index" = Action
 					
-					$Namespace .= '\\'. $Arr[0];
-					$Controller = $Arr[1];
-					$Action = "Index";
+					// /Controller/ {INDEX ASSUMED}
+					if (empty($Arg[1])) {
+						
+						// [0]     = Controller
+						// "Index" = Action
+						
+						$Controller = $Arr[0];
+						$Action = "Index";
+						
+						if ($DEBUG_VIRTUALPATH) echo "ELSE... if endsWith / ... ARG[1] == EMPTY";
+					}
 					
-					if ($DEBUG_VIRTUALPATH) echo "ELSE... if endsWith /";
+					// Else
+					// Some/Controller/ {INDEX ASSUMED}
+					else {
+						// [0]     = Path
+						// [1]     = Controller
+						// "Index" = Action
+						
+						var_dump ($Arr);
+						exit;
+						
+						$VPath = $Arr[0];
+						$Namespace .= '\\'. $Arr[0];
+						$Controller = $Arr[1];
+						$Action = "Index";
+						
+						if ($DEBUG_VIRTUALPATH) echo "ELSE... if endsWith / ... ELSE";
+					}
+					
 				}
 				
 				// Gets a usual web call with just a controller
@@ -258,11 +310,12 @@ namespace CommonMVC\MVC;
 				$Namespace,
 				$Controller,
 				$Action,
-
+				
 				$Controller. "Controller.php",				// $FileName
 				$Path, 										// $Folder
 				$Path. "/". $Controller. "Controller.php",	// $Path
-				$VirtualPath
+				$VirtualPath,
+				$VPath
 			);
 			
 			// Dump our context to debug
@@ -270,8 +323,8 @@ namespace CommonMVC\MVC;
 			// would require debugging have built in ToString()
 			// methods to make debugging exceptionally easy.
 			if ($DEBUG_VIRTUALPATH)
-				die ("Context: ". $info);
-
+				die ("\nContext: ". $info);
+			
 			return $info;
 		}
 

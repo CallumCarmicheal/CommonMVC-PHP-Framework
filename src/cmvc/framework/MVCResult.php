@@ -32,6 +32,7 @@ namespace CommonMVC\MVC;
 		// -----------------------------------------------
 		public static $E_REDIRECT_EXTERNAL   		=   0;
 		public static $E_REDIRECT_MVC				=   1;
+		public static $E_REDIRECT_AUTOMATIC         =   2;
 		// -----------------------------------------------
 		public static function E_Result_ToString($result) {
 			if ($result == self::$E_RESULT_SUCCESS)
@@ -63,9 +64,9 @@ namespace CommonMVC\MVC;
 		 * @param $httpclean int Clean http output before setting headers
 		 * @return MVCResult Automatically generated mvc result
 		 */
-		public static function Redirect($location, $type, $httpclean = 3) {
+		public static function Redirect($location, $type = 2, $httpclean = 1) {
 			$mvc = new MVCResult();
-
+			
 			// Redirect, type
 			// Clean content headers
 			$mvc->setHttpRedirect($location);

@@ -24,16 +24,28 @@ class MVCExecutor {
 	private function HandleRedirect($mvc, $ctx) {
 		// Clear the output buffer
 		ob_get_clean();
-		$url = $mvc->getHttpRedirect();
-
+		$url  = $mvc->getHttpRedirect();
+		$type = $mvc->getHttpRedirectT();
+		
+		// Determine path type
+		if ($type == MVCResult::$E_REDIRECT_AUTOMATIC) {
+			if (MVCHelper::startsWith($url, 'https://') || MVCHelper::startsWith($url, 'http://'))
+				 $type = MVCResult::$E_REDIRECT_EXTERNAL;
+			else $type = MVCResult::$E_REDIRECT_MVC;
+		}
+		
 		// Check if the redirect is a simple redirect to url
-		if($mvc->getHttpRedirectT() == MVCResult::$E_REDIRECT_EXTERNAL) {
+		if($type == MVCResult::$E_REDIRECT_EXTERNAL) {
 			// This is just a simple url redirect
-			header("location: $url");
+			//header("location: $url");
 			die("Redirecting to $url");
 		}
-
-		// The redirect is to a MVC Controller
+		
+		
+		/*/
+		OLD IDEA, did not quite work.
+		
+		The redirect is to a MVC Controller
 		// 1. Get the SERV->RedirectURL
 		// 2. Remove the MVC Virtual Path from the URI
 		// 3. That is the base url
@@ -42,7 +54,11 @@ class MVCExecutor {
 		$surl 		= $_SERVER['REDIRECT_URL'];
 		$baseurl 	= str_replace($ctx->getVirtualPath(), "", $surl);
 		$url 		= $baseurl. $mvc->getHttpRedirect();
-
+		
+		*/
+		
+		$url = CMVC_ROOT_URL. ltrim($url, '/');
+		
 		// Set the location header
 		header("location: $url");
 		die("Redirecting to $url"); exit;
@@ -107,6 +123,27 @@ class MVCExecutor {
 	 * @return int Error Code
 	 */
 	public function ExecuteControllerResult($controller, $res, $ctx) {
+		// Check if the result is a viewable type such as text, int.
+		if (is_string($res) || is_int($res)) {
+			// Clear the output
+			ob_get_clean();
+			
+			// Echo the string
+			// then exit
+			
+			if (is_int($res) && $res == 0) $res = "0";
+			die ($res);
+		} else if (is_null($res)) {
+			// The result is null or not returned
+			// we cannot do anything, it was maybe a echo
+			//
+			// For the framework we have 2 choices,
+			// let it slide and just exit or 2 clean and exit.
+			// for now im going to let it slide and let the developers
+			// choose later in a option.
+			exit;
+		}
+		
 		// MVC Result Type
 		$mvcType = $res->getPageResult();
 
