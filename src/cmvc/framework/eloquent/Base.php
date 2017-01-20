@@ -10,7 +10,7 @@ namespace lib\CMVC\mvc\Eloquent;
 
 
 class Base {
-	public $Count                   = -1;
+	protected $Count                   = -1;
 	
 	public function isCollection()  { return true; }
 	public function isEmpty()       { return $this->Count == -1; }

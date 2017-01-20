@@ -99,6 +99,12 @@ class MVCExecutor {
 	 * @return int Error Code
 	 */
 	private function HandleSuccess($controller, $mvc, $ctx) {
+		/*
+		echo "<pre>";
+		var_dump ($mvc);
+		echo "\n\nSUCCESS";
+		exit; //*/
+		
 		// First check if we are required to clean the output and headers
 		if ($mvc->getHttpClean() == MVCResult::$E_HTTP_CLEAN_CONTENT)
 			ob_get_clean();
@@ -111,6 +117,11 @@ class MVCExecutor {
 			die($mvc->getPageContent());
 		} else {
 			// TODO: HANDLE HTTP RESULTS WHICH ARE NOT OK/SUCCESS
+			
+			if ($mvc->getHttpResult() == MVCResult::$E_HTTP_RESULT_NOTFOUND) {
+				header("HTTP/1.0 404 Not Found");
+				die($mvc->getPageContent());
+			}
 		}
 
 	return 0; }
@@ -215,8 +226,6 @@ class MVCExecutor {
 				}
 			}
 
-
-
 			// Set the Controller's context
 			$Controller->setContext($Context);
 			$action = $Context->getAction();
@@ -279,7 +288,7 @@ class MVCExecutor {
 
 		$eCtx = $eCtrl->getContext();
 		$eCtrl->setContext($ctx);
-
+		
 		/**
 		 * @var MVCResult
 		 */

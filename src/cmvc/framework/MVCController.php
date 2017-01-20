@@ -11,10 +11,10 @@
 		/**
 		 * @var bool
 		 */
-		protected $WebAccess;
+		protected $WebAccess = false;
 
 		/** @var string */
-		protected $ControllerName;
+		protected $ControllerName = "UNDEFINED";
 
 		/** @var MVCContext */
 		protected $Context;

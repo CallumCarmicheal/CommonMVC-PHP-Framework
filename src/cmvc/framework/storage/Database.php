@@ -143,4 +143,87 @@ class Database {
 			return $conn;
 		}
 	}
+	
+	/**
+	 * PDO Fetch
+	 * @param $sql
+	 * @param array $params
+	 * @param string $db
+	 * @return mixed
+	 */
+	public static function Fetch($sql, $params = array(), $db = "") {
+		$db = self::GetPDO($db);
+		try {
+			$result = $db->prepare($sql);
+			$result->execute($params);
+			$rowCol = $result->fetch();
+			return $rowCol;
+		} catch(\PDOException $ex) {
+			self::ThrowDatabaseFailedQuery($ex);
+		}
+	}
+	
+	/**
+	 * PDO FetchAll
+	 * @param $sql
+	 * @param $rowCount
+	 * @param array $params
+	 * @param string $db
+	 * @return array
+	 */
+	public static function FetchAll($sql, &$rowCount, $params = array(), $db = "") {
+		$db = self::GetPDO($db);
+		try {
+			$result = $db->prepare($sql);
+			$result->execute($params);
+			$rowCount = $result->rowCount();
+			$rowCol = $result->fetchAll();
+			return $rowCol;
+		} catch(\PDOException $ex) {
+			self::ThrowDatabaseFailedQuery($ex);
+		}
+	}
+	
+	/**
+	 * PDO Fetch Column
+	 * @param $sql
+	 * @param $col
+	 * @param array $params
+	 * @param string $db
+	 * @return string
+	 */
+	public static function FetchColumn($sql, $col, $params = array(), $db = "") {
+		$db = self::GetPDO($db);
+		
+		try {
+			$result = $db->prepare($sql);
+			$result->execute($params);
+			$rowCol = $result->fetchColumn($col);
+			return $rowCol;
+		} catch(\PDOException $ex) {
+			self::ThrowDatabaseFailedQuery($ex);
+		}
+	}
+	
+	/**
+	 * PDO Execute
+	 * @param $sql
+	 * @param $error
+	 * @param array $params
+	 * @param string $db
+	 * @return string
+	 */
+	public static function ExecuteSQL($sql, &$error, $params = array(), $db = "") {
+		$db = self::GetPDO($db);
+		
+		try {
+			$result = $db->prepare($sql);
+			$result->execute($params);
+			$error = false;
+			return "";
+		} catch(\PDOException $ex) {
+			self::ThrowDatabaseFailedQuery($ex);
+		}
+	}
+
 }

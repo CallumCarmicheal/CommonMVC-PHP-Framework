@@ -57,7 +57,7 @@ class MVCEloquentModel {
 		$arg = [];
 		
 		if ($this->exists)
-			 $this->generateUpdate($all, $sql, $arg);
+			$this->generateUpdate($all, $sql, $arg);
 		else $this->generateInsert($sql, $arg);
 		
 		/*/
@@ -97,7 +97,7 @@ class MVCEloquentModel {
 			}
 			
 			$vKey       = ":V". $colCtr;
-			$strCols   .= "'". $col. "'";
+			$strCols   .= "`". $col. "`";
 			$strVals   .= $vKey;
 			$arg[$vKey] = $val;
 			
@@ -117,14 +117,14 @@ class MVCEloquentModel {
 		$valCtr      = 0;
 		
 		if ($all)
-			 $columns = static::$columns;
+			$columns = static::$columns;
 		else $columns = $this->columns_changed;
 		
 		foreach ($columns as $col) {
 			if ($valCtr != 0)
 				$valueClause .= ", ";
 			
-			$valueClause .= "'$col'=:$col";
+			$valueClause .= "`$col`=:$col";
 			$arg[":$col"] = $this->columns_values[$col];
 			
 			$valCtr++;
@@ -160,8 +160,8 @@ class MVCEloquentModel {
 	 * @param bool $case_sensitive
 	 * @return bool|DatabaseCollection|DatabaseItem
 	 */
-	public static function findByID($id, $case_sensitive = true) {
-		return self::find($id, $case_sensitive, 1);
+	public static function findByID($id, $case_sensitive = false) {
+		return self::find(['id', $id], $case_sensitive, 1);
 	}
 	
 	/**
@@ -269,9 +269,14 @@ class MVCEloquentModel {
 					
 					//                    col{glue}vWhere
 					//                    name=:Val0
-					if ($case_sensitive)
-						 $whereClause .= "$col $glue BINARY $vWhere";
-					else $whereClause .= "$col $glue $vWhere";
+					if ($case_sensitive) {
+						if (!is_int($value))
+							 $whereClause .= "$col $glue BINARY $vWhere";
+						// BINARY DOES NOT WORK ON INT
+						else $whereClause .= "$col $glue $vWhere";
+					} else {
+						$whereClause .= "$col $glue $vWhere";
+					}
 					
 					$binds[$vWhere] = $value;
 					$vInt++;
@@ -288,8 +293,8 @@ class MVCEloquentModel {
 				$val = $query[2];
 				
 				$columns  = self::implodeAllColumns();
-				$sql      = "SELECT $columns FROM $table WHERE $col $glu ". ($case_sensitive ? "BINARY" : ""). " :val LIMIT $maxSize;";
-				$binds    = [':val' => $val];
+				$sql      = "SELECT $columns FROM $table WHERE $col $glu ". ($case_sensitive ? "BINARY " : ""). ":V0_1 LIMIT $maxSize;";
+				$binds    = [':V0_1' => $val];
 			} else if (count($query) == 2) {
 				// [0] = column
 				// [1] = value
@@ -297,17 +302,21 @@ class MVCEloquentModel {
 				
 				$col = $query[0];
 				$glu = '=';
-				$val = $query[2];
+				$val = $query[1];
 				
 				$columns  = self::implodeAllColumns();
-				$sql      = "SELECT $columns FROM $table WHERE $col $glu ". ($case_sensitive ? "BINARY" : ""). " :val LIMIT $maxSize;";
-			} else {
-				return false;
-			}
-		} else {
+				$sql      = "SELECT $columns FROM `$table` WHERE $col $glu ". ($case_sensitive ? "BINARY " : ""). ":V0_2 LIMIT $maxSize;";
+				$binds    = [':V0_2' => $val];
+			} else { return false; }
+		}
+		
+		// $query = ID
+		else {
 			// ID = Value
+			
+			$col_id = static::$columns_id;
 			$columns = self::implodeAllColumns();
-			$sql   = "SELECT $columns FROM $table WHERE id = :id LIMIT $maxSize;";
+			$sql   = "SELECT $columns FROM `$table` WHERE $col_id = :id LIMIT $maxSize;";
 			$binds = [':id' => $query];
 		}
 		
@@ -322,12 +331,18 @@ class MVCEloquentModel {
 			//*/
 		}
 		
-		$rowCount = 0;
 		try {
+			/*
+			if (is_array($binds)) {
+				echo "ARRAY\n";
+				var_dump($binds);
+				exit;
+			} */
+			
 			$result = $PDO->prepare($sql);
 			$result->execute($binds);
 			$rowCount = $result->rowCount();
-		} catch (\Exception $ex) {
+		} catch (\PDOException $ex) {
 			Database::ThrowDatabaseFailedQuery($ex);
 		}
 		
@@ -384,8 +399,8 @@ class MVCEloquentModel {
 	// MAGIC FUNCTIONS
 	public function __set($name, $value) {
 		if (in_array($name, static::$columns) &&
-		   !in_array($name, static::$columns_readonly) &&
-		   ($name != static::$columns_id)) {
+			!in_array($name, static::$columns_readonly) &&
+			($name != static::$columns_id)) {
 			
 			if (!in_array($name, $this->columns_changed))
 				array_push($this->columns_changed, $name);
@@ -424,7 +439,7 @@ class MVCEloquentModel {
 		
 		if (static::$useTimeColumns)
 			$dt = " ". static::$columns_Time_Created.
-				  ", ". static::$columns_Time_Edited;
+				", ". static::$columns_Time_Edited;
 		
 		
 		
@@ -435,7 +450,7 @@ class MVCEloquentModel {
 		else if (!empty($dt))            $res = $dt;
 		
 		if (empty($res))
-			 $res = static::$columns_id;
+			$res = static::$columns_id;
 		else $res = static::$columns_id. ", ". $res;
 		
 		return $res;

@@ -28,7 +28,7 @@ class AccessController extends MVCController {
 	 * @param $context MVCContext
 	 * @return MVCResult|string
 	 */
-	public function WebAccessDisabled($context) {
+	public function WebAccessDisabled() {
 		return MVCResult::HtmlContent("Controller ('". $this->getContext()->getVirtualPath(). "') has disabled web calling.");
 	}
 }

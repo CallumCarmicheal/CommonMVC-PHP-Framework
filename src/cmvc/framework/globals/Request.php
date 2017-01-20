@@ -72,4 +72,23 @@ class Request {
 	
 	// </editor-fold>
 	
+	/**
+	 * Checks if the request is of type
+	 *
+	 * post, p = $_POST
+	 * get,  g = $_GET
+	 * @param $type
+	 * @return bool
+	 */
+	public static function isType($type) {
+		$t = mb_strtolower($type);
+		$tIsPost = ($t == 'post' || $t == 'p');
+		$tIsGet  = ($t == 'get'  || $t == 'g');
+			
+		if ($_SERVER['REQUEST_METHOD'] === 'POST' && $tIsPost)
+			return true;
+		else if ($_SERVER['REQUEST_METHOD'] === 'GET' && $tIsGet)
+			return true;
+		return false;
+	}
 }
