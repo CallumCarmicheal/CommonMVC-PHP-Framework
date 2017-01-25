@@ -3,7 +3,7 @@
 class Request {
 	
 	// <editor-fold desc="IP ADDRESS HANDLING">
-	static function ip_in_range($ip, $range) {
+	private static function ip_in_range($ip, $range) {
 		if (strpos($range, '/') == false)
 			$range .= '/32';
 		
@@ -16,7 +16,7 @@ class Request {
 		return (($ip_decimal & $netmask_decimal) == ($range_decimal & $netmask_decimal));
 	}
 	
-	static function _cloudflare_CheckIP($ip) {
+	private static function _cloudflare_CheckIP($ip) {
 		$cf_ips = array(
 			'199.27.128.0/21',
 			'173.245.48.0/20',
@@ -41,7 +41,7 @@ class Request {
 		} return $is_cf_ip;
 	}
 	
-	static function _cloudflare_Requests_Check() {
+	private static function _cloudflare_Requests_Check() {
 		$flag = true;
 		
 		if(!isset($_SERVER['HTTP_CF_CONNECTING_IP']))   $flag = false;
@@ -90,5 +90,19 @@ class Request {
 		else if ($_SERVER['REQUEST_METHOD'] === 'GET' && $tIsGet)
 			return true;
 		return false;
+	}
+	
+	/**
+	 * Returns the
+	 * @param $short bool States if to return the long or short request type
+	 * @return string
+	 */
+	public static function getType($short = false) {
+		if ($_SERVER['REQUEST_METHOD'] === 'POST' && $short)
+			return 'p';
+		else if ($_SERVER['REQUEST_METHOD'] === 'GET' && $short)
+			return 'g';
+		
+		return mb_strtolower($_SERVER['REQUEST_METHOD']);
 	}
 }

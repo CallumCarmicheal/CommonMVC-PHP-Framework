@@ -31,4 +31,14 @@ class AccessController extends MVCController {
 	public function WebAccessDisabled() {
 		return MVCResult::HtmlContent("Controller ('". $this->getContext()->getVirtualPath(). "') has disabled web calling.");
 	}
+	
+	/**
+	 * Executed when a user accesses a action/function in a
+	 * controller which is inaccessible this meaning that
+	 * the function cannot be called, such as private function,
+	 * protected etc.
+	 */
+	public function CannotCallAction() {
+		return MVCResult::HtmlContent("The action for the virtual path ('". $this->getContext()->getVirtualPath(). "') is private or uncallable.");
+	}
 }

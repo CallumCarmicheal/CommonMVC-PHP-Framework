@@ -153,6 +153,13 @@ class MVCExecutor {
 			// for now im going to let it slide and let the developers
 			// choose later in a option.
 			exit;
+		} else if (is_array($res)) {
+			// Clear the output
+			ob_get_clean();
+			
+			// Return a json equiv for the
+			// array.
+			return json_encode($res);
 		}
 		
 		// MVC Result Type
@@ -228,7 +235,15 @@ class MVCExecutor {
 
 			// Set the Controller's context
 			$Controller->setContext($Context);
-			$action = $Context->getAction();
+			$action   = $Context->getAction();
+			
+			// Check if the method is private or
+			// callable at all.
+			if (!is_callable([$Controller, $action])) {
+				$aCtx  = MVCGlobalControllers::MVC_AccessController();
+				$aCtrl = self::GetControllerFromContext($aCtx);
+				return self::runErrorController($Context, $aCtrl, "CannotCallAction");
+			}
 			
 			/**
 			 * @var MVCResult

@@ -12,11 +12,11 @@ namespace CommonMVC\MVC;
 class MVCHelper {
 	
 	public static function alterSpacesToDashes($string, $convertToLower = false) {
-		//Lower case everything
+		// Lower case everything
 		if($convertToLower) $string = strtolower($string);
 		
-		//Convert whitespaces and underscore to dash
-		$string = preg_replace("/[\s_]/", "-", $string);
+		// Convert whitespaces to underscores
+		$string = preg_replace("/[\s]/", "_", $string);
 		return $string;
 	}
 	

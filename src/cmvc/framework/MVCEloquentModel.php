@@ -11,6 +11,7 @@ namespace lib\CMVC\mvc;
 use CommonMVC\Classes\Storage\Database;
 use lib\CMVC\mvc\Eloquent\DatabaseCollection;
 use lib\CMVC\mvc\Eloquent\DatabaseItem;
+use lib\CMVC\mvc\Eloquent\SQLRAW;
 
 class MVCEloquentModel {
 	
@@ -57,13 +58,14 @@ class MVCEloquentModel {
 		$arg = [];
 		
 		if ($this->exists)
-			$this->generateUpdate($all, $sql, $arg);
+			 $this->generateUpdate($all, $sql, $arg);
 		else $this->generateInsert($sql, $arg);
 		
 		/*/
-			echo "\n\n\nSQL: $sql \nARG: ";
+			echo "<pre>SQL: $sql \nARG: ";
 			print_r ($arg);
 			echo "\n";
+			exit;
 		//*/
 		
 		try {
@@ -75,7 +77,10 @@ class MVCEloquentModel {
 		
 		// Reset changed items
 		$this->columns_changed = [];
+		$this->columns_values[static::$columns_id] = $PDO->lastInsertId();
 		$this->exists = true;
+		
+		// TODO: Update values from db
 	}
 	
 	private function generateInsert(&$sql, &$arg) {
@@ -98,8 +103,13 @@ class MVCEloquentModel {
 			
 			$vKey       = ":V". $colCtr;
 			$strCols   .= "`". $col. "`";
-			$strVals   .= $vKey;
-			$arg[$vKey] = $val;
+			
+			if (is_a($val, SQLRAW::class)) {
+				$strVals .= $val;
+			} else {
+				$strVals   .= $vKey;
+				$arg[$vKey] = $val;
+			}
 			
 			$colCtr++;
 		}
@@ -117,16 +127,24 @@ class MVCEloquentModel {
 		$valCtr      = 0;
 		
 		if ($all)
-			$columns = static::$columns;
+			 $columns = static::$columns;
 		else $columns = $this->columns_changed;
 		
 		foreach ($columns as $col) {
 			if ($valCtr != 0)
 				$valueClause .= ", ";
 			
-			$valueClause .= "`$col`=:$col";
-			$arg[":$col"] = $this->columns_values[$col];
+			$clause = "`$col`=:$col";
 			
+			$v = $this->columns_values[$col];
+			
+			if (is_a($v, SQLRAW::class)) {
+				/** @var SQLRAW $raw */
+				$raw = $v;
+				$clause = "`$col`=". $raw;
+			} else { $arg[":$col"] = $v; }
+			
+			$valueClause .= $clause;
 			$valCtr++;
 		}
 		
@@ -237,14 +255,55 @@ class MVCEloquentModel {
 	 * @param $query mixed
 	 * @param $maxSize int Limit amount
 	 * @param $case_sensitive bool Determines if the variables added are queried as BINARY
+	 * @param $order bool|array Array/Array of 2 items, defining ordering. 2nd Param BOOL. TRUE = ASC, FALSE = DESC
 	 * @return DatabaseItem|DatabaseCollection|bool
 	 */
-	public static function find($query, $case_sensitive = true, $maxSize = 100) {
+	public static function find($query, $case_sensitive = true, $maxSize = 100, $order = false) {
 		// Get PDO Object
 		$PDO   = Database::GetPDO(static::$database);
 		$sql   = "";
 		$binds = [];
 		$table = static::$table;
+		
+		$orderStatement = "";
+		
+		if ($order != false && is_array($order)) {
+			$tmpArray = $order;
+			if (!is_array($order)) {
+				$tmpArray = [];
+				$tmpArray[] = $order;
+			}
+			
+			
+			$cnt_cur = 1;
+			$cnt_max = count($tmpArray);
+			foreach($tmpArray as $order) {
+				$cnt = count($order);
+				
+				if ($cnt == 2) {
+					$col = $order[0];
+					$dir = $order[1];
+					
+					if (is_string($dir)) {
+						$dir = mb_strtolower($dir);
+						
+						if ($dir == "asc")  $dir = "ASC";
+						else                $dir = "DESC";
+					} else {
+						if ($dir) $dir = "ASC";
+						else      $dir = "DESC";
+					}
+					
+					$orderStatement = "SORT BY `". $col. "` ". $dir;
+					
+					if ($cnt_cur != $cnt_max) {
+						$orderStatement .= ', ';
+					}
+				}
+				
+				$cnt_cur++;
+			}
+		}
 		
 		// If array then format = [column, glue, value]
 		// EG:                    ['name', '=', 'callum']
@@ -252,37 +311,48 @@ class MVCEloquentModel {
 			
 			// findFirstOrFail ([['1', '=', 1], ['name', '!=', 'test']]
 			if (is_array($query[0])) {
-				$format      = "SELECT %s FROM `%s` WHERE ( %s ) LIMIT $maxSize;";
+				$format      = "SELECT %s FROM `%s` WHERE ( %s ) %s LIMIT $maxSize;";
 				$columns     = self::implodeAllColumns();
 				$whereClause = ""; // Where clause
 				$binds       = []; // PDO Binded Values
 				$vInt        = 0;  // Keeps track of how many vars there are.
 				
 				foreach ($query as $queryClause) {
+					$cnt = count($queryClause);
+					
 					$vWhere = ":V$vInt";
 					$col    = $queryClause[0];
-					$glue   = $queryClause[1];
-					$value  = $queryClause[2];
+					$glue   = $cnt == 3 ? $queryClause[1] : '=';
+					$value  = $cnt == 3 ? $queryClause[2] : $queryClause[1];
 					
 					if ($vInt != 0)
 						$whereClause .= " AND ";
 					
-					//                    col{glue}vWhere
-					//                    name=:Val0
-					if ($case_sensitive) {
-						if (!is_int($value))
-							 $whereClause .= "$col $glue BINARY $vWhere";
-						// BINARY DOES NOT WORK ON INT
-						else $whereClause .= "$col $glue $vWhere";
-					} else {
-						$whereClause .= "$col $glue $vWhere";
+					// Raw SQL statement
+					if (is_a($value, SQLRAW::class)) {
+						$whereClause .= "$col $glue $value";
 					}
 					
-					$binds[$vWhere] = $value;
+					// Normal Value
+					else {
+						//                    col{glue}vWhere
+						//                    name=:Val0
+						if ($case_sensitive) {
+							if (!is_int($value))
+								$whereClause .= "$col $glue BINARY $vWhere";
+							// BINARY DOES NOT WORK ON INT
+							else $whereClause .= "$col $glue $vWhere";
+						} else {
+							$whereClause .= "$col $glue $vWhere";
+						}
+						
+						$binds[$vWhere] = $value;
+					}
+					
 					$vInt++;
 				}
 				
-				$sql = sprintf($format, $columns, static::$table, $whereClause);
+				$sql = sprintf($format, $columns, static::$table, $whereClause, $orderStatement);
 			} else if (count($query) == 3) {
 				// [0] = column
 				// [1] = glue
@@ -293,8 +363,19 @@ class MVCEloquentModel {
 				$val = $query[2];
 				
 				$columns  = self::implodeAllColumns();
-				$sql      = "SELECT $columns FROM $table WHERE $col $glu ". ($case_sensitive ? "BINARY " : ""). ":V0_1 LIMIT $maxSize;";
-				$binds    = [':V0_1' => $val];
+				$sql      = "SELECT $columns FROM $table WHERE $col $glu ";
+				
+				if (is_a($val, SQLRAW::class)) {
+					/** @var SQLRAW $stmt */
+					$stmt    = $val;
+					$sql    .= $stmt->SQL;
+				} else {
+					$sql    .= ($case_sensitive ? "BINARY " : ""). ":V0_1";
+					$binds   = [':V0_1' => $val];
+				}
+				
+				$sql .= " ". $orderStatement. " ";
+				$sql .= " LIMIT $maxSize;";
 			} else if (count($query) == 2) {
 				// [0] = column
 				// [1] = value
@@ -305,8 +386,23 @@ class MVCEloquentModel {
 				$val = $query[1];
 				
 				$columns  = self::implodeAllColumns();
-				$sql      = "SELECT $columns FROM `$table` WHERE $col $glu ". ($case_sensitive ? "BINARY " : ""). ":V0_2 LIMIT $maxSize;";
-				$binds    = [':V0_2' => $val];
+				$sql      = "SELECT $columns FROM `$table` WHERE $col $glu ";
+				
+				// Check if the query is a SQL Raw statement
+				if (is_a($val, SQLRAW::class)) {
+					/** @var SQLRAW $stmt */
+					$stmt = $val;
+					$sql .= $stmt->SQL;
+				}
+				
+				// The query is a value
+				else {
+					$sql .= ($case_sensitive ? "BINARY " : ""). ":V0_2";
+					$binds    = [':V0_2' => $val];
+				}
+				
+				$sql .= " ". $orderStatement. " ";
+				$sql .= " LIMIT $maxSize;";
 			} else { return false; }
 		}
 		
@@ -316,19 +412,23 @@ class MVCEloquentModel {
 			
 			$col_id = static::$columns_id;
 			$columns = self::implodeAllColumns();
-			$sql   = "SELECT $columns FROM `$table` WHERE $col_id = :id LIMIT $maxSize;";
+			$sql   = "SELECT $columns FROM `$table` WHERE $col_id = :id $orderStatement LIMIT $maxSize;";
 			$binds = [':id' => $query];
 		}
 		
 		/* Debugging */ {
-			/*/
-			echo "\$sql: \t\t$sql\n";
-			echo "\$binds: \t";
-			var_dump ($binds);
-			echo "\n";
 			
-			exit;
+			/*/
+			if (static::$table == "users_timed") {
+				echo "<pre>";
+				echo "\$sql: \t\t$sql\n";
+				echo "\$binds: \t";
+				var_dump($binds);
+				echo "\n";
+				exit;
+			}
 			//*/
+			
 		}
 		
 		try {
@@ -343,6 +443,7 @@ class MVCEloquentModel {
 			$result->execute($binds);
 			$rowCount = $result->rowCount();
 		} catch (\PDOException $ex) {
+			
 			Database::ThrowDatabaseFailedQuery($ex);
 		}
 		
