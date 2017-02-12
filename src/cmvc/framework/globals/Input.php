@@ -22,10 +22,10 @@ class Input {
 		$tl = mb_strtolower($type);
 		
 		if ($tl == "post" || $tl == "p") {
-			if (!empty($_POST[$string])) return $_POST[$string];
+			if (isset($_POST[$string]))  return $_POST[$string];
 			else                         return $default;
 		} else if ($tl == "get" || $tl == "g") {
-			if (!empty($_GET[$string]))  return $_GET[$string];
+			if (isset($_GET[$string]))   return $_GET[$string];
 			else                         return $default;
 		}
 		
@@ -46,19 +46,38 @@ class Input {
 	 * Checks if the request contains a argument
 	 * @param $string mixed Searched input
 	 * @param $type string Type to return, post|p, get|g or any.
+	 * @param $check string Type to return, isset|i, empty|e. DEFAULT = "e"
 	 * @return bool If the request contains the argument
 	 */
-	public static function contains($string, $type = "any") {
+	public static function contains($string, $type = "any", $check = "e") {
 		$tl = mb_strtolower($type);
+		$check = mb_strtolower($check);
 		
-		if ($tl == "post" || $tl == "p")
-			return (!empty($_POST[$string]));
+		if ($check != "i" && $check != "e")
+			$check = "e";
 		
-		else if ($tl == "get" || $tl == "g")
-			return (!empty($_GET[$string]));
+		if ($tl == "post" || $tl == "p") {
+			if ($check = "i")
+				return (isset($_POST[$string]));
+			else if ($check == "e")
+				return (!empty($_POST[$string]));
+		}
 		
-		if (!empty($_POST[$string])) return true;
-		if (!empty($_GET[$string]))  return true;
+		else if ($tl == "get" || $tl == "g") {
+			if ($check = "i")
+				return (isset($_GET[$string]));
+			else if ($check == "e")
+				return (!empty($_GET[$string]));
+		}
+		
+		
+		if ($check == "e") {
+			if (!empty($_POST[$string])) return true;
+			if (!empty($_GET[$string]))  return true;
+		} else if ($check == "i") {
+			if (isset($_POST[$string]))  return true;
+			if (isset($_GET[$string]))   return true;
+		}
 		
 		return false;
 	}

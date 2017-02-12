@@ -267,44 +267,6 @@ class MVCEloquentModel {
 		
 		$orderStatement = "";
 		
-		if ($order != false && is_array($order)) {
-			$tmpArray = $order;
-			if (!is_array($order)) {
-				$tmpArray = [];
-				$tmpArray[] = $order;
-			}
-			
-			
-			$cnt_cur = 1;
-			$cnt_max = count($tmpArray);
-			foreach($tmpArray as $order) {
-				$cnt = count($order);
-				
-				if ($cnt == 2) {
-					$col = $order[0];
-					$dir = $order[1];
-					
-					if (is_string($dir)) {
-						$dir = mb_strtolower($dir);
-						
-						if ($dir == "asc")  $dir = "ASC";
-						else                $dir = "DESC";
-					} else {
-						if ($dir) $dir = "ASC";
-						else      $dir = "DESC";
-					}
-					
-					$orderStatement = "SORT BY `". $col. "` ". $dir;
-					
-					if ($cnt_cur != $cnt_max) {
-						$orderStatement .= ', ';
-					}
-				}
-				
-				$cnt_cur++;
-			}
-		}
-		
 		// If array then format = [column, glue, value]
 		// EG:                    ['name', '=', 'callum']
 		if (is_array($query)) {
@@ -475,18 +437,206 @@ class MVCEloquentModel {
 	}
 	
 	/**
+	 * Get every row in the table
+	 *
+	 * Set $maxSize to -1 for unlimited
+	 * @param int $maxSize
+	 * @param int $offset
+	 * @param bool $order
+	 * @return DatabaseCollection|DatabaseItem
+	 */
+	public static function all($maxSize = 100, $offset=0, $order = false) {
+		$PDO            = Database::GetPDO(static::$database);
+		$orderStatement = static::compileOrderStatement($order);
+		
+		$sCols          = static::implodeAllColumns(true);
+		$sTable         = static::$table;
+		$sOffset        = "OFFSET ". ($offset == 0 ? "0" : $offset);
+		$sLimit         = ($maxSize == -1 ? "" : "LIMIT $maxSize $sOffset");
+		$sQuery         = "SELECT $sCols FROM $sTable $orderStatement $sLimit";
+		
+		try {
+			$result = $PDO->prepare($sQuery);
+			$result->execute();
+			$rowCount = $result->rowCount();
+		} catch (\PDOException $ex) { Database::ThrowDatabaseFailedQuery($ex); }
+		
+		if ($rowCount == 0) {
+			return DatabaseItem::__SearchFailed();
+		} else if ($rowCount == 1) {
+			$itm = new DatabaseItem();
+			
+			$me = new static();
+			$me->__SetDatabaseResults($result->fetch());
+			
+			$itm->set($me);
+			return $itm;
+		} else {
+			// We have a list
+			$listOfDB = $result->fetchAll();
+			$tmp      = [];
+			
+			foreach($listOfDB as $row) {
+				$me = new static();
+				$me->__SetDatabaseResults($row);
+				array_push($tmp, $me);
+			}
+			
+			$itm = new DatabaseCollection();
+			$itm->set($tmp);
+			return $itm;
+		}
+	}
+	
+
+	/**
 	 * Returns table's row count
 	 * @return int
 	 */
-	public function count() {
+	public static function count() {
 		$PDO   = Database::GetPDO(static::$database);
 		
 		$sql = "SELECT count(*) FROM `%s`;";
 		$sql = sprintf($sql, static::$table);
 		
-		$result = $PDO->prepare($sql);
-		$result->execute();
-		return $result->fetchColumn();
+		try {
+			$result = $PDO->prepare($sql);
+			$result->execute();
+			return $result->fetchColumn();
+		} catch (\PDOException $ex) {
+			Database::ThrowDatabaseFailedQuery($ex);
+		}
+		
+		return -1;
+	}
+	
+	
+	/**
+	 * Returns a count from a query
+	 * @param $query
+	 * @param $case_sensitive
+	 * @return int
+	 */
+	public static function countWhere($query, $case_sensitive = true) {
+		// TODO: Remake the find function to stop copying of code
+		
+		// Get PDO Object
+		$PDO   = Database::GetPDO(static::$database);
+		$sql   = "";
+		$binds = [];
+		$table  = static::$table;
+		$col_id = static::$columns_id;
+		
+		// If array then format = [column, glue, value]
+		// EG:                    ['name', '=', 'callum']
+		if (is_array($query)) {
+			
+			// findFirstOrFail ([['1', '=', 1], ['name', '!=', 'test']]
+			if (is_array($query[0])) {
+				$format      = "SELECT COUNT(%s) FROM `%s` WHERE ( %s )";
+				$columns     = self::implodeAllColumns();
+				$whereClause = ""; // Where clause
+				$binds       = []; // PDO Binded Values
+				$vInt        = 0;  // Keeps track of how many vars there are.
+				
+				foreach ($query as $queryClause) {
+					$cnt = count($queryClause);
+					
+					$vWhere = ":V$vInt";
+					$col    = $queryClause[0];
+					$glue   = $cnt == 3 ? $queryClause[1] : '=';
+					$value  = $cnt == 3 ? $queryClause[2] : $queryClause[1];
+					
+					if ($vInt != 0)
+						$whereClause .= " AND ";
+					
+					// Raw SQL statement
+					if (is_a($value, SQLRAW::class)) {
+						$whereClause .= "$col $glue $value";
+					}
+					
+					// Normal Value
+					else {
+						//                    col{glue}vWhere
+						//                    name=:Val0
+						if ($case_sensitive) {
+							if (!is_int($value))
+								$whereClause .= "$col $glue BINARY $vWhere";
+							// BINARY DOES NOT WORK ON INT
+							else $whereClause .= "$col $glue $vWhere";
+						} else {
+							$whereClause .= "$col $glue $vWhere";
+						}
+						
+						$binds[$vWhere] = $value;
+					}
+					
+					$vInt++;
+				}
+				
+				$sql = sprintf($format, $col_id, static::$table, $whereClause);
+			} else if (count($query) == 3) {
+				// [0] = column
+				// [1] = glue
+				// [2] = value
+				
+				$col = $query[0];
+				$glu = $query[1];
+				$val = $query[2];
+				
+				$sql      = "SELECT COUNT($col_id) FROM $table WHERE $col $glu ";
+				
+				if (is_a($val, SQLRAW::class)) {
+					/** @var SQLRAW $stmt */
+					$stmt    = $val;
+					$sql    .= $stmt->SQL;
+				} else {
+					$sql    .= ($case_sensitive ? "BINARY " : ""). ":V0_1";
+					$binds   = [':V0_1' => $val];
+				}
+			} else if (count($query) == 2) {
+				// [0] = column
+				// [1] = value
+				// Assumes glue is '='
+				
+				$col = $query[0];
+				$glu = '=';
+				$val = $query[1];
+				
+				$columns  = self::implodeAllColumns();
+				$sql      = "SELECT COUNT($col_id) FROM `$table` WHERE $col $glu ";
+				
+				// Check if the query is a SQL Raw statement
+				if (is_a($val, SQLRAW::class)) {
+					/** @var SQLRAW $stmt */
+					$stmt = $val;
+					$sql .= $stmt->SQL;
+				}
+				
+				// The query is a value
+				else {
+					$sql .= ($case_sensitive ? "BINARY " : ""). ":V0_2";
+					$binds    = [':V0_2' => $val];
+				}
+			} else { return false; }
+		}
+		
+		// $query = ID
+		else {
+			// ID = Value
+			$sql   = "SELECT COUNT($col_id) FROM `$table` WHERE $col_id = :id";
+			$binds = [':id' => $query];
+		}
+		
+		try {
+			$result = $PDO->prepare($sql);
+			$result->execute($binds);
+			return $result->fetchColumn();
+		} catch (\PDOException $ex) {
+			Database::ThrowDatabaseFailedQuery($ex);
+		}
+		
+		return -1;
 	}
 	
 	/**
@@ -496,6 +646,18 @@ class MVCEloquentModel {
 	public function getID() {
 		return $this->columns_values[static::$columns_id];
 	}
+	
+	/**
+	 * Returns the current table
+	 * @return string
+	 */
+	public function getTable()      { return static::$table; }
+	
+	/**
+	 * Returns the database
+	 * @return string
+	 */
+	public function getDatabase()   { return static::$database; }
 	
 	// MAGIC FUNCTIONS
 	public function __set($name, $value) {
@@ -559,4 +721,72 @@ class MVCEloquentModel {
 	protected static function implodeColumns($columns) {
 		return implode (", ", $columns);
 	}
+	
+	protected static function compileOrderStatement($order) {
+		$orderStatement = "";
+		
+		if ($order != false && is_array($order)) {
+			if ( count($order) == 2
+		      && !is_array($order[0])
+		      && !is_array($order[1])) {
+				
+				$col = $order[0];
+				$dir = $order[1];
+				
+				if (is_string($dir)) {
+					$dir = mb_strtolower($dir);
+					
+					if ($dir == "asc"|| $dir == "a")
+						$dir = "ASC";
+					else                $dir = "DESC";
+				} else {
+					if ($dir) $dir = "ASC";
+					else      $dir = "DESC";
+				}
+				
+				$orderStatement = "ORDER BY `". $col. "` ". $dir;
+				return $orderStatement;
+			}
+			
+			$tmpArray = $order;
+			
+			if (!is_array($order)) {
+				$tmpArray = [];
+				$tmpArray[] = $order;
+			}
+			
+			$cnt_cur = 1;
+			$cnt_max = count($tmpArray);
+			foreach($tmpArray as $order) {
+				$cnt = count($order);
+				
+				if ($cnt == 2) {
+					$col = $order[0];
+					$dir = $order[1];
+					
+					if (is_string($dir)) {
+						$dir = mb_strtolower($dir);
+						
+						if ($dir == "asc"|| $dir == "a")
+							$dir = "ASC";
+						else                $dir = "DESC";
+					} else {
+						if ($dir) $dir = "ASC";
+						else      $dir = "DESC";
+					}
+					
+					$orderStatement = "ORDER BY `". $col. "` ". $dir;
+					
+					if ($cnt_cur != $cnt_max) {
+						$orderStatement .= ', ';
+					}
+				}
+				
+				$cnt_cur++;
+			}
+		}
+		
+		return $orderStatement;
+	}
+	
 }

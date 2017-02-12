@@ -154,12 +154,8 @@ class MVCExecutor {
 			// choose later in a option.
 			exit;
 		} else if (is_array($res)) {
-			// Clear the output
-			ob_get_clean();
-			
-			// Return a json equiv for the
-			// array.
-			return json_encode($res);
+			// Set the $res to ApplicationContent
+			$res = MVCResult::ApplicationContent($res);
 		}
 		
 		// MVC Result Type
