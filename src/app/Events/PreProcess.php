@@ -2,7 +2,7 @@
 
 namespace App\Events;
 
-use CommonMVC\MVC\MVCContext;
+use CommonMVC\Framework\MVCContext;
 
 class PreProcess {
 

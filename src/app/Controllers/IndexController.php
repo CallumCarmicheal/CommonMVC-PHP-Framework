@@ -3,8 +3,8 @@
 namespace App\Controllers;
 
 use App\Models\Test;
-use CommonMVC\MVC\MVCController;
-use CommonMVC\MVC\MVCResult;
+use CommonMVC\Framework\MVCController;
+use CommonMVC\Framework\MVCResult;
 
 class IndexController extends MVCController {
 	
@@ -25,21 +25,5 @@ class IndexController extends MVCController {
 	 */
 	public function index() {
 		return MVCResult::HtmlContent('Hello World!');
-	}
-	
-	
-	/**
-	 * ROOT/AddAndList
-	 *
-	 * Lists all the rows in the test table by using
-	 * the tests model. (VAR_DUMP)
-	 *
-	 * @returns MVCResult|string
-	 */
-	public function AddAndList() {
-		
-		// First we want to
-		
-		
 	}
 }

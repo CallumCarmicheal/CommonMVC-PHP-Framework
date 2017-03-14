@@ -7,8 +7,7 @@
 
 namespace App\Models;
 
-
-use lib\CMVC\mvc\MVCEloquentModel;
+use CommonMVC\Framework\MVCEloquentModel;
 
 class Test extends MVCEloquentModel {
 	// Model settings

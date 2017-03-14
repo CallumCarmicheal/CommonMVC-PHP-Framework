@@ -8,9 +8,9 @@
 
 namespace App\Controllers\Mvc;
 
-use CommonMVC\MVC\MVCContext;
-use CommonMVC\MVC\MVCController;
-use CommonMVC\MVC\MVCResult;
+use CommonMVC\Framework\MVCContext;
+use CommonMVC\Framework\MVCController;
+use CommonMVC\Framework\MVCResult;
 
 class AccessController extends MVCController {
 	
@@ -25,7 +25,6 @@ class AccessController extends MVCController {
 	 * controller is only meant to be called from within code itself.
 	 *
 	 * This can be used to display a 500 error page or a 403 etc...
-	 * @param $context MVCContext
 	 * @return MVCResult|string
 	 */
 	public function WebAccessDisabled() {

@@ -1,10 +1,10 @@
 <?php
 
-use CommonMVC\Classes\Storage\Database;
-use CommonMVC\MVC\MVCContext;
-use CommonMVC\MVC\MVCExecutor;
-use CommonMVC\MVC\MVCHelper;
-use CommonMVC\MVC\MVCResult;
+use CommonMVC\Framework\Storage\Database;
+use CommonMVC\Framework\MVCContext;
+use CommonMVC\Framework\MVCExecutor;
+use CommonMVC\Framework\MVCHelper;
+use CommonMVC\Framework\MVCResult;
 
 class Bootstrap {
 	

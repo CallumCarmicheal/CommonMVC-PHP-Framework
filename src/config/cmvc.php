@@ -4,7 +4,7 @@ namespace Config;
 
 class CMVC {
 	
-	public static function Load() {
+	public static function SetupConstants() {
         // Disable debugging 
         define ("CMVC_SETS_DEBUG_HANDLER", false);
 

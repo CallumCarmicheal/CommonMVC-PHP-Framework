@@ -2,9 +2,8 @@
 
 namespace App\Controllers\Mvc;
 
-use CommonMVC\Classes\Storage\Database;
-use CommonMVC\MVC\MVCController;
-use CommonMVC\MVC\MVCResult;
+use CommonMVC\Framework\MVCController;
+use CommonMVC\Framework\MVCResult;
 
 class DatabaseController extends MVCController {
 	

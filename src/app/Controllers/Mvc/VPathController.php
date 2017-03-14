@@ -2,8 +2,8 @@
 
 namespace App\Controllers\Mvc;
 
-use CommonMVC\MVC\MVCController;
-use CommonMVC\MVC\MVCResult;
+use CommonMVC\Framework\MVCController;
+use CommonMVC\Framework\MVCResult;
 
 class VPathController extends MVCController {
 	function __construct() {

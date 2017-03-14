@@ -68,6 +68,7 @@ class FileLoader {
 				foreach ($excl as $str)
 					if (strcmp ($str, $path) == 0)
 						$skip = true;
+				
 				if ($skip) continue;
 				
 				// DEBUG: Show files loading

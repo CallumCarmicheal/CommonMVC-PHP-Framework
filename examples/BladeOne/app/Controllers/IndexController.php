@@ -4,8 +4,8 @@ namespace App\Controllers;
 
 use App\Libraries\Blade;
 use App\Models\Test;
-use CommonMVC\MVC\MVCController;
-use CommonMVC\MVC\MVCResult;
+use CommonMVC\Framework\MVCController;
+use CommonMVC\Framework\MVCResult;
 
 class IndexController extends MVCController {
 	

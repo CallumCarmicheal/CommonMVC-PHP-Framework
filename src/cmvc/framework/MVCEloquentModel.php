@@ -1,19 +1,68 @@
 <?php
+
 /**
- * User: CallumCarmicheal
- * Date: 21/12/2016
- * Time: 15:22
- * Url:  https://github.com/CallumCarmicheal/CommonMVC-PHP-Framework
+ *  CMVC  PHP | A  hackable php mvc framework written
+ *  FRAMEWORK | from scratch with love
+ * -------------------------------------------------------
+ *   _______  ____   _______   ___  __ _____
+ *  / ___/  |/  | | / / ___/  / _ \/ // / _ \
+ * / /__/ /|_/ /| |/ / /__   / ___/ _  / ___/
+ * \___/_/  /_/ |___/\___/  /_/  /_//_/_/
+ *    _______  ___   __  ________      ______  ___  __ __
+ *   / __/ _ \/ _ | /  |/  / __| | /| / / __ \/ _ \/ //_/
+ *  / _// , _/ __ |/ /|_/ / _/ | |/ |/ / /_/ / , _/ ,<
+ * /_/ /_/|_/_/ |_/_/  /_/___/ |__/|__/\____/_/|_/_/|_|
+ *
+ * -------------------------------------------------------
+ * Programmed by Callum Carmicheal
+ *		<https://github.com/CallumCarmicheal>
+ * GitHub Repository
+ *		<https://github.com/CallumCarmicheal/CommonMVC-PHP-Framework>
+ *
+ * Contributors:
+ *
+ *
+ * LICENSE: MIT License
+ *      <http://www.opensource.org/licenses/mit-license.html>
+ *
+ * You cannot remove this header from any CMVC framework files
+ * which are under the following directory cmvc->framework.
+ * if you are unsure what directory that is, please refer to
+ * GitHub:
+ * <https://github.com/CallumCarmicheal/CommonMVC-PHP-Framework/tree/master/src>
+ *
+ * -------------------------------------------------------
+ * MIT License
+ *
+ * Copyright (c) 2017 Callum Carmicheal
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
-namespace lib\CMVC\mvc;
+namespace CommonMVC\Framework;
 
-use CommonMVC\Classes\Storage\Database;
-use lib\CMVC\mvc\Eloquent\DatabaseCollection;
-use lib\CMVC\mvc\Eloquent\DatabaseItem;
-use lib\CMVC\mvc\Eloquent\SQLRAW;
+use CommonMVC\Framework\Storage\Database;
+use CommonMVC\Framework\Eloquent\DatabaseCollection;
+use CommonMVC\Framework\Eloquent\DatabaseItem;
+use CommonMVC\Framework\Eloquent\SQLRAW;
 
-class MVCEloquentModel {
+class MVCEloquentModel implements \JsonSerializable  {
 	
 	protected static $table                 = "";
 	protected static $columns               = [];
@@ -151,6 +200,21 @@ class MVCEloquentModel {
 		$sql = sprintf($fmt, $valueClause);
 	}
 	
+	public function delete($are_you_sure = false) {
+		if (!$are_you_sure)
+			return false;
+		
+		$id  = static::getID();
+		$idc = static::$columns_id ;
+		$table = static::$table;
+		
+		$SQL = "DELETE FROM $table WHERE $idc=:ID;";
+		$PARAM = [':ID' => $id];
+		
+		Database::ExecuteSQL($SQL, $PARAM, static::$database);
+		return true;
+	}
+	
 	/**
 	 * Checks if the item exists in the database
 	 *
@@ -213,12 +277,29 @@ class MVCEloquentModel {
 	 * |  BINARY placed before them
 	 * |  making them case sensitive
 	 * |
-	 * |  DEFAULT: TRUE
+	 * |- DEFAULT: TRUE
 	 *
 	 * $maxSize
 	 * |- States the SQL limit size
 	 * |
-	 * |  DEFAULT: 100
+	 * |- DEFAULT: 100
+	 *
+	 * $order
+	 * |- Orders the column results in SQL
+	 * |- This can be defined as [column, bool (TRUE = ASC)/string (ASC, DESC)]
+	 * |                         /--------------------------------------------\
+	 * |  or [array, ...] where array = .|.
+	 * |
+	 * |- Example:
+	 * |
+	 * |  $order = ['user_id', true]  // ORDER BY USER_ID ASC
+	 * |  $order = ['user_id', 'ASC'] // ---------------------
+	 * |
+	 * |  $order = [['user_id',  true], ['post_id', 'DESC']]
+	 * |  $order = [['user_id', 'ASC'], ['post_id', 'DESC']]
+	 * |           ORDER BY user_id ASC, post_id DECS
+	 * |
+	 * |- DEFAULT: []/Null
 	 *
 	 * Example usage:
 	 *
@@ -238,6 +319,14 @@ class MVCEloquentModel {
 	 * |- Example 2: find( [ ['column', 'blah'], ['column2', 'blah'] ],   false, 2 ) // Case Insensitive
 	 * |- Example 3: find( [ ['column', 'blah'], ['column3', '>=', 33] ], false, 2 ) // Column >= Calculation
 	 *
+	 * SELECT * FROM table WHERE (column = blah) ORDER BY some_int ASC
+	 * |- Example 1: find( ['column', 'blah'], -1, ['some_int', true]  )
+	 * |- Example 2: find( ['column', 'blah'], -1, ['some_int', 'ASC'] )
+	 *
+	 * SELECT * FROM table WHERE (column = blah) ORDER BY some_int DESC LIMIT 2;
+	 * |- Example 1: find( ['column', 'blah'], 2, ['some_int', false]  )
+	 * |- Example 2: find( ['column', 'blah'], 2, ['some_int', 'DESC'] )
+	 *
 	 * SELECT * FROM table WHERE ... INNER JOIN ....
 	 * |- Sorry but this does not currently exist.
 	 * |  I will need to redesign how this function works
@@ -255,17 +344,17 @@ class MVCEloquentModel {
 	 * @param $query mixed
 	 * @param $maxSize int Limit amount
 	 * @param $case_sensitive bool Determines if the variables added are queried as BINARY
-	 * @param $order bool|array Array/Array of 2 items, defining ordering. 2nd Param BOOL. TRUE = ASC, FALSE = DESC
+	 * @param $order bool|array Array/Array of 2 items, defining ordering. 2nd Param BOOL. TRUE = ASC/A, FALSE = DESC/D
 	 * @return DatabaseItem|DatabaseCollection|bool
 	 */
-	public static function find($query, $case_sensitive = true, $maxSize = 100, $order = false) {
+	public static function find($query, $case_sensitive = true, $maxSize = -1, $order = false) {
 		// Get PDO Object
 		$PDO   = Database::GetPDO(static::$database);
 		$sql   = "";
 		$binds = [];
 		$table = static::$table;
 		
-		$orderStatement = "";
+		$orderStatement = static::compileOrderStatement($order);;
 		
 		// If array then format = [column, glue, value]
 		// EG:                    ['name', '=', 'callum']
@@ -273,7 +362,12 @@ class MVCEloquentModel {
 			
 			// findFirstOrFail ([['1', '=', 1], ['name', '!=', 'test']]
 			if (is_array($query[0])) {
-				$format      = "SELECT %s FROM `%s` WHERE ( %s ) %s LIMIT $maxSize;";
+				$format         = "SELECT %s FROM `%s` WHERE ( %s ) %s %s";
+				$limitStatement = "";
+				
+				if ($maxSize != -1)
+					$limitStatement .= " LIMIT $maxSize;";
+				
 				$columns     = self::implodeAllColumns();
 				$whereClause = ""; // Where clause
 				$binds       = []; // PDO Binded Values
@@ -300,7 +394,7 @@ class MVCEloquentModel {
 						//                    col{glue}vWhere
 						//                    name=:Val0
 						if ($case_sensitive) {
-							if (!is_int($value))
+							if (!is_int($value) || !is_bool($value) || !is_string($value))
 								$whereClause .= "$col $glue BINARY $vWhere";
 							// BINARY DOES NOT WORK ON INT
 							else $whereClause .= "$col $glue $vWhere";
@@ -314,7 +408,7 @@ class MVCEloquentModel {
 					$vInt++;
 				}
 				
-				$sql = sprintf($format, $columns, static::$table, $whereClause, $orderStatement);
+				$sql = sprintf($format, $columns, static::$table, $whereClause, $orderStatement, $limitStatement);
 			} else if (count($query) == 3) {
 				// [0] = column
 				// [1] = glue
@@ -332,12 +426,13 @@ class MVCEloquentModel {
 					$stmt    = $val;
 					$sql    .= $stmt->SQL;
 				} else {
-					$sql    .= ($case_sensitive ? "BINARY " : ""). ":V0_1";
+					$sql    .= ($case_sensitive ? (!is_string($val) ? "" : "BINARY ") : ""). ":V0_1";
 					$binds   = [':V0_1' => $val];
 				}
 				
 				$sql .= " ". $orderStatement. " ";
-				$sql .= " LIMIT $maxSize;";
+
+				if ($maxSize != -1) $sql .= " LIMIT $maxSize;";
 			} else if (count($query) == 2) {
 				// [0] = column
 				// [1] = value
@@ -359,12 +454,13 @@ class MVCEloquentModel {
 				
 				// The query is a value
 				else {
-					$sql .= ($case_sensitive ? "BINARY " : ""). ":V0_2";
-					$binds    = [':V0_2' => $val];
+					$sql .= ($case_sensitive ? (!is_string($val) ? "" : "BINARY ") : ""). ":V0_3";
+					$binds    = [':V0_3' => $val];
 				}
 				
-				$sql .= " ". $orderStatement. " ";
-				$sql .= " LIMIT $maxSize;";
+				$sql .= " ". $orderStatement;
+				if ($maxSize != -1) $sql .= " LIMIT $maxSize;";
+				else $sql .= ';';
 			} else { return false; }
 		}
 		
@@ -374,7 +470,12 @@ class MVCEloquentModel {
 			
 			$col_id = static::$columns_id;
 			$columns = self::implodeAllColumns();
-			$sql   = "SELECT $columns FROM `$table` WHERE $col_id = :id $orderStatement LIMIT $maxSize;";
+			
+			$sql   = "SELECT $columns FROM `$table` WHERE $col_id = :id $orderStatement";
+			
+			if ($maxSize != -1) $sql .= " LIMIT $maxSize;";
+			else $sql .= ';';
+
 			$binds = [':id' => $query];
 		}
 		
@@ -405,6 +506,16 @@ class MVCEloquentModel {
 			$result->execute($binds);
 			$rowCount = $result->rowCount();
 		} catch (\PDOException $ex) {
+			/*/
+			echo $ex->getMessage();
+			
+			echo "<pre>";
+			echo "\$sql: \t\t$sql\n";
+			echo "\$binds: \t";
+			var_dump($binds);
+			echo "\n";
+			exit;
+			//*/
 			
 			Database::ThrowDatabaseFailedQuery($ex);
 		}
@@ -518,8 +629,6 @@ class MVCEloquentModel {
 	 * @return int
 	 */
 	public static function countWhere($query, $case_sensitive = true) {
-		// TODO: Remake the find function to stop copying of code
-		
 		// Get PDO Object
 		$PDO   = Database::GetPDO(static::$database);
 		$sql   = "";
@@ -789,4 +898,7 @@ class MVCEloquentModel {
 		return $orderStatement;
 	}
 	
+	public function jsonSerialize() {
+		return $this->columns_values;
+	}
 }

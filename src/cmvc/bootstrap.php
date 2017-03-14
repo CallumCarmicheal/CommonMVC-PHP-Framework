@@ -1,10 +1,10 @@
 <?php
 
-use CommonMVC\Classes\Storage\Database;
-use CommonMVC\MVC\MVCContext;
-use CommonMVC\MVC\MVCExecutor;
-use CommonMVC\MVC\MVCHelper;
-use CommonMVC\MVC\MVCResult;
+use CommonMVC\Framework\Storage\Database;
+use CommonMVC\Framework\MVCContext;
+use CommonMVC\Framework\MVCExecutor;
+use CommonMVC\Framework\MVCHelper;
+use CommonMVC\Framework\MVCResult;
 
 class Bootstrap {
 	
@@ -12,9 +12,14 @@ class Bootstrap {
 	 * @var $mvc MVCExecutor
 	 */
 	private $mvc;
-
+	
+	/**
+	 * Starts the framework
+	 * @param $VirtualPath string
+	 */
 	public function run($VirtualPath) {
-		echo "<pre>";
+		// Start the session
+		session_start();
 		
 		// Load the files required to run the mvc
 		// |- Loads Configs
@@ -48,6 +53,7 @@ class Bootstrap {
 	}
 	
 	/**
+	 * Pre-processes each request
 	 * @param $context MVCContext
 	 */
 	private function PreProcessRequest($context) {
@@ -80,12 +86,18 @@ class Bootstrap {
 		// |- PreProcess::ProcessRequest($context);
 		$res = $class::$action($context);
 		
-		// If result is false then exit the application
-		if (!$res)
-			exit;
+		// If a MVCResult then execute it!
+		if (is_a($res, MVCResult::class)) {
+			$this->mvc->ExecuteControllerResult(null, $res, $context);
+		}
 		
+		// If result is false then exit the application
+		if (!$res) exit;
 	}
 	
+	/**
+	 * Loads all our included/referenced library files
+	 */
 	private function LoadFiles() {
 		// Recursively require_once all the configuration
 		// files.
@@ -110,7 +122,7 @@ class Bootstrap {
 	/**
 	 * Get a controller from the virtual path.
 	 * @param $VirtualPath string Virtual Path
-	 * @return \CommonMVC\MVC\MVCContext
+	 * @return \CommonMVC\Framework\MVCContext
 	 */
 	private function getController($VirtualPath) {
 		// Resolve a path by using the MVCHelper
@@ -149,6 +161,11 @@ class Bootstrap {
 		$pdo = Database::GetPDO();
 	}
 	
+	/**
+	 * Recursively require's files in a directory
+	 * @param $dir string
+	 * @param int $depth int
+	 */
 	private function _require_all($dir, $depth=0) {
 		// Check if the folder depth is more than 50
 		// if so then just return.
@@ -164,7 +181,7 @@ class Bootstrap {
 				//echo "Included $path <br>";
 				require_once $path;
 			} else if (is_dir($path)) {
-				_require_all($path, $depth+1);
+				self::_require_all($path, $depth+1);
 			}
 		}
 	}

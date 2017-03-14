@@ -8,8 +8,7 @@
 
 namespace App\Libraries;
 
-
-use CommonMVC\MVC\MVCResult;
+use CommonMVC\Framework\MVCResult;
 use eftec\bladeone\BladeOne;
 
 class Blade {
