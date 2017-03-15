@@ -2,19 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b3f453a-a721-419e-ba38-8d7a4583f01f" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/CommonMVC-PHP-Framework.iml" afterPath="$PROJECT_DIR$/.idea/CommonMVC-PHP-Framework.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/BladeOne/app/Controllers/IndexController.php" afterPath="$PROJECT_DIR$/examples/BladeOne/app/Controllers/IndexController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/BladeOne/app/Libraries/Blade.php" afterPath="$PROJECT_DIR$/examples/BladeOne/app/Libraries/Blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples/BladeOne/cmvc/bootstrap.php" afterPath="$PROJECT_DIR$/examples/BladeOne/cmvc/bootstrap.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/Controllers/IndexController.php" afterPath="$PROJECT_DIR$/src/app/Controllers/IndexController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/Controllers/Mvc/AccessController.php" afterPath="$PROJECT_DIR$/src/app/Controllers/Mvc/AccessController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/Controllers/Mvc/DatabaseController.php" afterPath="$PROJECT_DIR$/src/app/Controllers/Mvc/DatabaseController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/Controllers/Mvc/VPathController.php" afterPath="$PROJECT_DIR$/src/app/Controllers/Mvc/VPathController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/Events/PreProcess.php" afterPath="$PROJECT_DIR$/src/app/Events/PreProcess.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/app/Models/Test.php" afterPath="$PROJECT_DIR$/src/app/Models/Test.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/bootstrap.php" afterPath="$PROJECT_DIR$/src/cmvc/bootstrap.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/GlobalDefines.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/GlobalDefines.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/MVCContext.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/MVCContext.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/MVCController.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/MVCController.php" />
@@ -34,9 +21,6 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/globals/urlhandler.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/globals/urlhandler.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/storage/Database.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/storage/Database.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/storage/Templates.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/storage/Templates.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/cmvc.php" afterPath="$PROJECT_DIR$/src/config/cmvc.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/fileloader.php" afterPath="$PROJECT_DIR$/src/config/fileloader.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/config/framework.php" afterPath="$PROJECT_DIR$/src/config/framework.php" />
     </list>
     <ignored path="CommonMVC-PHP-Framework.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,72 +39,7 @@
     <favorites_list name="CommonMVC-PHP-Framework" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="IndexController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examples/BladeOne/app/Controllers/IndexController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="72">
-              <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Blade.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examples/BladeOne/app/Libraries/Blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-              <folding>
-                <element signature="e#116#150#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="MVCContext.php" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/cmvc/framework/MVCContext.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="378">
-              <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bootstrap.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examples/BladeOne/cmvc/bootstrap.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
-              <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-              <folding>
-                <element signature="e#7#48#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="bladeone.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examples/BladeOne/config/bladeone.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="fileloader.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/examples/BladeOne/config/fileloader.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -134,6 +53,25 @@
         <option value="$PROJECT_DIR$/examples/BladeOne/app/Controllers/IndexController.php" />
         <option value="$PROJECT_DIR$/examples/BladeOne/app/Libraries/Blade.php" />
         <option value="$PROJECT_DIR$/examples/BladeOne/cmvc/bootstrap.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/MVCResult.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/MVCHelper.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/MVCGlobalControllers.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/MVCExecutor.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/MVCEncryption.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/MVCEloquentModel.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/MVCController.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/MVCContext.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/GlobalDefines.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/storage/Templates.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/storage/Database.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/globals/urlhandler.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/globals/TextHelper.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/globals/Request.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/globals/Input.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/eloquent/SQLRAW.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/eloquent/DatabaseItem.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/eloquent/DatabaseCollection.php" />
+        <option value="$PROJECT_DIR$/src/cmvc/framework/eloquent/Base.php" />
       </list>
     </option>
   </component>
@@ -145,10 +83,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1936" />
-    <option name="height" value="1056" />
+    <option name="x" value="187" />
+    <option name="y" value="137" />
+    <option name="width" value="1117" />
+    <option name="height" value="778" />
   </component>
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
@@ -228,6 +166,84 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="framework" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CommonMVC-PHP-Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CommonMVC-PHP-Framework" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmvc" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="framework" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="storage" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CommonMVC-PHP-Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CommonMVC-PHP-Framework" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmvc" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="framework" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="globals" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CommonMVC-PHP-Framework" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="CommonMVC-PHP-Framework" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cmvc" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="framework" />
+              <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="eloquent" />
               <option name="myItemType" value="com.jetbrains.php.projectView.PhpTreeStructureProvider$1" />
             </PATH_ELEMENT>
           </PATH>
@@ -314,18 +330,18 @@
       <updated>1485741947669</updated>
       <workItem from="1485741949186" duration="609000" />
       <workItem from="1489521091017" duration="79000" />
-      <workItem from="1489521267900" duration="316000" />
+      <workItem from="1489521267900" duration="2260000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1004000" />
+    <option name="totallyTimeSpent" value="2948000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
-    <editor active="true" />
+    <frame x="187" y="137" width="1117" height="778" extended-state="0" />
+    <editor active="false" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17270789" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3065279" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -463,7 +479,7 @@
         <state relative-caret-position="144">
           <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
           <folding>
-            <element signature="e#7#48#0#PHP" expanded="true" />
+            <element signature="e#7#48#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -505,15 +521,167 @@
         <state relative-caret-position="108">
           <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
           <folding>
-            <element signature="e#116#150#0#PHP" expanded="true" />
+            <element signature="e#116#150#0#PHP" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/MVCResult.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="87">
+          <caret line="5" column="0" lean-forward="false" selection-start-line="5" selection-start-column="0" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/MVCHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/MVCGlobalControllers.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/MVCExecutor.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/MVCEncryption.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="44" lean-forward="true" selection-start-line="5" selection-start-column="44" selection-end-line="5" selection-end-column="44" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/MVCEloquentModel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/MVCController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/cmvc/framework/MVCContext.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="21" column="16" lean-forward="true" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+        <state relative-caret-position="252">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/GlobalDefines.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/storage/Templates.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/storage/Database.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/globals/urlhandler.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/globals/TextHelper.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/globals/Request.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/globals/Password_Util.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="11" column="29" lean-forward="false" selection-start-line="11" selection-start-column="29" selection-end-line="11" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/globals/Input.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/eloquent/DatabaseItem.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/eloquent/Base.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="7" column="55" lean-forward="false" selection-start-line="7" selection-start-column="55" selection-end-line="7" selection-end-column="55" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/eloquent/DatabaseCollection.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cmvc/framework/eloquent/SQLRAW.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="15" column="58" lean-forward="false" selection-start-line="15" selection-start-column="58" selection-end-line="15" selection-end-column="58" />
           <folding />
         </state>
       </provider>
