@@ -97,29 +97,40 @@ class Input {
 	 * @param $string mixed Searched input
 	 * @param $type string Type to return, post|p, get|g or any.
 	 * @param $check string Type to return, isset|i, empty|e. DEFAULT = "e"
+	 * @param $debug bool Stops page execution to state where the result is coming from
 	 * @return bool If the request contains the argument
 	 */
-	public static function contains($string, $type = "any", $check = "e") {
-		$tl = mb_strtolower($type);
-		$check = mb_strtolower($check);
-		
-		if ($check != "i" && $check != "e")
-			$check = "e";
+	public static function contains($string, $type = "any", $check = "e", $debug = false) {
+		$tl     = mb_strtolower($type);
+		$check  = mb_strtolower($check);
 		
 		if ($tl == "post" || $tl == "p") {
-			if ($check = "i")
+			if ($check == "i")           {
+				if ($debug)
+					die ("tp = p, check = i");
+				
 				return (isset($_POST[$string]));
-			else if ($check == "e")
+			} else if ($check == "e")    {
+				if ($debug)
+					die ("tp = p, check = e");
+				
 				return (!empty($_POST[$string]));
+			}
 		}
 		
 		else if ($tl == "get" || $tl == "g") {
-			if ($check = "i")
+			if ($check == "i") {
+				if ($debug)
+					die ("tp = g, check = i");
+				
 				return (isset($_GET[$string]));
-			else if ($check == "e")
+			} else if ($check == "e") {
+				if ($debug)
+					die ("tp = g, check = e");
+				
 				return (!empty($_GET[$string]));
+			}
 		}
-		
 		
 		if ($check == "e") {
 			if (!empty($_POST[$string])) return true;

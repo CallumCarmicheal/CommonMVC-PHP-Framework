@@ -169,8 +169,12 @@ class MVCEloquentModel implements \JsonSerializable  {
 	private function generateUpdate($all, &$sql, &$arg) {
 		$table = static::$table;
 		$idCol = static::$columns_id;
-		$idVal = $this->columns_values["id"];
-		$fmt = "UPDATE $table SET %s WHERE $idCol = ". (is_int($this->columns_values[self::$columns_id]) ? "" : "BINARY "). ":ID";
+		$idVal = $this->columns_values[static::$columns_id];
+		
+		$fmt = "UPDATE $table SET %s WHERE $idCol = ";
+		$fmt .= (is_int($this->columns_values[static::$columns_id]) ? "" : "BINARY ");
+		$fmt .= ":ID";
+		
 		$arg = [":ID" => $idVal];
 		$valueClause = "";
 		$valCtr      = 0;
@@ -187,7 +191,7 @@ class MVCEloquentModel implements \JsonSerializable  {
 			
 			$v = $this->columns_values[$col];
 			
-			if (is_a($v, SQLRAW::class)) {
+			if ($v instanceof SQLRAW) {
 				/** @var SQLRAW $raw */
 				$raw = $v;
 				$clause = "`$col`=". $raw;
@@ -243,7 +247,7 @@ class MVCEloquentModel implements \JsonSerializable  {
 	 * @return bool|DatabaseCollection|DatabaseItem
 	 */
 	public static function findByID($id, $case_sensitive = false) {
-		return self::find(['id', $id], $case_sensitive, 1);
+		return self::find([static::$columns_id, $id], $case_sensitive, 1);
 	}
 	
 	/**
@@ -385,7 +389,7 @@ class MVCEloquentModel implements \JsonSerializable  {
 						$whereClause .= " AND ";
 					
 					// Raw SQL statement
-					if (is_a($value, SQLRAW::class)) {
+					if ($value instanceof SQLRAW) {
 						$whereClause .= "$col $glue $value";
 					}
 					
@@ -421,7 +425,7 @@ class MVCEloquentModel implements \JsonSerializable  {
 				$columns  = self::implodeAllColumns();
 				$sql      = "SELECT $columns FROM $table WHERE $col $glu ";
 				
-				if (is_a($val, SQLRAW::class)) {
+				if ($val instanceof SQLRAW) {
 					/** @var SQLRAW $stmt */
 					$stmt    = $val;
 					$sql    .= $stmt->SQL;
@@ -446,7 +450,7 @@ class MVCEloquentModel implements \JsonSerializable  {
 				$sql      = "SELECT $columns FROM `$table` WHERE $col $glu ";
 				
 				// Check if the query is a SQL Raw statement
-				if (is_a($val, SQLRAW::class)) {
+				if ($val instanceof SQLRAW) {
 					/** @var SQLRAW $stmt */
 					$stmt = $val;
 					$sql .= $stmt->SQL;
@@ -556,7 +560,7 @@ class MVCEloquentModel implements \JsonSerializable  {
 	 * @param bool $order
 	 * @return DatabaseCollection|DatabaseItem
 	 */
-	public static function all($maxSize = 100, $offset=0, $order = false) {
+	public static function all($maxSize = -1, $offset=0, $order = false) {
 		$PDO            = Database::GetPDO(static::$database);
 		$orderStatement = static::compileOrderStatement($order);
 		
@@ -660,7 +664,7 @@ class MVCEloquentModel implements \JsonSerializable  {
 						$whereClause .= " AND ";
 					
 					// Raw SQL statement
-					if (is_a($value, SQLRAW::class)) {
+					if ($value instanceof SQLRAW) {
 						$whereClause .= "$col $glue $value";
 					}
 					
@@ -695,7 +699,7 @@ class MVCEloquentModel implements \JsonSerializable  {
 				
 				$sql      = "SELECT COUNT($col_id) FROM $table WHERE $col $glu ";
 				
-				if (is_a($val, SQLRAW::class)) {
+				if ($val instanceof SQLRAW) {
 					/** @var SQLRAW $stmt */
 					$stmt    = $val;
 					$sql    .= $stmt->SQL;
@@ -716,7 +720,7 @@ class MVCEloquentModel implements \JsonSerializable  {
 				$sql      = "SELECT COUNT($col_id) FROM `$table` WHERE $col $glu ";
 				
 				// Check if the query is a SQL Raw statement
-				if (is_a($val, SQLRAW::class)) {
+				if ($val instanceof SQLRAW) {
 					/** @var SQLRAW $stmt */
 					$stmt = $val;
 					$sql .= $stmt->SQL;
@@ -785,9 +789,8 @@ class MVCEloquentModel implements \JsonSerializable  {
 		$inReds  = in_array ($name, static::$columns_readonly);
 		$isIdCol = $name == static::$columns_id;
 		
-		if ($inCols || $inReds || $isIdCol) {
+		if ($inCols || $inReds || $isIdCol)
 			return $this->columns_values[$name];
-		}
 	}
 	
 	/**
@@ -900,5 +903,9 @@ class MVCEloquentModel implements \JsonSerializable  {
 	
 	public function jsonSerialize() {
 		return $this->columns_values;
+	}
+	
+	public function __toString() {
+		return json_encode(self::jsonSerialize());
 	}
 }

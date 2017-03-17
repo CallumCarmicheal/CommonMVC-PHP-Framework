@@ -1,27 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1b3f453a-a721-419e-ba38-8d7a4583f01f" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/GlobalDefines.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/GlobalDefines.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/MVCContext.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/MVCContext.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/MVCController.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/MVCController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/MVCEloquentModel.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/MVCEloquentModel.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/MVCEncryption.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/MVCEncryption.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/MVCExecutor.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/MVCExecutor.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/MVCGlobalControllers.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/MVCGlobalControllers.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/MVCHelper.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/MVCHelper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/MVCResult.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/MVCResult.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/eloquent/Base.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/eloquent/Base.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/eloquent/DatabaseCollection.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/eloquent/DatabaseCollection.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/eloquent/DatabaseItem.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/eloquent/DatabaseItem.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/eloquent/SQLRAW.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/eloquent/SQLRAW.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/globals/Input.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/globals/Input.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/globals/Request.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/globals/Request.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/globals/TextHelper.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/globals/TextHelper.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/globals/urlhandler.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/globals/urlhandler.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/storage/Database.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/storage/Database.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/cmvc/framework/storage/Templates.php" afterPath="$PROJECT_DIR$/src/cmvc/framework/storage/Templates.php" />
-    </list>
+    <list default="true" id="1b3f453a-a721-419e-ba38-8d7a4583f01f" name="Default" comment="" />
     <ignored path="CommonMVC-PHP-Framework.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -39,7 +19,7 @@
     <favorites_list name="CommonMVC-PHP-Framework" />
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300" />
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -249,12 +229,12 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/College Workspace/Web Server/root/Project" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path" value="C:/Program Files (x86)/nodejs/node" />
     <property name="js.eslint.eslintPackage" value="" />
@@ -331,17 +311,18 @@
       <workItem from="1485741949186" duration="609000" />
       <workItem from="1489521091017" duration="79000" />
       <workItem from="1489521267900" duration="2260000" />
+      <workItem from="1489688469194" duration="135000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="2948000" />
+    <option name="totallyTimeSpent" value="3083000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="187" y="137" width="1117" height="778" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3065279" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31220436" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -370,117 +351,23 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src - Copy/cmvc/bootstrap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src - Copy/cmvc/framework/GlobalDefines.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src - Copy/cmvc/framework/MVCContext.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src - Copy/app/Controllers/IndexController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src - Copy/config/bladeone.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src - Copy/config/cmvc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src - Copy/mvc_application.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="0" lean-forward="true" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src - Copy/config/bladeone.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src - Copy/config/cmvc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src - Copy/cmvc/bootstrap.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
-          <caret line="8" column="17" lean-forward="false" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src - Copy/cmvc/framework/GlobalDefines.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src - Copy/app/Controllers/IndexController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="5" column="20" lean-forward="true" selection-start-line="5" selection-start-column="20" selection-end-line="5" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src - Copy/cmvc/framework/MVCContext.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src - Copy/cmvc/bootstrap.php" />
+    <entry file="file://$PROJECT_DIR$/src - Copy/cmvc/framework/GlobalDefines.php" />
+    <entry file="file://$PROJECT_DIR$/src - Copy/cmvc/framework/MVCContext.php" />
+    <entry file="file://$PROJECT_DIR$/src - Copy/app/Controllers/IndexController.php" />
+    <entry file="file://$PROJECT_DIR$/src - Copy/config/bladeone.php" />
+    <entry file="file://$PROJECT_DIR$/src - Copy/config/cmvc.php" />
+    <entry file="file://$PROJECT_DIR$/src - Copy/mvc_application.php" />
+    <entry file="file://$PROJECT_DIR$/src - Copy/config/bladeone.php" />
+    <entry file="file://$PROJECT_DIR$/src - Copy/config/cmvc.php" />
+    <entry file="file://$PROJECT_DIR$/src - Copy/cmvc/bootstrap.php" />
+    <entry file="file://$PROJECT_DIR$/src - Copy/cmvc/framework/GlobalDefines.php" />
+    <entry file="file://$PROJECT_DIR$/src - Copy/app/Controllers/IndexController.php" />
+    <entry file="file://$PROJECT_DIR$/src - Copy/cmvc/framework/MVCContext.php" />
     <entry file="file://$PROJECT_DIR$/examples/BladeOne/cmvc/bootstrap.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-          <folding>
-            <element signature="e#7#48#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -488,7 +375,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -496,7 +382,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -504,7 +389,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
           <caret line="4" column="22" lean-forward="true" selection-start-line="4" selection-start-column="22" selection-end-line="4" selection-end-column="22" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -512,7 +396,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="360">
           <caret line="20" column="9" lean-forward="true" selection-start-line="20" selection-start-column="9" selection-end-line="20" selection-end-column="9" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -520,9 +403,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
           <caret line="11" column="28" lean-forward="true" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
-          <folding>
-            <element signature="e#116#150#0#PHP" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>

@@ -57,9 +57,8 @@
 
 namespace CommonMVC\Framework\Storage;
 
-use API\Controllers\Mvc\ErrorController;
-use CommonMVC\MVC\MVCExecutor;
-use CommonMVC\MVC\MVCHelper;
+use CommonMVC\Framework\MVCExecutor;
+use CommonMVC\Framework\MVCHelper;
 
 class Database {
 
